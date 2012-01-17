@@ -3,10 +3,13 @@
 $(function() {
     $('#spinner')
         .hide() // hide initially
-        .ajaxStart(function(){
+        .ajaxSubmit(function(){
             $(this).show();
         })
-        .ajaxStop(function(){
+        .ajaxComplete(function(){
             $(this).hide();
         })
 });
+
+
+
