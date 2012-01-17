@@ -264,7 +264,6 @@ width: 100%;
 .item_box a:hover{
   width:180px;
   height:260px;
-  border:2px solid #c3c3c3;
   float:left;
   padding-left:0px;
   padding-right:0px;
@@ -682,5 +681,4 @@ border-top-width: medium;
   width: 200px; /* width of the spinner gif */
   height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
 }
-
 

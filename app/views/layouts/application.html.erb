@@ -3,14 +3,96 @@
 <head>
 <meta content="text/html; windows-1251" http-equiv="Content-Type"/>
 <title></title>
-<script type='text/javascript' src='/javascripts/jquery.js'></script>
-<script type='text/javascript' src='/javascripts/jquery.simplemodal.js'></script>
-<script type='text/javascript' src='/javascripts/basic.js'></script>
-<link type='text/css' href='/stylesheets/demo.css' rel='stylesheet' media='screen' />
-<link type='text/css' href='/stylesheets/basic.css' rel='stylesheet' media='screen' />
 <%= stylesheet_link_tag "style" %>
 <%= javascript_include_tag :defaults %>
 <%= csrf_meta_tag %>
+<script>
+
+$(document).ready(function() {  
+
+  //select all the a tag with name equal to modal
+  $('a[name=modal]').click(function(e) {
+    //Cancel the link behavior
+    e.preventDefault();
+    
+    //Get the A tag
+    var id = $(this).attr('href');
+  
+    //Get the screen height and width
+    var maskHeight = $(document).height();
+    var maskWidth = $(window).width();
+  
+    //Set heigth and width to mask to fill up the whole screen
+    $('#mask').css({'width':maskWidth,'height':maskHeight});
+    
+    //transition effect   
+    $('#mask').fadeIn(1000);  
+    $('#mask').fadeTo("slow",0.8);  
+  
+    //Get the window height and width
+    var winH = $(window).height();
+    var winW = $(window).width();
+              
+    //Set the popup window to center
+    $(id).css('top',  winH/2-$(id).height()/2);
+    $(id).css('left', winW/2-$(id).width()/2);
+  
+    //transition effect
+    $(id).fadeIn(2000); 
+  
+  });
+  
+  //if close button is clicked
+  $('.window .close').click(function (e) {
+    //Cancel the link behavior
+    e.preventDefault();
+    
+    $('#mask').hide();
+    $('.window').hide();
+  });   
+  
+  //if mask is clicked
+  $('#mask').click(function () {
+    $(this).hide();
+    $('.window').hide();
+  });     
+  
+});
+
+</script>
+<style>
+
+a {color:#333; text-decoration:none}
+a:hover {color:#ccc; text-decoration:none}
+
+#mask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}
+  
+.window {
+  border: 1px solid red;
+  position:absolute;
+  left:0;
+  top:0;
+  width:840px;
+  height:500px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+}
+
+#dialog {
+  width:375px; 
+  height:203px;
+  padding:10px;
+  background-color:#ffffff;
+}
+</style>
 <script type="text/javascript">
 jQuery(function($) {
   var slide = false;
@@ -35,6 +117,11 @@ jQuery(function($) {
 </script>
 </head>
 <body>
+
+  <div id="dialog" class="window">
+  Simple Modal Window | 
+  <a href="#"class="close"/>Close it</a>
+  </div>
 <div id="top">
     <a href="index.html" title="">
     <img src="images/logo.png" alt="" style="padding-left:50px;"/>
@@ -45,7 +132,6 @@ jQuery(function($) {
       <div id="spinner" class="spinner">
         <img id="img-spinner" src="/images/ajax-loader.gif" alt="Loading"/>
       </div>
-        
         КОЛЛЕКЦИЯ 2011
         <ul class="submenu">
           <li><a href="">ЛЕТО</a></li>
@@ -93,22 +179,7 @@ jQuery(function($) {
     <% if content_for?(:collections) %>
       <div><%= yield(:collections) %></div>
     <% end %>
-<input type='button' name='basic' value='Demo' class='basic'/> or <a href='#' class='basic'>
-      <h3>Basic Modal Dialog</h3>
-      <p>For this demo, SimpleModal is using this "hidden" data for its content. You can also populate the modal dialog with an AJAX response, standard HTML or DOM element(s).</p>
-      <p>Examples:</p>
-      <p><code>$('#basicModalContent').modal(); // jQuery object - this demo</code></p>
-      <p><code>$.modal(document.getElementById('basicModalContent')); // DOM</code></p>
-      <p><code>$.modal('&lt;p&gt;&lt;b&gt;HTML&lt;/b&gt; elements&lt;/p&gt;'); // HTML</code></p>
-      <p><code>$('&lt;div&gt;&lt;/div&gt;').load('page.html').modal(); // AJAX</code></p>
-    
-      <p><a href='http://www.ericmmartin.com/projects/simplemodal/'>More details...</a></p>
-    </div>
 
-    <!-- preload the images -->
-    <div style='display:none'>
-      <img src='img/basic/x.png' alt='' />
-    </div>
     <%= yield %>
 
   </div>
@@ -132,7 +203,7 @@ jQuery(function($) {
     <div class="clear"></div>
   </div>
 </div>
-
+<div id="mask"></div>
 </div>
 
 <!-- this will work with any number of images -->

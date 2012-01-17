@@ -3,7 +3,7 @@
 $(function() {
     $('#spinner')
         .hide() // hide initially
-        .ajaxSubmit(function(){
+        .ajaxSend(function(){
             $(this).show();
         })
         .ajaxComplete(function(){
