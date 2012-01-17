@@ -1,11 +1,13 @@
 .catalog_items
   =render @collection.items
 
-=content_for :categories do
+
+=content_for :brands do
+  Brands
   .vert_menu
     %ul
-      -Category.all.each do |c|  
-        %li=link_to c.name, [@collection.brand.boutique, @collection.brand, @collection, c]
+      -@collection.brand.boutique.brands.each do |b|  
+        %li=link_to b.name, [b.boutique, b]
 
 =content_for :collections do
   .catalog_header
@@ -13,5 +15,5 @@
       %h1 Коллекция 2011
     .collections
       %ul
-        -Collection.all.each do |c|
-          %li=link_to "Collection "+c.year.to_s, [@collection.brand.boutique, @collection.brand, c]
+        -@collections.each do |c|
+          %li=link_to "Collection "+c.year.to_s, [c.brand.boutique, c.brand, c]

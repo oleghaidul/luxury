@@ -1,5 +1,5 @@
 class BoutiquesController < ApplicationController
   def show
-    @boutique = Boutique.find(params[:id])
+    @boutique = Boutique.find_by_url_bout(params[:id])
   end
 end

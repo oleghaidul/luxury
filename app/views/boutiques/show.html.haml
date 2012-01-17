@@ -1,5 +1,17 @@
--Category.all.each do |c|
-  =link_to c.name, [@boutique, c]
+=render @boutique.brands
 
--@boutique.brands.each do |b|
-  =link_to b.name, [@boutique, b]
+
+=content_for :collections do
+  .catalog_header
+    .catalog_name
+      %h1 Коллекция 2011
+    .collections
+      %ul
+        -@boutique.collections.each do |c|
+          %li=link_to "Collection "+c.year.to_s, [@boutique, c]
+
+=content_for :brands do
+  .vert_menu
+    %ul
+      -@boutique.brands.each do |b|  
+        %li=link_to b.name, [@boutique, b]

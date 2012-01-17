@@ -1,1 +1,15 @@
 =render @brand.collections
+=content_for :collections do
+  .catalog_header
+    .catalog_name
+      %h1 Коллекция 2011
+    .collections
+      %ul
+        -@brand.collections.each do |c|
+          %li=link_to "Collection "+c.year.to_s, [@brand.boutique, @brand, c]
+
+=content_for :brands do
+  .vert_menu
+    %ul
+      -@brands.each do |b|  
+        %li=link_to b.name, [b.boutique, b]

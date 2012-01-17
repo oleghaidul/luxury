@@ -1,0 +1,12 @@
+f.inputs do
+	f.input :name
+	f.input :category
+	f.input :brand
+	f.input :season, :as => :select, :collection => Season.all.collect {|p| [ p.year.to_s+" "+p.name.to_s, p.id ] }, :include_blank => false
+	  
+	f.input :structure
+	f.input :description
+	f.input :price
+	f.input :discount
+	f.input :sex, :as => :radio, :collection => [["Male", "male"], ["Female", "female"]]
+	/ =f.input :pictures, :as => :check_boxes, :label_method => Proc.new { |image| "#{image.name}"}
