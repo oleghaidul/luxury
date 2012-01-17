@@ -1,0 +1,15 @@
+.catalog_header
+  .catalog_name
+    %h1 Коллекция 2011
+  .collections
+    %ul
+      %li
+        %a{:href => "", :title => ""} Коллекция 2010
+      %li
+        %a{:href => "", :title => ""} Коллекция 2009
+      %li
+        %a{:href => "", :title => ""} Коллекция 2008
+      %li
+        %a{:href => "", :title => ""} Смотреть всё
+.catalog_items
+  =render collection.items

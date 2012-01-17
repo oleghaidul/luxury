@@ -1,0 +1,17 @@
+.catalog_items
+  =render @collection.items
+
+=content_for :categories do
+  .vert_menu
+    %ul
+      -Category.all.each do |c|  
+        %li=link_to c.name, [@collection.brand.boutique, @collection.brand, @collection, c]
+
+=content_for :collections do
+  .catalog_header
+    .catalog_name
+      %h1 Коллекция 2011
+    .collections
+      %ul
+        -Collection.all.each do |c|
+          %li=link_to "Collection "+c.year.to_s, [@collection.brand.boutique, @collection.brand, c]
