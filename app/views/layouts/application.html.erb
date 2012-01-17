@@ -37,6 +37,10 @@ jQuery(function($) {
     <div id="menu">
       <ul>
       <li><a href="">
+      <div id="spinner" class="spinner">
+        <img id="img-spinner" src="/images/ajax-loader.gif" alt="Loading"/>
+      </div>
+
         КОЛЛЕКЦИЯ 2011
         <ul class="submenu">
           <li><a href="">ЛЕТО</a></li>
@@ -84,7 +88,9 @@ jQuery(function($) {
     <% if content_for?(:collections) %>
       <div><%= yield(:collections) %></div>
     <% end %>
+
     <%= yield %>
+
   </div>
 </div><!--end of content-->
 <div id="footer">
