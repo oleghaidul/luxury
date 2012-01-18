@@ -3,9 +3,10 @@
     =f.input :name
     =f.input :phone
     =f.input :phone2
-    =f.input :address, :input_html => {:class => 'editor'}
+    =f.input :address
     =f.input :director
     =f.input :url_bout
     =f.input :image
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
+    =f.input :description, :as => :text, :input_html => { :class => "mceEditor" }
     =f.buttons

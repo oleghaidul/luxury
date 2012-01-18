@@ -40,6 +40,7 @@ ActiveAdmin.setup do |config|
   config.authentication_method = :authenticate_admin_user!
 
 
+
   # == Current User
   #
   # Active Admin will associate actions with the current
@@ -96,10 +97,19 @@ ActiveAdmin.setup do |config|
   # and feel.
   #
   # To load a stylesheet:
-  #   config.register_stylesheet 'my_stylesheet.css'
+  #config.register_stylesheet '/javascripts/ckeditor/contents.css'
   #
   # To load a javascript file:
-  #   config.register_javascript 'my_javascript.js'
+  config.register_javascript 'tiny_mce/tiny_mce.js'
+  config.register_javascript 'tiny_mce/tiny_mce_popup.js'
+  config.register_javascript 'tiny_mce/tiny_mce_src.js'
+  config.register_javascript 'tiny_mce/jquery.tinymce.js'
+  config.register_javascript 'tiny_mce/use_tinymce_init_jquery.js'
+  config.register_javascript 'application.js'
+
+  
+
+
 
   ActiveAdmin::ResourceController.class_eval do
   protected

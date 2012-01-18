@@ -11,6 +11,11 @@ ActiveAdmin.register Item do
   end
 
 	controller do
+		uses_tiny_mce :options => {
+                            :theme_advanced_resizing => true,
+                            :theme_advanced_resize_horizontal => false,
+                            :plugins => %w{ table fullscreen }
+                          }
 		before_filter :admin, :except => [:index, :new, :create]
 		def admin
 			@item = Item.find(params[:id])
@@ -27,6 +32,7 @@ ActiveAdmin.register Item do
 	
 	show do
     h3 item.name
+    div item.description
     div do
     	item.pictures.each do |ff|
     		image_tag ff.image.url
@@ -43,7 +49,7 @@ ActiveAdmin.register Item do
 		f.input :collection, :collection => Collection.all.collect {|p| [ p.year.to_s+" "+p.season.to_s, p.id ] }, :include_blank => false
 	    
 		f.input :structure
-		f.input :description
+		f.input :description, :as => :text
 		f.input :price
 		f.input :discount
 		f.input :gender, :as => :radio, :collection => [["Male", "male"], ["Female", "female"]]

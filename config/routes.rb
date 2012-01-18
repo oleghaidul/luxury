@@ -7,6 +7,7 @@ Luxury::Application.routes.draw do
   root :to => "home#index"
 
   resources :boutiques do
+    member {get :desc}
     resources :brands do
       resources :collections do
         resources :items

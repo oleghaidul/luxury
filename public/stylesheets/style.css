@@ -679,7 +679,17 @@ border-top-width: medium;
 .item_show h2 {
   margin-left:150px;
   font-size: 26px;
+}
+
+.item_show h3 {
+  float:right;
+  font-size: 16px;
 padding: 0 0 20px;
+  padding-right: 200px ;
+}
+
+.item_show h3 a {
+  text-decoration:none;
 }
 
 
