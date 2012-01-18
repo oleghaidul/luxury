@@ -1,15 +1,7 @@
 %h2=@item.name
 %h3
   Коллекция: #{link_to "#{@item.collection.season.to_s + " "+@item.collection.year.to_s}",[@item.collection.brand.boutique, @item.collection.brand, @item.collection]}
--if request.referer.split("/")[5].nil? || request.referer.split("/")[5] == "brands"
-  .left=prev_item(@item.id, @item.collection.brand)
-  .center
-    .photo=image_tag @item.pictures.first.image.url(:large)
-    .description=@item.description.html_safe
-    .structure=@item.structure
-    .pictures=render @item.pictures
-  .right=next_item(@item.id, @item.collection.brand)
--else
+-if request.referer.split("/")[5] == "collections" || request.referer.split("/")[7] == "collections"
   .left=prev_item(@item.id, @item.collection)
   .center
     .photo=image_tag @item.pictures.first.image.url(:large)
@@ -17,3 +9,19 @@
     .structure=@item.structure
     .pictures=render @item.pictures
   .right=next_item(@item.id, @item.collection)
+-elsif request.referer.split("/")[5] == "brands"
+  .left=prev_item(@item.id, @item.collection.brand)
+  .center
+    .photo=image_tag @item.pictures.first.image.url(:large)
+    .description=@item.description.html_safe
+    .structure=@item.structure
+    .pictures=render @item.pictures
+  .right=next_item(@item.id, @item.collection.brand)
+-elsif request.referer.split("/")[3] == "boutiques" and request.referer.split("/")[5].nil?
+  .left=prev_item(@item.id, @item.collection.brand)
+  .center
+    .photo=image_tag @item.pictures.first.image.url(:large)
+    .description=@item.description.html_safe
+    .structure=@item.structure
+    .pictures=render @item.pictures
+  .right=next_item(@item.id, @item.collection.brand)
