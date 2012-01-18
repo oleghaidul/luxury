@@ -1,6 +1,7 @@
-=render @boutique.brands
-
-
+.catalog_items
+  =render @items
+  .free_space
+=hidden_field_tag :location, controller_name
 =content_for :collections do
   .catalog_header
     .catalog_name

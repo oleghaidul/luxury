@@ -6,4 +6,5 @@ class Boutique < ActiveRecord::Base
 	def to_param
 		"#{url_bout}".parameterize
 	end
+
 end

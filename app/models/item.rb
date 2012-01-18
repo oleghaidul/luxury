@@ -4,4 +4,6 @@ class Item < ActiveRecord::Base
 	attr_accessible :name, :structure, :price, :description, :discount, :gender, :admin_user_id, :collection_id, :pictures_attributes
 	has_many :pictures
 	accepts_nested_attributes_for :pictures
+
+
 end
