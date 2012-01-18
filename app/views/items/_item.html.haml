@@ -1,9 +1,7 @@
 .item_box
-  =link_to image_tag(item.pictures.first.image.url, :size => "150x250"), item
+  =link_to image_tag(item.pictures.first.image.url, :size => "166x250"), item, :id => 'load_item', :remote => true
   .price_txt Цена:
   .price 3080 $
-  .quick_look
-    %a{:href => "#dialog", :name => "modal"} Simple Window Modal
 .free_space  
 
   

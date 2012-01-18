@@ -4,94 +4,35 @@
 <meta content="text/html; windows-1251" http-equiv="Content-Type"/>
 <title></title>
 <%= stylesheet_link_tag "style" %>
-<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag :defaults, "jquery-ui" %>
 <%= csrf_meta_tag %>
 <script>
 
-$(document).ready(function() {  
-
-  //select all the a tag with name equal to modal
-  $('a[name=modal]').click(function(e) {
-    //Cancel the link behavior
-    e.preventDefault();
-    
-    //Get the A tag
-    var id = $(this).attr('href');
-  
-    //Get the screen height and width
-    var maskHeight = $(document).height();
-    var maskWidth = $(window).width();
-  
-    //Set heigth and width to mask to fill up the whole screen
-    $('#mask').css({'width':maskWidth,'height':maskHeight});
-    
-    //transition effect   
-    $('#mask').fadeIn(1000);  
-    $('#mask').fadeTo("slow",0.8);  
-  
-    //Get the window height and width
-    var winH = $(window).height();
-    var winW = $(window).width();
-              
-    //Set the popup window to center
-    $(id).css('top',  winH/2-$(id).height()/2);
-    $(id).css('left', winW/2-$(id).width()/2);
-  
-    //transition effect
-    $(id).fadeIn(2000); 
-  
-  });
-  
-  //if close button is clicked
-  $('.window .close').click(function (e) {
-    //Cancel the link behavior
-    e.preventDefault();
-    
-    $('#mask').hide();
-    $('.window').hide();
-  });   
-  
-  //if mask is clicked
-  $('#mask').click(function () {
-    $(this).hide();
-    $('.window').hide();
-  });     
-  
-});
-
 </script>
 <style>
-
-a {color:#333; text-decoration:none}
-a:hover {color:#ccc; text-decoration:none}
-
-#mask {
-  position:absolute;
-  left:0;
-  top:0;
-  z-index:9000;
-  background-color:#000;
-  display:none;
-}
-  
-.window {
-  border: 1px solid red;
-  position:absolute;
-  left:0;
-  top:0;
-  width:840px;
-  height:500px;
-  display:none;
-  z-index:9999;
-  padding:20px;
+#dialog-form {
+  border: 1px solid #ccc;
+  padding: 70px 0 0 3px;
+  min-width: 1000px;
 }
 
-#dialog {
-  width:375px; 
-  height:203px;
-  padding:10px;
-  background-color:#ffffff;
+.ui-widget {
+  background: white;
 }
+
+.ui-widget-overlay {
+  background: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.6;
+}
+
+.ui-dialog-titlebar {
+  margin-top:50px;  
+}
+
+
 </style>
 <script type="text/javascript">
 jQuery(function($) {
@@ -117,14 +58,9 @@ jQuery(function($) {
 </script>
 </head>
 <body>
-
-  <div id="dialog" class="window">
-  Simple Modal Window | 
-  <a href="#"class="close"/>Close it</a>
-  </div>
 <div id="top">
     <a href="index.html" title="">
-    <img src="images/logo.png" alt="" style="padding-left:50px;"/>
+    <img src="/images/logo.png" alt="" style="padding-left:50px;"/>
     </a>
     <div id="menu">
       <ul>
@@ -147,15 +83,15 @@ jQuery(function($) {
       <ul>
         <li>
         <a href="http://www.facebook.com/" target="_blank">
-        <img alt="" src="images/facebook.png"/></a>
+        <img alt="" src="/images/facebook.png"/></a>
         </li>
         <li>
         <a href="http://www.twitter.com/" target="_blank">
-        <img alt="" src="images/twitter.png"/></a>
+        <img alt="" src="/images/twitter.png"/></a>
         </li>
         <li>
         <a href="http://www.youtube.com/" target="_blank">
-        <img alt="" src="images/youtube.png"/></a>
+        <img alt="" src="/images/youtube.png"/></a>
         </li>
       </ul>
     </div>
@@ -165,7 +101,7 @@ jQuery(function($) {
   </div>
   <div id="left_pane">
     <div class="logo">
-    <img alt="" src="images/zegna_logo.png"/></a>
+    <img alt="" src="/images/zegna_logo.png"/></a>
     </div>
     <% if content_for?(:categories) %>
       <div><%= yield(:categories) %></div>

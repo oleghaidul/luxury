@@ -622,8 +622,7 @@ border-top-width: medium;
 
 .item_show {
   min-height: 400px;
-  width: 60%;
-  margin:50px 30px 10px 300px;
+  width: 100%;
 }
 
 .item_show .left a {
