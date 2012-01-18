@@ -12,12 +12,53 @@
 <style>
 #dialog-form {
   border: 1px solid #ccc;
-  padding: 70px 0 0 3px;
   min-width: 1000px;
+  height: 400px;
+
+}
+
+.ui-dialog-titlebar-close {
+  content: 'X';
+display: block;
+
+/* Position */
+position: absolute;
+right: -10px;
+top: -10px;
+width: 3.5em;
+padding: 1px 1px 1px 2px;
+
+/* Style */
+text-decoration: none;
+text-shadow: none;
+text-align: center;
+font-weight: bold;
+background: #000;
+color: #fff;
+border: 3px solid #fff;
+-moz-border-radius: 20px;
+border-radius: 20px;
+-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .ui-widget {
   background: white;
+    -webkit-transition: opacity 500ms ease-in;
+  -moz-transition: opacity 500ms ease-in;
+  transition: opacity 500ms ease-in;
+  -webkit-animation: minimise 500ms linear;
+
+/* Prettify */
+-moz-border-radius: 7px;
+border-radius: 7px;
+-webkit-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+-moz-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+background: -moz-linear-gradient(#fff, #ccc);
+background: -webkit-gradient(linear, right bottom, right top, color-stop(1, rgb(255,255,255)), color-stop(0.57, rgb(230,230,230)));
+text-shadow: 0 1px 0 #fff;
 }
 
 .ui-widget-overlay {
@@ -26,10 +67,6 @@
   top: 0;
   left: 0;
   opacity: 0.6;
-}
-
-.ui-dialog-titlebar {
-  margin-top:50px;  
 }
 
 

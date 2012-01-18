@@ -12,12 +12,12 @@ $(function() {
 });
 
 $(document).ready(function() {
-  $('#load_item').click(function(e) {
+  $('.load_item').click(function(e) {
     var url = $(this).attr('href');
     var dialog_form = $('<div id="dialog-form">Loading form...</div>').dialog({
       autoOpen: false,
       width: 1220,
-      height: 600,
+      height: 500,
       modal: true,
       closeOnEscape: true,
       show: 'slide',
@@ -29,7 +29,6 @@ $(document).ready(function() {
       }
     });
     dialog_form.dialog('open');
-    dialog_form.dialog('moveToTop');
     e.preventDefault();
   });
 });
