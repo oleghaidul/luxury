@@ -328,7 +328,7 @@ z-index: 5000;
 background-attachment: scroll;
 background-clip: border-box;
 background-color: transparent;
-background-image: url("images/bg-box00.png");
+background-image: url("../images/bg-box00.png");
 background-origin: padding-box;
 background-position: 0px 0px;
 background-repeat: repeat;
@@ -375,7 +375,7 @@ padding-right: 0px;
 padding-top: 50px;
  }
 .box.active,
-.box:hover { background-image: url(images/bg-box-h.png); }
+.box:hover { background-image: url(../images/bg-box-h.png); }
 
 div.social{
 float:right;
@@ -575,17 +575,26 @@ border-top-width: medium;
     width:100%;
   }
   #footer_higher #footer_content {
-    width: 100%;
-    margin: 0 auto;
     display: none;
+    background: none repeat scroll 0 0 rgba(70, 70, 70, 0.35);
+    border-radius: 10px 10px 10px 10px;
+    color: rgb(148,148,148);
+    float: left;
+    max-width: 580px;
+    font-family: Arial, Helvetica;
+    font-size: 9pt;
+    margin: 15px 0 20px 40px;
   }
   #footer_higher #footer_content .footbox {
-    background: #323232;
-    padding: 20px;
+    margin: 20px 20px 40px 20px;
     float: left;
-    width: 200px;
-    height:40px;
-    margin: 10px;
+    width: 150px;
+    height: 50px;
+    line-height: 15px;
+  }
+
+  #footer_higher #footer_content .footbox strong {
+    color: rgb(255,255,255);
   }
 
   #footer_lower {
@@ -620,6 +629,20 @@ font-weight:bold;*/
 
 }
 
+#content {
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  position: absolute;
+  width: 100%;
+}
+#right_pane {
+  width: 400px;
+  height: 600px;
+  right: 0;
+  position: fixed;
+}
 .item_show {
   min-height: 400px;
   width: 100%;

@@ -1,0 +1,17 @@
+#footer
+  #footer_button
+    %div{:style => "padding-right:30px"}
+      Координаты & Контакты
+      %span
+  #footer_higher
+    #footer_content
+      -for bout in Boutique.all
+        .footbox
+          %strong= bout.name
+          %br/
+          = bout.address
+          %br/
+          = bout.phone
+          %br/
+          = link_to "map"
+      .clear
