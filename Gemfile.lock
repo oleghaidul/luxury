@@ -131,4 +131,5 @@ DEPENDENCIES
   mysql2 (~> 0.2.11)
   paperclip
   rails (= 3.0.11)
+  sass
   tiny_mce

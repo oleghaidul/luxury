@@ -1,14 +1,14 @@
-/*** 
-set the width and height to match your images 
+/***
+set the width and height to match your images
 **/
-body { 
+body {
 display: block;
 margin-bottom: 0px;
 margin-left: 0px;
 margin-right: 0px;
 margin-top: 0px;
 line-height: 1;
-font-family: "Book Antiqua","Palatino Linotype", Palatino, serif; 
+font-family: "Book Antiqua","Palatino Linotype", Palatino, serif;
 font-size: 12px;
 height:100%;
 
@@ -55,24 +55,24 @@ height:100%;
 @media screen and (max-width: 1024px){
   img.bg {
   left: 50%;
-  margin-left: -512px; 
+  margin-left: -512px;
 }
 }
     
-#page-wrap { 
+#page-wrap {
   position: relative;
-  width: 400px; 
-  margin: 50px auto; 
-  padding: 20px; 
-  background: #fff; 
-  -moz-box-shadow: 0 0 20px black; 
-  -webkit-box-shadow: 0 0 20px black; 
-  box-shadow: 0 0 20px black; 
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  -moz-box-shadow: 0 0 20px black;
+  -webkit-box-shadow: 0 0 20px black;
+  box-shadow: 0 0 20px black;
 }
 
-p { 
-  font: 15px/2; 
-  margin: 0 0 30px 0; 
+p {
+  font: 15px/2;
+  margin: 0 0 30px 0;
   color: #000;
 }
 
@@ -128,9 +128,9 @@ width: 100%;
 .vert_menu ul li:hover{
   display:block;
   text-align:left;
-  background-color:#963;  
+  background-color:#963;
 }
-.vert_menu  li a{
+.vert_menu li a{
   display:block;
   background-color:#fff;
   width:200px;
@@ -142,9 +142,9 @@ width: 100%;
 }
 
 
-.vert_menu  li a:hover{
+.vert_menu li a:hover{
   display:block;
-  background-color:#963;  
+  background-color:#963;
   width:200px;
   line-height:30px;
   font-size:16px;
@@ -154,7 +154,7 @@ width: 100%;
 
 .vert_menu ul li a.active{
   display:block;
-  background-color:#963;  
+  background-color:#963;
   width:200px;
   line-height:30px;
   font-size:16px;
@@ -194,17 +194,17 @@ width: 100%;
   
 }
 
-.catalog_header ul{ 
+.catalog_header ul{
   display: inline;
   font-size:14px;
   
 }
 
 .catalog_header ul li{
-  display: inline;  
+  display: inline;
 }
 
-.catalog_header  li a{
+.catalog_header li a{
   
   background-color:#fff;
   width:200px;
@@ -214,7 +214,7 @@ width: 100%;
   text-decoration:none;
   padding-right:10px;
 }
-.catalog_header  li a:hover{  
+.catalog_header li a:hover{
   width:200px;
   line-height:30px;
   font-size:16px;
@@ -223,14 +223,14 @@ width: 100%;
 }
 
 .catalog_name{
-  width:200px;  
+  width:200px;
   margin:0px;
   float:left;
 }
 
 .catalog_items{
   width: 100%-235px;
-  height:100%;
+  height:75%;
   padding-top:50px;
   padding-right:0px;
   padding-left:235px;
@@ -246,7 +246,7 @@ width: 100%;
   float:left;
   padding-left:65px;
   padding-right:4px;
-  padding-bottom:20px;
+  padding-bottom:40px;
   background-color:#fff;
 }
 
@@ -275,7 +275,7 @@ width: 100%;
 .free_space{
   position:relative;
   line-height:500px;
-  float:left; 
+  float:left;
   font-size:0px;
 }
 
@@ -301,7 +301,7 @@ h1 {
   line-height:30px;
 }
 
-#top { 
+#top {
 background-attachment: scroll;
 background-clip: border-box;
 background-color: rgb(0, 0, 0);
@@ -311,9 +311,9 @@ background-position: 0% 0%;
 background-repeat: repeat;
 background-size: auto;
 box-shadow: 0px 0px 3px;
-  -moz-box-shadow: 0 0 3px black; 
-  -webkit-box-shadow: 0 0 3px black; 
-  box-shadow: 0 0 3px black; 
+  -moz-box-shadow: 0 0 3px black;
+  -webkit-box-shadow: 0 0 3px black;
+  box-shadow: 0 0 3px black;
 height: 40px;
 left: 0px;
 padding-left: 0px;
@@ -324,7 +324,7 @@ width: 100%;
 z-index: 5000;
  }
  
-.box { 
+.box {
 background-attachment: scroll;
 background-clip: border-box;
 background-color: transparent;
@@ -353,7 +353,7 @@ margin-right: 10px;
 margin-top: 0px;
 width: 180px;
  }
-#content a img { 
+#content a img {
 border-bottom-color: currentColor;
 border-bottom-style: none;
 border-bottom-width: medium;
@@ -367,7 +367,7 @@ border-top-color: currentColor;
 border-top-style: none;
 border-top-width: medium;
  }
-.space { 
+.space {
 clear: both;
 padding-bottom: 0px;
 padding-left: 0px;
@@ -377,31 +377,31 @@ padding-top: 50px;
 .box.active,
 .box:hover { background-image: url(images/bg-box-h.png); }
 
-div.social{ 
+div.social{
 float:right;
 padding-top: 5px;
 padding-bottom: 0px;
 
  }
  
-div.social ul li { 
+div.social ul li {
 display: inline;
 float: left;
 margin-right: 5px;
  }
  
-ol, ul { 
+ol, ul {
 list-style-image: none;
 list-style-position: outside;
 list-style-type: none;
  }
  
-li { 
+li {
 display: list-item;
  }
  
  
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, form { 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, form {
 background-attachment: scroll;
 background-clip: border-box;
 background-color: transparent;
@@ -436,7 +436,7 @@ padding-top: 0px;
 vertical-align: baseline;
  }
  
-#menu { 
+#menu {
 background-attachment: scroll;
 background-clip: border-box;
 background-color: rgb(0, 0, 0);
@@ -457,7 +457,7 @@ text-transform: uppercase;
 padding-left:35px;
  }
  
-#menu ul { 
+#menu ul {
 list-style-image: none;
 list-style-position: outside;
 list-style-type: none;
@@ -499,9 +499,9 @@ display:none;
 position:absolute;
 background-color:#000;
 box-shadow: 0px 3px 3px;
-  -moz-box-shadow: 0 3px 3px black; 
-  -webkit-box-shadow: 0 3px 3px black; 
-  box-shadow: 0 3px 3px black; 
+  -moz-box-shadow: 0 3px 3px black;
+  -webkit-box-shadow: 0 3px 3px black;
+  box-shadow: 0 3px 3px black;
 }
 
 #menu ul li ul.submenu li{
@@ -536,12 +536,12 @@ color:#fff;
 text-decoration:none;
 }
 
-#top img { 
+#top img {
 float: left;
 margin-top: 3px;
  }
  
- a img { 
+ a img {
 border-bottom-color: currentColor;
 border-bottom-style: none;
 border-bottom-width: medium;
@@ -565,7 +565,7 @@ border-top-width: medium;
     color: white;
     cursor: pointer;
     background:black;
-    border-top:black 1px solid;   
+    border-top:black 1px solid;
   }
   #footer_button:hover{
   background:#222;
@@ -600,11 +600,11 @@ border-top-width: medium;
   }
 #footer{
   /*width:100%;
-  position: absolute;
-  float:left;
-  bottom:4px;
-  text-transform:uppercase;
-  font-weight:bold;*/
+position: absolute;
+float:left;
+bottom:4px;
+text-transform:uppercase;
+font-weight:bold;*/
   
   position: fixed;
   bottom: -100px;
@@ -705,4 +705,3 @@ padding: 0 0 20px;
   width: 200px; /* width of the spinner gif */
   height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
 }
-

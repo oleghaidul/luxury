@@ -13,6 +13,7 @@ gem "paperclip"
 gem 'activeadmin'
 gem "cancan"
 gem 'tiny_mce'
+gem "sass"
 
 # Use unicorn as the web server
 # gem 'unicorn'
