@@ -19,6 +19,8 @@ $(document).ready(function() {
       width: 1220,
       height: 600,
       modal: true,
+      closeOnEscape: true,
+      show: 'slide',
       open: function() {
         return $(this).load(url + ' #content');
       },
@@ -27,6 +29,7 @@ $(document).ready(function() {
       }
     });
     dialog_form.dialog('open');
+    dialog_form.dialog('moveToTop');
     e.preventDefault();
   });
 });

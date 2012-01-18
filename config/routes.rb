@@ -17,7 +17,7 @@ Luxury::Application.routes.draw do
     end
   end
 
-  resources :items
+  resources :items, :pictures
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
