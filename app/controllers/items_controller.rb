@@ -6,4 +6,8 @@ class ItemsController < ApplicationController
       format.js
     end
 	end
+
+	def rate_inc
+		
+	end
 end

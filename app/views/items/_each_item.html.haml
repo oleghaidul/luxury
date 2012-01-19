@@ -1,6 +1,10 @@
 %h2=@item.name
 %h3
-  Коллекция: #{link_to "#{@item.collection.season.to_s + " "+@item.collection.year.to_s}",[@item.collection.brand.boutique, @item.collection.brand, @item.collection]}
+  Рейтинг
+  .rating
+    -5.times do |i|
+      %div{:class => "star#{(i+1)**2}"}
+        = link_to "", rates_path(:item_id => @item.id, :count => i+1), :remote => true, :method => :post
 -if request.referer.split("/")[5] == "collections" || request.referer.split("/")[7] == "collections"
   .left=prev_item(@item.id, @item.collection)
   .center

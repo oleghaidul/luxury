@@ -242,7 +242,7 @@ width: 100%;
 
 .item_box {
   width:180px;
-  height:260px;
+  height:300px;
   float:left;
   padding-left:65px;
   padding-right:4px;
@@ -250,26 +250,38 @@ width: 100%;
   background-color:#fff;
 }
 
-.item_box a {
-  width:180px;
-  height:260px;
-  border:2px solid #fff;
+.item_box .rating a {
+  width:25px;
+  height:25px;
   float:left;
-  padding-left:0px;
-  padding-right:0px;
-  background-color:#fff;
-  text-decoration:none;
+  background-image:url('../images/star_off.gif');
 }
 
-.item_box a:hover{
-  width:180px;
-  height:260px;
+
+
+.item_box .rating a:hover{
+  width:25px;
+  height:25px;
   float:left;
-  padding-left:0px;
-  padding-right:0px;
-  background-color:#fff;
+  background-image:url('../images/star_on.png');
 }
 
+
+.rating a {
+  width:25px;
+  height:25px;
+  float:left;
+  background-image:url('../images/star_off.gif');
+}
+
+
+
+.rating a:hover{
+  width:25px;
+  height:25px;
+  float:left;
+  background-image:url('../images/star_on.png');
+}
 
 
 .free_space{
@@ -705,6 +717,7 @@ font-weight:bold;*/
 }
 
 .item_show h3 {
+  width:130px;
   float:right;
   font-size: 16px;
 padding: 0 0 20px;

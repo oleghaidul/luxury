@@ -37,6 +37,7 @@ GEM
       activemodel (= 3.0.11)
       activesupport (= 3.0.11)
     activesupport (3.0.11)
+    ajaxful_rating (2.2.9)
     arel (2.0.10)
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
@@ -124,6 +125,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  ajaxful_rating
   cancan
   haml
   jquery-rails

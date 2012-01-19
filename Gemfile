@@ -14,6 +14,7 @@ gem 'activeadmin'
 gem "cancan"
 gem 'tiny_mce'
 gem "sass"
+gem "ajaxful_rating"
 
 # Use unicorn as the web server
 # gem 'unicorn'
