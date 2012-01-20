@@ -1,5 +1,5 @@
 .item_box
-  =link_to image_tag(item.pictures.first.image.url(:medium)), item
+  =link_to image_tag(item.pictures.first.image.url(:medium)), [item.collection.brand.boutique, item.collection.brand, item.collection, item]
   .price_txt
   .price
   .rating

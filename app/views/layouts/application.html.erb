@@ -73,6 +73,7 @@ text-shadow: 0 1px 0 #fff;
 
 </style>
 <script type="text/javascript">
+
 jQuery(function($) {
   var slide = false;
   var height = $('#footer_content').height();
@@ -97,7 +98,7 @@ jQuery(function($) {
 </head>
 <body>
 <div id="top">
-    <a href="index.html" title="">
+    <a href="/" title="">
     <img src="/images/logo.png" alt="" style="padding-left:50px;"/>
     </a>
     <div id="menu">
@@ -141,12 +142,13 @@ jQuery(function($) {
     <div class="logo">
     <img alt="" src="/images/zegna_logo.png"/></a>
     </div>
-    <% if content_for?(:categories) %>
-      <div><%= yield(:categories) %></div>
-    <% end %>
-    <% if content_for?(:brands) %>
-      <div><%= yield(:brands) %></div>
-    <% end %>
+        <% if content_for?(:categories) %>
+          <div><%= yield(:categories) %></div>
+        <% end %>
+        <% if content_for?(:brands) %>
+          <div><%= yield(:brands) %></div>
+        <% end %>
+    
   </div>
 
   <div id="catalog">

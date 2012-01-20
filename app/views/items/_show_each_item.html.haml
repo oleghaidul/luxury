@@ -9,4 +9,5 @@
         = link_to "", rates_path(:item_id => @item.id, :count => i+1), :remote => true, :method => :post
 .description=@item.description.html_safe
 .pictures=render @item.pictures.limit(5)
+=@refferer
   
