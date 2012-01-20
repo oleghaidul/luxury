@@ -234,7 +234,8 @@ width: 100%;
   position:fixed;
   z-index:100;
   background-color:#fff;
-  }
+  margin-top: -10px;
+}
   
 .collections{
   float:right;
@@ -282,10 +283,8 @@ width: 100%;
   padding-top:50px;
   padding-right:0px;
   padding-left:0px;
-  position:fixed;
+  padding-bottom:50px;
   float:left;
-  z-index:1000;
-  overflow-y:auto;
 }
 
 .item_box {
