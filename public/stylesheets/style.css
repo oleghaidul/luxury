@@ -167,20 +167,85 @@ width: 100%;
   float:right;
   display:block;
   position:fixed;
-  width:100%;
+  width:750px;
+  margin-left:300px;
   padding-left:0px;
   background:none;
   z-index:1;
-    
 }
 
+#catalog .left {
+  float:left;
+  width:10%;
+  height:350px;
+  background:#373632;
+}
+
+#catalog .right {
+  float:left;
+  width:10%;
+  height:350px;
+  background:#373632;
+}
+
+#catalog .right img {
+  margin-left:10px;
+  margin-top:125px;
+}
+
+#catalog .left img {
+  margin-left:10px;
+  margin-top:125px;
+}
+
+#catalog .center {
+  float:left;
+  width:79%;
+  height:350px;
+}
+
+#catalog .structure {
+  height: 25px;
+  float:left;
+  width:80%;
+  margin-top:5px;
+}
+
+#catalog .middle .rating {
+  height: 25px;
+  float:right;
+  width:17%;
+  margin-top:5px;
+}
+
+#catalog .description {
+  height: 25px;
+  float: left;
+  width:100%;
+  margin-top:5px;
+}
+
+#catalog .pictures {
+  height:60px;
+  width: 100%;
+  float:left;
+}
+
+
+#catalog .pictures a {
+  padding:8px;
+}
+
+#catalog .middle .rating_show a {
+  float:right;
+}
 
 
 .catalog_header{
   float:left;
   width:100%;
   padding-right:0%;
-  padding-left:300px;
+  padding-left:0px;
   height:30px;
   position:fixed;
   z-index:2000;
@@ -229,11 +294,11 @@ width: 100%;
 }
 
 .catalog_items{
-  width: 100%-235px;
+  width: 100%;
   height:75%;
   padding-top:50px;
   padding-right:0px;
-  padding-left:235px;
+  padding-left:0px;
   position:fixed;
   float:left;
   z-index:1000;
@@ -244,7 +309,6 @@ width: 100%;
   width:180px;
   height:300px;
   float:left;
-  padding-left:65px;
   padding-right:4px;
   padding-bottom:40px;
   background-color:#fff;
@@ -503,7 +567,7 @@ text-decoration:none;
 display:block;
 position:absolute;
 background-color: transparent;
-background-image: url("images/bg-box-h.png");
+background-image: url("../images/bg-box-h.png");
 }
 
 #menu ul li ul.submenu{
@@ -593,7 +657,7 @@ border-top-width: medium;
     color: rgb(148,148,148);
     float: left;
     max-width: 580px;
-    font-family: Arial, Helvetica;
+    font-family: Minion-pro, Arial, Helvetica;
     font-size: 9pt;
     margin: 15px 0 20px 40px;
   }

@@ -9,7 +9,7 @@ gem 'mysql2', '~> 0.2.11'
 gem "jquery-rails"
 gem "haml"
 gem "kaminari"
-gem "paperclip"
+gem "paperclip", :git => "git://github.com/patshaughnessy/paperclip.git"
 gem 'activeadmin'
 gem "cancan"
 gem 'tiny_mce'

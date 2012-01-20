@@ -15,7 +15,6 @@ ActiveAdmin.register Boutique do
     column :director
     column :address
     column :url_bout
-    default_actions
   end
 
   show do
