@@ -4,44 +4,24 @@
 <meta content="text/html; windows-1251" http-equiv="Content-Type"/>
 <title></title>
 <%= stylesheet_link_tag "style" %>
-<%= javascript_include_tag :defaults, "jquery-ui", "social" %>
+<%= javascript_include_tag :defaults, "jquery-ui" %>
 <%= include_tiny_mce_if_needed %>
 <%= csrf_meta_tag %>
-<script>
-
-</script>
 <style>
 #dialog-form {
-  border: 1px solid #ccc;
-  min-width: 1000px;
-  height: 400px;
-
-}
-
-.ui-dialog-titlebar-close {
-  content: 'X';
-display: block;
-
-/* Position */
-position: absolute;
-right: -10px;
-top: -10px;
-width: 3.5em;
-padding: 1px 1px 1px 2px;
-
-/* Style */
 text-decoration: none;
 text-shadow: none;
 text-align: center;
 font-weight: bold;
-background: #000;
-color: #fff;
-border: 3px solid #fff;
--moz-border-radius: 20px;
-border-radius: 20px;
--webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
--moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.ui-dialog-titlebar-close {
+  display:none;
+}
+
+button.ui-widget {
+  margin: 0px 5px 5px 730px;
+  box-shadow:0;
 }
 
 .ui-widget {
@@ -52,8 +32,8 @@ box-shadow: 0 1px 3px rgba(0,0,0,0.5);
   -webkit-animation: minimise 500ms linear;
 
 /* Prettify */
--moz-border-radius: 7px;
-border-radius: 7px;
+-moz-border-radius: 15px;
+border-radius: 15px;
 -webkit-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
 -moz-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
 box-shadow: 0 3px 20px rgba(0,0,0,0.9);
@@ -97,6 +77,14 @@ jQuery(function($) {
 </script>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="wrapper">
   <div id="top">
       <a href="/" title="">

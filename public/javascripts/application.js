@@ -14,13 +14,19 @@ $(function() {
 $(document).ready(function() {
   $('.load_item').click(function(e) {
     var url = $(this).attr('href');
-    var dialog_form = $('<div id="dialog-form">Loading form...</div>').dialog({
+    var dialog_form = $('<div id="dialog-form">Загрузка...</div>').dialog({
       autoOpen: false,
-      width: 1220,
-      height: 500,
+      width: 800,
+      height: 600,
       modal: true,
       closeOnEscape: true,
       show: 'slide',
+      resizable: false,
+      buttons: { 
+        "Закрыть": function() { 
+          $(this).dialog("close"); 
+          } 
+        },
       open: function() {
         return $(this).load(url + ' #content');
       },

@@ -20,8 +20,12 @@ Luxury::Application.routes.draw do
     end
   end
 
-  resources :items, :rates
-  resources :pictures
+  resources :items do
+    member { get :popup }
+  end
+  resources :rates, :pictures
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

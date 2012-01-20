@@ -4,11 +4,15 @@ class ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 		respond_to do |format|
       format.html
-      format.js
+      format.js {render :layout => false}
     end
 	end
 
-	def rate_inc
-		
+	def popup
+		@item = Item.find(params[:id])
+		respond_to do |format|
+	      format.html {render :layout => false}
+	      format.js
+	    end
 	end
 end

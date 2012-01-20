@@ -196,7 +196,7 @@ width: 100%;
 }
 
 #catalog .middle .rating {
-  height: 25px;
+  height: 16px;
   float:right;
   width:17%;
   margin-top:5px;
@@ -232,7 +232,7 @@ width: 100%;
   padding-left:0px;
   height:30px;
   position:fixed;
-  z-index:2000;
+  z-index:100;
   background-color:#fff;
   }
   
@@ -298,8 +298,8 @@ width: 100%;
 }
 
 .item_box .rating a {
-  width:25px;
-  height:25px;
+  width:16px;
+  height:16px;
   float:left;
   background-image:url('../images/star_off.gif');
 }
@@ -307,25 +307,36 @@ width: 100%;
 
 
 .item_box .rating a:hover{
-  width:25px;
-  height:25px;
+  width:16px;
+  height:16px;
   float:left;
   background-image:url('../images/star_on.png');
 }
 
+.twitter-share-button {
+  padding-left:10px; 
+}
 
 .rating a {
-  width:25px;
-  height:25px;
+  width:16px;
+  height:16px;
   float:left;
   background-image:url('../images/star_off.gif');
 }
 
+.fb-like {
+  margin-top:5px;
+}
 
+button.quick_look a{
+  margin:0px;
+  padding:0px;
+  text-decoration: none;
+}
 
 .rating a:hover{
-  width:25px;
-  height:25px;
+  width:16px;
+  height:16px;
   float:left;
   background-image:url('../images/star_on.png');
 }
@@ -787,4 +798,30 @@ padding: 0 0 20px;
   overflow: auto;
   width: 200px; /* width of the spinner gif */
   height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+}
+
+#content #modal .center {
+  float:left;
+  margin: 12px 25px 25px 25px;
+}
+
+#content #modal .center .photo {
+  float:left;
+}
+
+#content #modal .center .right {
+  float:left;
+  width:440px;
+}
+
+#content #modal .bottom{
+  float:left;
+}
+
+#modal .title {
+  font-size: 20pt;
+}
+
+#modal .title, #modal .description, #modal .structure, #modal .ratin {
+  float:left;
 }

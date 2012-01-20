@@ -1,0 +1,14 @@
+#content
+  #modal
+    .center
+      .photo=image_tag @item.pictures.first.image.url(:large), :size => "300x400"
+      .right
+        .title=@item.name
+        .structure=@item.structure
+        .description=@item.description
+        .rating
+          -5.times do |i|
+            %div{:class => "star#{(i+1)**2}"}
+              =link_to "", rates_path(:item_id => @item.id, :count => i+1), :remote => true, :method => :post
+        .social
+    .bottom=render @item.pictures
