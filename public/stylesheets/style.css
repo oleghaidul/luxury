@@ -3,16 +3,15 @@ set the width and height to match your images
 **/
 body {
 display: block;
-margin-bottom: 0px;
-margin-left: 0px;
-margin-right: 0px;
-margin-top: 0px;
 line-height: 1;
-font-family: "Book Antiqua","Palatino Linotype", Palatino, serif;
+font-family: Minion-pro, Arial, Helvetica;
 font-size: 12px;
 height:100%;
+}
 
- }
+#show_item_catalog {
+  height:600px;     
+}
 
 #slideshow {
     position:relative;
@@ -98,7 +97,7 @@ width: 100%;
   height:600px;
   float:left;
   display:block;
-  padding-left:30px;
+  padding-left:130px;
   position:fixed;
   z-index:1000;
 }
@@ -164,44 +163,29 @@ width: 100%;
 
 
 #catalog {
-  float:right;
   display:block;
-  position:fixed;
   width:750px;
-  margin-left:300px;
-  padding-left:0px;
-  background:none;
-  z-index:1;
+  margin-left:400px;
 }
 
 #catalog .left {
   float:left;
-  width:10%;
-  height:350px;
-  background:#373632;
+  width:90px;
+  height:460px;
+  background:#555451;
 }
 
 #catalog .right {
   float:left;
-  width:10%;
-  height:350px;
-  background:#373632;
-}
-
-#catalog .right img {
-  margin-left:10px;
-  margin-top:125px;
-}
-
-#catalog .left img {
-  margin-left:10px;
-  margin-top:125px;
+  width:90px;
+  height:460px;
+  background:#555451;
 }
 
 #catalog .center {
   float:left;
-  width:79%;
-  height:350px;
+  width:560px;
+  height:460px;
 }
 
 #catalog .structure {
@@ -243,7 +227,7 @@ width: 100%;
 
 .catalog_header{
   float:left;
-  width:100%;
+  width:800px;
   padding-right:0%;
   padding-left:0px;
   height:30px;
@@ -254,8 +238,7 @@ width: 100%;
   
 .collections{
   float:right;
-  padding-right:300px;
-  
+  padding-right:50px;
   
 }
 
@@ -294,7 +277,7 @@ width: 100%;
 }
 
 .catalog_items{
-  width: 100%;
+  width: 760px;
   height:75%;
   padding-top:50px;
   padding-right:0px;

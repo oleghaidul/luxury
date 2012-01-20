@@ -97,73 +97,74 @@ jQuery(function($) {
 </script>
 </head>
 <body>
-<div id="top">
-    <a href="/" title="">
-    <img src="/images/logo.png" alt="" style="padding-left:50px;"/>
-    </a>
-    <div id="menu">
-      <ul>
-      <li><a href="">
-      <div id="spinner" class="spinner">
-        <img id="img-spinner" src="/images/ajax-loader.gif" alt="Loading"/>
-      </div>
-        КОЛЛЕКЦИЯ 2011
-        <ul class="submenu">
-          <li><a href="">ЛЕТО</a></li>
-          <li><a href="">ОСЕНЬ</a></li>
-          <li><a href="">ЗИМА</a></li>
-          <li><a href="">ВЕСНА</a></li>
+<div id="wrapper">
+  <div id="top">
+      <a href="/" title="">
+      <img src="/images/logo.png" alt="" style="padding-left:50px;"/>
+      </a>
+      <div id="menu">
+        <ul>
+        <li><a href="">
+        <div id="spinner" class="spinner">
+          <img id="img-spinner" src="/images/ajax-loader.gif" alt="Loading"/>
+        </div>
+          КОЛЛЕКЦИЯ 2011
+          <ul class="submenu">
+            <li><a href="">ЛЕТО</a></li>
+            <li><a href="">ОСЕНЬ</a></li>
+            <li><a href="">ЗИМА</a></li>
+            <li><a href="">ВЕСНА</a></li>
+          </ul>
+          </a>
+        </li>
         </ul>
-        </a>
-      </li>
-      </ul>
+      </div>
+      <div class="social">
+        <ul>
+          <li>
+          <a href="http://www.facebook.com/" target="_blank">
+          <img alt="" src="/images/facebook.png"/></a>
+          </li>
+          <li>
+          <a href="http://www.twitter.com/" target="_blank">
+          <img alt="" src="/images/twitter.png"/></a>
+          </li>
+          <li>
+          <a href="http://www.youtube.com/" target="_blank">
+          <img alt="" src="/images/youtube.png"/></a>
+          </li>
+        </ul>
+      </div>
+  </div>
+  <div id="content">
+    <div class="space">
     </div>
-    <div class="social">
-      <ul>
-        <li>
-        <a href="http://www.facebook.com/" target="_blank">
-        <img alt="" src="/images/facebook.png"/></a>
-        </li>
-        <li>
-        <a href="http://www.twitter.com/" target="_blank">
-        <img alt="" src="/images/twitter.png"/></a>
-        </li>
-        <li>
-        <a href="http://www.youtube.com/" target="_blank">
-        <img alt="" src="/images/youtube.png"/></a>
-        </li>
-      </ul>
+    <div id="left_pane">
+      <div class="logo">
+      <img alt="" src="/images/zegna_logo.png"/></a>
+      </div>
+          <% if content_for?(:categories) %>
+            <div><%= yield(:categories) %></div>
+          <% end %>
+          <% if content_for?(:brands) %>
+            <div><%= yield(:brands) %></div>
+          <% end %>
+      
     </div>
+
+    <div id="catalog">
+      <% if content_for?(:collections) %>
+        <div><%= yield(:collections) %></div>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
+  </div><!--end of content-->
+  <%= render "layouts/footer" %>
+  <div id="mask"></div>
+  </div>
 </div>
-<div id="content">
-  <div class="space">
-  </div>
-  <div id="left_pane">
-    <div class="logo">
-    <img alt="" src="/images/zegna_logo.png"/></a>
-    </div>
-        <% if content_for?(:categories) %>
-          <div><%= yield(:categories) %></div>
-        <% end %>
-        <% if content_for?(:brands) %>
-          <div><%= yield(:brands) %></div>
-        <% end %>
-    
-  </div>
-
-  <div id="catalog">
-    <% if content_for?(:collections) %>
-      <div><%= yield(:collections) %></div>
-    <% end %>
-
-    <%= yield %>
-
-  </div>
-</div><!--end of content-->
-<%= render "layouts/footer" %>
-<div id="mask"></div>
-</div>
-
 <!-- this will work with any number of images -->
 <!-- set the active class on whichever image you want to show up as the default 
 (otherwise this will be the last image) -->
