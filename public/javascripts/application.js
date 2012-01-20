@@ -20,7 +20,6 @@ $(document).ready(function() {
       height: 600,
       modal: true,
       closeOnEscape: true,
-      show: 'slide',
       resizable: false,
       buttons: { 
         "Закрыть": function() { 
@@ -37,6 +36,11 @@ $(document).ready(function() {
     dialog_form.dialog('open');
     e.preventDefault();
   });
+
+  $('.ui-widget-overlay').live('click', function() {
+    $('#dialog-form').dialog( "close" );
+  });
+
 });
 
 tinyMCE.init({
