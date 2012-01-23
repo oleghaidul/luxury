@@ -1,6 +1,7 @@
 #show_item_catalog
   .left=prev_item(@item.id, @item.collection.brand)
-  .center=image_tag @item.pictures.first.image.url(:extra_large)
+  .center
+    .photo=image_tag @item.pictures.first.image.url(:extra_large)
   .right=next_item(@item.id, @item.collection.brand)
   .middle
     .structure=@item.structure
