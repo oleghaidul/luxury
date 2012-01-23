@@ -10,12 +10,12 @@
             %a{:href => "#t1"} Категории
           %li
             %a{:href => "#t2"} Бренд
-        %div
+        %div.div
           %h2
             %a#t1{:name => "t1"}
           -Category.all.each do |c|
             %p.each=link_to c.name, "#"
-        %div
+        %div.div
           %h2
             %a#t2{:name => "t2"}
           -@boutique.brands.each do |b|
