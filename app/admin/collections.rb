@@ -1,3 +1,3 @@
 ActiveAdmin.register Collection do
-  form :partial => 'form'
+  form :partial => "form"
 end

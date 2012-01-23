@@ -5,7 +5,6 @@ class CreateCollections < ActiveRecord::Migration
       t.integer :year
       t.string :season
       t.integer :brand_id
-      t.integer :category_id
 
       t.timestamps
     end

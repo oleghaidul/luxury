@@ -5,11 +5,9 @@ one:
   year: 1
   season: MyString
   brand_id: 1
-  category_id: 1
 
 two:
   name: MyString
   year: 1
   season: MyString
   brand_id: 1
-  category_id: 1
