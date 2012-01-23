@@ -1,6 +1,8 @@
 = semantic_form_for [:admin, @boutique], :html => {:multipart => true} do |f|
   = f.inputs "Basic" do
     =f.input :name
+    =f.input :ico
+    =f.input :promo
     =f.input :phone
     =f.input :phone2
     =f.input :address
@@ -8,5 +10,5 @@
     =f.input :url_bout
     =f.input :image
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
-    =f.input :description, :as => :text, :input_html => { :class => "mceEditor" }
+    =f.input :description, :as => :text
     =f.buttons

@@ -15,6 +15,7 @@ gem "cancan"
 gem 'tiny_mce'
 gem "sass"
 gem "ajaxful_rating"
+gem "sanitize"
 
 # Use unicorn as the web server
 # gem 'unicorn'

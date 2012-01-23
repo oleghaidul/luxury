@@ -10,11 +10,13 @@ ActiveAdmin.register Boutique do
 	controller.authorize_resource
   index do
     column :name
+    column :ico
     column :phone
     column :phone2
     column :director
     column :address
     column :url_bout
+    default_actions
   end
 
   show do

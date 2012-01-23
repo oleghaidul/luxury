@@ -9,7 +9,7 @@
   .left=prev_item(@item.id, @item.collection)
   .center
     .photo=image_tag @item.pictures.first.image.url(:large)
-    .description=@item.description.html_safe
+    .description=Sanitize.clean(@item.description)
     .structure=@item.structure
     .pictures=render @item.pictures
   .right=next_item(@item.id, @item.collection)
@@ -17,7 +17,7 @@
   .left=prev_item(@item.id, @item.collection.brand)
   .center
     .photo=image_tag @item.pictures.first.image.url(:large)
-    .description=@item.description.html_safe
+    .description=Sanitize.clean(@item.description)
     .structure=@item.structure
     .pictures=render @item.pictures
   .right=next_item(@item.id, @item.collection.brand)
@@ -25,7 +25,7 @@
   .left=prev_item(@item.id, @item.collection.brand)
   .center
     .photo=image_tag @item.pictures.first.image.url(:large)
-    .description=@item.description.html_safe
+    .description=Sanitize.clean(@item.description)
     .structure=@item.structure
     .pictures=render @item.pictures
   .right=next_item(@item.id, @item.collection.brand)

@@ -4,7 +4,7 @@
       .photo=image_tag @item.pictures.first.image.url(:large), :size => "300x400"
       .right
         .title=@item.name
-        .structure=@item.structure
+        .structure Состав: #{@item.structure}
         .description=@item.description
         .rating
           -5.times do |i|

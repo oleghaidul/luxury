@@ -1,18 +1,19 @@
 ActiveAdmin.register Brand do
 
-	
+  
 
-	controller do
-		before_filter :admin, :except => [:index, :new, :create]
-		def admin
-			@brand = Brand.find(params[:id])
-		end
-	end
+  controller do
+    before_filter :admin, :except => [:index, :new, :create]
+    def admin
+      @brand = Brand.find(params[:id])
+    end
+  end
 
-	controller.authorize_resource
+  controller.authorize_resource
 
-	index do
+  index do
     column :name
+    column :boutique
     default_actions
   end
 
@@ -21,5 +22,5 @@ ActiveAdmin.register Brand do
   end
   
 
-	form :partial => 'form'
+  form :partial => 'form'
 end
