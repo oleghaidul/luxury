@@ -1,2 +1,5 @@
 .catalog_items
-  =render collection.items
+  -if params[:category]
+    =render collection.items.where(:category_id => params[:category])
+  -else
+    =render collection.items

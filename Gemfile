@@ -16,6 +16,7 @@ gem 'tiny_mce'
 gem "sass"
 gem "ajaxful_rating"
 gem "sanitize"
+gem 'inherited_resources'
 
 # Use unicorn as the web server
 # gem 'unicorn'

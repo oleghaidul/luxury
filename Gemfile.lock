@@ -136,6 +136,7 @@ DEPENDENCIES
   ajaxful_rating
   cancan
   haml
+  inherited_resources
   jquery-rails
   kaminari
   mysql2 (~> 0.2.11)

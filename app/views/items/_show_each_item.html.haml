@@ -1,6 +1,6 @@
 #show_item_catalog
   .left=prev_item(@item.id, @item.collection.brand)
-  .center=image_tag @item.pictures.first.image.url,:size => "560x460"
+  .center=image_tag @item.pictures.first.image.url(:extra_large)
   .right=next_item(@item.id, @item.collection.brand)
   .middle
     .structure=@item.structure
@@ -8,6 +8,6 @@
       -5.times do |i|
         %div{:class => "star#{(i+1)**2}"}
           = link_to "", rates_path(:item_id => @item.id, :count => i+1), :remote => true, :method => :post
-  .description=@item.description.html_safe
-  .pictures=render @item.pictures.limit(5)
+  .description=Sanitize.clean(@item.description)
+  .pictures=render @item.pictures.limit(7)
     

@@ -1,17 +1,34 @@
 .catalog_items
-  =render @brand.items
+  -if params[:category]
+    =render @brand.items.where(:category_id => params[:category])
+  -else
+    =render @brand.items
   .free_space
-=content_for :collections do
-  .catalog_header
-    .catalog_name
-      %h1 Коллекция 2011
-    .collections
-      %ul
-        -@brand.collections.each do |c|
-          %li=link_to "Collection "+c.year.to_s, [@brand.boutique, @brand, c]
-
-=content_for :brands do
-  .vert_menu
-    %ul
-      -@brands.each do |b|  
-        %li=link_to b.name, [b.boutique, b]
+-if @boutique.brands.count > 1
+  =content_for :brands do
+    .vert_menu
+      .domtab
+        %ul.domtabs
+          %li
+            %a{:href => "#t1"} Категории
+          %li
+            %a{:href => "#t2"} Бренд
+        %div.div
+          %h2
+            %a#t1{:name => "t1"}
+          -Category.all.each do |c|
+            %p.each=link_to c.name, request.path+"?category=#{c.id}"
+        %div.div
+          %h2
+            %a#t2{:name => "t2"}
+          -@boutique.brands.each do |b|
+            %p.each=link_to b.name, [@boutique, b]
+-else
+  =content_for :brands do
+    .vert_menu
+      .domtab
+        %div.div
+          %h2
+            %a#t1{:name => "t1"}
+          -Category.all.each do |c|
+            %p.each=link_to c.name, request.path+"?category=#{c.id}"

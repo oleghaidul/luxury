@@ -1,14 +1,14 @@
 #content
   #modal
     .center
-      .photo=image_tag @item.pictures.first.image.url(:large), :size => "300x400"
+      .photo=image_tag @item.pictures.first.image.url(:large)
       .right
         .title=@item.name
         .structure Состав: #{@item.structure}
-        .description=@item.description
+        .description=Sanitize.clean(@item.description)
         .rating
           -5.times do |i|
             %div{:class => "star#{(i+1)**2}"}
               =link_to "", rates_path(:item_id => @item.id, :count => i+1), :remote => true, :method => :post
         .social
-    .bottom=render @item.pictures
+    .bottom=render @item.pictures.limit(10)

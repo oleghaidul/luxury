@@ -9,7 +9,7 @@ ActiveAdmin.register Boutique do
 
 	controller.authorize_resource
   index do
-    column :name
+    column :name 
     column :ico
     column :phone
     column :phone2

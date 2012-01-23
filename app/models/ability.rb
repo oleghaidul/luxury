@@ -8,12 +8,11 @@ class Ability
       when "admin"
         can :manage, :all
       when "editor"
-        #can :manage, Boutique, :admin_user_id => user.id
-        #can :manage, Item, :admin_user_id => user.id
-        #can :manage, Brand, :admin_user_id => user.id
-        #can :manage, Category, :admin_user_id => user.id
-        cannot :namage, [Picture, Collection, AdminUser, Size, User]
-
+        can :manage, Boutique, :admin_user_id => user.id
+        can :manage, Item, :admin_user_id => user.id
+        can :manage, Brand, :admin_user_id => user.id
+        can :manage, Category, :admin_user_id => user.id
+        can :manage, Collection, :admin_user_id => user.id
 
       end
 

@@ -2,6 +2,7 @@
   = f.inputs "Basic" do
     =f.input :name
     =f.input :ico
+    =image_tag @boutique.image.url if !@boutique.image.nil?
     =f.input :promo
     =f.input :phone
     =f.input :phone2
@@ -9,6 +10,7 @@
     =f.input :director
     =f.input :url_bout
     =f.input :image
+    =image_tag @boutique.image.url if @boutique.image
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
     =f.input :description, :as => :text
     =f.buttons
