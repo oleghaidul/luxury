@@ -8,8 +8,7 @@
       -for bout in Boutique.all
         .footbox
           %strong= bout.name
-          %br/
-          =image_tag bout.ico.url, :size => "30x30"
+          =image_tag bout.ico.url, :size => "16x16"
           %br/
           = bout.address
           %br/
