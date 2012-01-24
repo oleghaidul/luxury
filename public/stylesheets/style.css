@@ -337,7 +337,20 @@ ul.domtabs {
   background-image:url('../images/star_off.gif');
 }
 
-
+a.button {
+  color: #444;
+  display: block;
+  float: left;
+  font: normal 12px arial, sans-serif;
+  height: 16px;
+  text-decoration: none;
+  margin-top:10px;
+  border:1px solid #333;
+  padding:2px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
 
 .item_box .rating a:hover{
   width:16px;
@@ -384,7 +397,16 @@ button.ui-button {
   box-shadow:0 0 0;
   border-radius:0px;
   outline: none;
+
 }
+
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+
+
 
 .free_space{
   position:relative;
