@@ -110,9 +110,13 @@ width: 100%;
   }
 .vert_menu{
   display:block;
-  width:178px;
+  width:180px;
   font-size:16px;
   background:white;
+}
+
+ul.domtabs {
+  width:250px;
 }
 
 .div {
@@ -158,6 +162,13 @@ width: 100%;
 .domtab p.each{
   padding: 10px 0 10px 10px;
   text-decoration: none;
+
+}
+
+.domtab p.each:hover{
+  padding: 10px 0 10px 10px;
+  text-decoration: none;
+  background:#b1afb5;
 }
 
 
@@ -841,6 +852,11 @@ padding: 0 0 20px;
 
 #content #modal .center .photo {
   float:left;
+}
+
+#content #modal .center .photo img {
+  float:left;
+  width:266px;
 }
 
 #content #modal .center .right {
