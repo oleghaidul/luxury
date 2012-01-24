@@ -9,6 +9,7 @@ font-size: 12px;
 height:100%;
 }
 
+
 #show_item_catalog {
   height:600px;
 }
@@ -85,22 +86,14 @@ width: 100%;
 
 }
 
-#right_pane {
-  width: 400px;
-  height:600px;
-  right:0;
-  position:fixed;
-}
-
 #left_pane {
   width: 200px;
   height:600px;
   float:left;
   display:block;
-  padding-left:130px;
-  position:fixed;
-  z-index:1000;
+  margin-left:130px;
 }
+
 .logo {
   width:220px;
   height:150px;
@@ -188,76 +181,6 @@ ul.domtabs {
   font-size:16px;
   text-decoration:none;
 }
-
-
-#catalog {
-  display:block;
-  width:750px;
-  margin-left:350px;
-}
-
-#catalog .left {
-  float:left;
-  width:90px;
-  height:450px;
-  background:#555451;
-}
-
-#catalog .right {
-  float:left;
-  width:90px;
-  height:450px;
-  background:#555451;
-}
-
-#catalog .center {
-  float:left;
-  width:337px;
-  height:450px;
-}
-
-#catalog .middle {
-  width: 520px;
-}
-
-#catalog .structure {
-  height: 25px;
-  float:left;
-  width:300px;
-  margin-top:5px;
-}
-
-#catalog .middle .rating {
-  height: 16px;
-  width:17%;
-  float:right;
-  margin-top:5px;
-  width:100px;
-  display:inline-block;
-}
-
-#catalog .description {
-  height: 33px;
-  float: left;
-  width:520px;
-  line-height:1.2;
-}
-
-#catalog .pictures {
-  height:60px;
-  width: 100%;
-  float:left;
-}
-
-
-#catalog .pictures a {
-  padding:8px;
-}
-
-#catalog .middle .rating_show a {
-  float:right;
-}
-
 
 .catalog_header{
   float:left;

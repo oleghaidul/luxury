@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 		@refferer = request.referer.split("/")
 		@item = Item.find(params[:id])
 		respond_to do |format|
-      format.html
+      format.html {render :layout => false}
       format.js {render :layout => false}
     end
 	end

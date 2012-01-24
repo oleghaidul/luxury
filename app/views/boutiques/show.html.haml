@@ -1,6 +1,9 @@
-.catalog_items
-  =render @items
-  .free_space
+#makeMeScrollable
+  .scrollingHotSpotLeft
+  .scrollingHotSpotRight
+  .scrollWrapper
+    .scrollableArea
+      =render @boutique.items
 -if @boutique.brands.count > 1
   =content_for :brands do
     .vert_menu
@@ -14,12 +17,12 @@
           %h2
             %a#t1{:name => "t1"}
           -Category.all.each do |c|
-            %p.each=link_to c.name, request.path+"?category=#{c.id}"
+            %p.each=link_to c.name, c
         %div.div
           %h2
             %a#t2{:name => "t2"}
           -@boutique.brands.each do |b|
-            %p.each=link_to b.name, [@boutique, b]
+            %p.each=link_to b.name, b
 -else
   =content_for :brands do
     .vert_menu
@@ -28,6 +31,6 @@
           %h2
             %a#t1{:name => "t1"}
           -Category.all.each do |c|
-            %p.each=link_to c.name, request.path+"?category=#{c.id}"
+            %p.each=link_to c.name, c
 =content_for :promo do
   #promo=Sanitize.clean(@boutique.promo)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123204156) do
+ActiveRecord::Schema.define(:version => 20120124195412) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20120123204156) do
     t.string   "ico_content_type"
     t.integer  "ico_file_size"
     t.datetime "ico_updated_at"
+    t.string   "subdomain"
   end
 
   create_table "brands", :force => true do |t|
@@ -92,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20120123204156) do
     t.integer  "brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "boutique_id"
   end
 
   create_table "items", :force => true do |t|
@@ -107,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20120123204156) do
     t.string   "gender"
     t.integer  "rate"
     t.integer  "category_id"
+    t.integer  "brand_id"
   end
 
   create_table "pictures", :force => true do |t|

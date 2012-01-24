@@ -1,9 +1,5 @@
-.catalog_items
-  -if params[:category]
-    =render @brand.items.where(:category_id => params[:category])
-  -else
-    =render @brand.items
-  .free_space
+=render @brand.items
+
 -if @boutique.brands.count > 1
   =content_for :brands do
     .vert_menu
@@ -22,7 +18,7 @@
           %h2
             %a#t2{:name => "t2"}
           -@boutique.brands.each do |b|
-            %p.each=link_to b.name, [@boutique, b]
+            %p.each=link_to b.name, b
 -else
   =content_for :brands do
     .vert_menu

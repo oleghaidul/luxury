@@ -1,30 +1,18 @@
 Luxury::Application.routes.draw do
 
-  devise_for :users
+  match '/' => 'boutiques#show', :constraints => { :subdomain => /.+/ }
+  resources :categories do
+    resources :brands
+  end 
 
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
-  root :to => "home#index"
-
-  resources :boutiques do
-    member {get :desc}
-    resources :brands do
-      resources :collections do
-        resources :items
-      end
-    end
-    resources :collections do
-      resources :items
-    end
+  resources :brands do
+    resources :categories
   end
 
   resources :items do
     member { get :popup }
   end
   resources :rates, :pictures
-
 
 
   # The priority is based upon order of creation:

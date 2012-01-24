@@ -1,10 +1,1 @@
-=render @category.collections
-
-=content_for :collections do
-  .catalog_header
-  .catalog_name
-    %h1 Коллекция 2011
-  .collections
-    %ul
-      -Collection.all.each do |c|
-        %li=link_to c.year, [@category.collection.brand.boutique, @category.collection.brand, @category.collection, c]
+=render @category.items

@@ -3,8 +3,8 @@
 <head>
 <meta content="text/html; windows-1251" http-equiv="Content-Type"/>
 <title></title>
-<%= stylesheet_link_tag "style" %>
-<%= javascript_include_tag :defaults, "jquery-ui", "domtab.js" %>
+<%= stylesheet_link_tag "style", "smoothDivScroll"  %>
+<%= javascript_include_tag :defaults, "jquery-ui", "domtab.js", "jquery.smoothDivScroll-1.1-min", "jquery.smoothDivScroll-1.1" %>
 <%= include_tiny_mce_if_needed %>
 <%= csrf_meta_tag %>
 <style>
@@ -49,10 +49,35 @@ text-shadow: 0 1px 0 #fff;
   opacity: 0.6;
 }
 
-
+#makeMeScrollable {
+width: 70%;
+height: 512px;
+position: relative;
+float: left;
+margin-left: 20px;
+padding:0;
+}
+#makeMeScrollable div.scrollableArea img
+    {
+      position: relative;
+      float: left;
+      margin: 0;
+      padding: 0;
+    }
 </style>
 
-
+<script type="text/javascript">
+  $(window).load(function() {
+    $("div#makeMeScrollable").smoothDivScroll({ 
+      autoScroll: "onstart" , 
+      autoScrollDirection: "backandforth", 
+      autoScrollStep: 1, 
+      autoScrollInterval: 15, 
+      startAtElementId: "startAtMe", 
+      visibleHotSpots: "always"
+    });
+  });
+</script>
 <script type="text/javascript">
 
 jQuery(function($) {
@@ -132,17 +157,14 @@ jQuery(function($) {
       <div class="logo">
       <img alt="" src="/images/zegna_logo.png"/></a>
       </div>
-
-
-          <% if content_for?(:categories) %>
-            <div><%= yield(:categories) %></div>
-          <% end %>
+        <div class="menu">
           <% if content_for?(:brands) %>
-            <div class="menu"><%= yield(:brands) %></div>
+            <%= yield(:brands) %>
           <% end %>
           <% if content_for?(:promo) %>
             <div><%= yield(:promo) %></div>
           <% end %>
+        </div>
     </div>
 
     <div id="catalog">
