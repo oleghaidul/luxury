@@ -13,7 +13,7 @@
           %h2
             %a#t1{:name => "t1"}
           -Category.all.each do |c|
-            %p.each=link_to c.name, request.path+"?category=#{c.id}"
+            %p.each=link_to c.name, c
         %div.div
           %h2
             %a#t2{:name => "t2"}
@@ -27,4 +27,4 @@
           %h2
             %a#t1{:name => "t1"}
           -Category.all.each do |c|
-            %p.each=link_to c.name, request.path+"?category=#{c.id}"
+            %p.each=link_to c.name, c
