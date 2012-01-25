@@ -1,7 +1,9 @@
 Luxury::Application.routes.draw do
 
-  match '/' => 'boutiques#show', :constraints => { request.subdomain(2).present? && request.subdomain(2) != "www" }
-  
+  constraints(Subdomain) do
+    match '/' => 'boutiques#show'
+  end
+
   resources :categories
   resources :brands
 
