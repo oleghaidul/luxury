@@ -1,18 +1,16 @@
 Luxury::Application.routes.draw do
 
-  match '/' => 'boutiques#show', :constraints => { :subdomain => /.+/ }
-  resources :categories do
-    resources :brands
-  end 
-
-  resources :brands do
-    resources :categories
-  end
+  match '/' => 'boutiques#show', :constraints => { request.subdomain(2).present? && request.subdomain(2) != "www" }
+  
+  resources :categories
+  resources :brands
 
   resources :items do
     member { get :popup }
   end
   resources :rates, :pictures
+
+  root :to => "home#index"
 
 
   # The priority is based upon order of creation:

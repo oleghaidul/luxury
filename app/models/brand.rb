@@ -1,5 +1,6 @@
 class Brand < ActiveRecord::Base
   belongs_to :admin_user
-  has_many :items
+  has_many :collections
+  has_many :items, :through => :collections
   
 end
