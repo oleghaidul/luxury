@@ -16,8 +16,9 @@ $(document).ready(function() {
     var url = $(this).attr('href');
     var dialog_form = $('<div id="dialog-form">Загрузка...</div>').dialog({
       autoOpen: false,
-      width: 870,
-      height: 490,
+      width: 1100,
+      height: 600,
+      zIndex: 6999,
       modal: true,
       closeOnEscape: true,
       resizable: false,
