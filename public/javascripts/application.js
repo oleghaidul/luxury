@@ -80,6 +80,12 @@ tinyMCE.init({
         }
 });
 
-
-
+$(document).ready(function() {
+    $('#social-share').dcSocialShare({
+        location: 'bottom',
+        align: 'right',
+        size: 'none',
+        buttons: 'facebook,plusone,twitter'
+    });
+});
 

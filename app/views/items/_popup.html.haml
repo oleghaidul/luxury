@@ -22,6 +22,5 @@
                 =link_to "хорошо", rates_path(:item_id => @item.id, :count => 4), :remote => true, :method => :post, :class => "star4"
               %li
                 =link_to "отлично", rates_path(:item_id => @item.id, :count => 5), :remote => true, :method => :post, :class => "star5"
-        .social
-          %a{:name => "fb_share", :share_url => "#{request.path}", :type => "icon"}/
+        #social-share
     .bottom=render @item.pictures.limit(14)
