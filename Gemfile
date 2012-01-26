@@ -17,6 +17,7 @@ gem "sass"
 gem "ajaxful_rating"
 gem "sanitize"
 gem 'inherited_resources'
+gem "simple-navigation"
 
 # Use unicorn as the web server
 # gem 'unicorn'

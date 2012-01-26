@@ -8,4 +8,9 @@ class Item < ActiveRecord::Base
 	accepts_nested_attributes_for :pictures
 
 	has_many :rates
+
+	def rating
+		rates.any? ? rates.average(:count) : 0.to_d
+	end
+
 end

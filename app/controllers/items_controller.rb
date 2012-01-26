@@ -11,8 +11,8 @@ class ItemsController < ApplicationController
 	def popup
 		@item = Item.find(params[:id])
 		respond_to do |format|
-	      format.html {render :layout => false}
-	      format.js
-	    end
+      format.html {render :layout => false}
+      format.js
+    end
 	end
 end

@@ -253,12 +253,6 @@ ul.domtabs {
   background-color:#fff;
 }
 
-.item_box .rating a {
-  width:16px;
-  height:16px;
-  float:left;
-  background-image:url('../images/star_off.gif');
-}
 
 a.button {
   color: #444;
@@ -275,23 +269,10 @@ a.button {
   border-radius: 4px;
 }
 
-.item_box .rating a:hover{
-  width:16px;
-  height:16px;
-  float:left;
-  background-image:url('../images/star_on.png');
-}
-
 .twitter-share-button {
   padding-left:10px; 
 }
 
-.rating a {
-  width:16px;
-  height:16px;
-  float:left;
-  background-image:url('../images/star_off.gif');
-}
 
 .fb-like {
   margin-top:5px;
@@ -301,13 +282,6 @@ button.quick_look a{
   margin:0px;
   padding:0px;
   text-decoration: none;
-}
-
-.rating a:hover{
-  width:16px;
-  height:16px;
-  float:left;
-  background-image:url('../images/star_on.png');
 }
 
 button.ui-button {
@@ -320,16 +294,11 @@ button.ui-button {
   box-shadow:0 0 0;
   border-radius:0px;
   outline: none;
-
 }
-
 
 button::-moz-focus-inner {
   border: 0;
 }
-
-
-
 
 .free_space{
   position:relative;
@@ -826,9 +795,15 @@ padding: 0 0 20px;
 
 #modal .title, #modal .description, #modal .structure {
   float:left;
+
 }
 
-#modal .structure, #modal .description {
+#modal .structure p {
+  display:inline-block;
+  color: #141414;
+}
+
+#modal .structure, #modal .description, .star-rating {
   font-family:inherit;
   color: #818181;
   line-height: 1.3;
@@ -842,4 +817,88 @@ padding: 0 0 20px;
   font-style: italic;
   color: #333138;
   line-height: 1.5;
+}
+
+dt {
+  margin-top:10px;
+  float:left;
+  color: #141414;
+  padding-right:5px;
+}
+
+dl.star-rating ol {
+
+  margin-top:8px;
+  float:left;
+  padding: 0;
+  list-style: none;
+  width: 80px;
+  height: 16px;
+  position: relative;
+  background: url(../images/star_off.gif);
+}
+
+dl.star-rating li {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+dl.star-rating li a {
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-indent: -9999px;
+  position: absolute;
+  text-decoration: none;
+  z-index: 10;
+}
+
+dl.star-rating li a:hover {
+  background: url(../images/star_on.png) left center;
+  left: 0;
+  z-index: 2;
+}
+
+dl.star-rating a.star1 {
+  left: 0px;
+}
+  dl.star-rating a.star1:hover {
+  width: 16px;
+}
+dl.star-rating a.star2 {
+  left: 16px;
+}
+dl.star-rating a.star2:hover {
+  width: 32px;
+}
+
+dl.star-rating a.star3 {
+  left: 32px;
+}
+  dl.star-rating a.star3:hover {
+  width: 48px;
+}
+dl.star-rating a.star4 {
+  left: 48px;
+}
+dl.star-rating a.star4:hover {
+  width: 64px;
+}
+
+dl.star-rating a.star5 {
+  left: 64px;
+}
+  dl.star-rating a.star5:hover {
+  width: 80px;
+}
+
+dl.star-rating li.current {
+  background: url(../images/star_on.png) left bottom;
+  height: 16px;
+  z-index: 1;
+}
+
+dl.star-rating ol>li a:hover {
+  text-indent: 110px;
 }

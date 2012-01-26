@@ -4,11 +4,23 @@
       .photo=image_tag @item.pictures.first.image.url(:large)
       .right
         .title=@item.name
-        .structure Состав: #{@item.structure}
+        .structure
+          %p Состав: 
+          %span=@item.structure
         .description=Sanitize.clean(@item.description)
-        .rating
-          -5.times do |i|
-            %div{:class => "star#{(i+1)**2}"}
-              =link_to "", rates_path(:item_id => @item.id, :count => i+1), :remote => true, :method => :post
+        %dl.star-rating
+          %dt Рейтинг: 
+          %dd
+            %ol
+              %li
+                =link_to "ужасно", rates_path(:item_id => @item.id, :count => 1), :remote => true, :method => :post, :class => "star1"
+              %li
+                =link_to "плохо", rates_path(:item_id => @item.id, :count => 2), :remote => true, :method => :post, :class => "star2"
+              %li
+                =link_to "нормально", rates_path(:item_id => @item.id, :count => 3), :remote => true, :method => :post, :class => "star3"
+              %li.current{:style => "width:#{@item.rating*16}px"}
+                =link_to "хорошо", rates_path(:item_id => @item.id, :count => 4), :remote => true, :method => :post, :class => "star4"
+              %li
+                =link_to "отлично", rates_path(:item_id => @item.id, :count => 5), :remote => true, :method => :post, :class => "star5"
         .social
     .bottom=render @item.pictures.limit(10)

@@ -119,6 +119,8 @@ GEM
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
     sass (3.1.12)
+    simple-navigation (3.6.0)
+      activesupport (>= 2.3.2)
     thor (0.14.6)
     tiny_mce (0.1.8)
     treetop (1.4.10)
@@ -144,4 +146,5 @@ DEPENDENCIES
   rails (= 3.0.11)
   sanitize
   sass
+  simple-navigation
   tiny_mce

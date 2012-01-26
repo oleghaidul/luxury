@@ -1,0 +1,11 @@
+%ol
+  %li
+    =link_to "ужасно", rates_path(:item_id => @item.id, :count => 1), :remote => true, :method => :post, :class => "star1"
+  %li
+    =link_to "плохо", rates_path(:item_id => @item.id, :count => 2), :remote => true, :method => :post, :class => "star2"
+  %li
+    =link_to "нормально", rates_path(:item_id => @item.id, :count => 3), :remote => true, :method => :post, :class => "star3"
+  %li.current{:style => "width:#{@rate.item.rating*16}px"}
+    =link_to "хорошо", rates_path(:item_id => @item.id, :count => 4), :remote => true, :method => :post, :class => "star4"
+  %li
+    =link_to "отлично", rates_path(:item_id => @item.id, :count => 5), :remote => true, :method => :post, :class => "star5"

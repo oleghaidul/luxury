@@ -10,6 +10,8 @@ Luxury::Application.routes.draw do
     match '/' => 'boutiques#show'
   end
 
+
+
   resources :categories
   resources :brands
 
@@ -20,7 +22,7 @@ Luxury::Application.routes.draw do
 
   root :to => "home#index"
 
-
+  match "/:year(/:season(/:brand(/:category)))" => "items#index", :as => :filter_path
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
