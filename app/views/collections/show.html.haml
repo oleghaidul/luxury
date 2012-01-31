@@ -1,19 +1,57 @@
-.catalog_items
-  =render @collection.items
+#makeMeScrollable
+  .scrollingHotSpotLeft
+  .scrollingHotSpotRight
+  .scrollWrapper
+    .scrollableArea
+      -for collection in @collections
+        -if params[:category]
+          -if Category.select(:name_eng).map(&:name_eng).include? params[:category]
+            -if Brand.select(:name).map(&:name).include? params[:brand]
+              -for item in collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id, :brand_id => Brand.find_by_name(params[:brand]).id)
+                =link_to image_tag(item.pictures.first.image.url(:extra_large), :height => "500"), item, :class => "load_item"
+            -else
+              -for item in collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id)
+                =link_to image_tag(item.pictures.first.image.url(:extra_large), :height => "500"), item, :class => "load_item"
+          -else
+            -for item in collection.items.where(:brand_id => Brand.find_by_name(params[:category]).id)
+              =link_to image_tag(item.pictures.first.image.url(:extra_large), :height => "500"), item, :class => "load_item"
+        -else
+          -for item in collection.items
+            =link_to image_tag(item.pictures.first.image.url(:extra_large), :height => "500"), item, :class => "load_item"
 
 
-=content_for :brands do
-  Brands
-  .vert_menu
-    %ul
-      -@collection.brand.boutique.brands.each do |b|  
-        %li=link_to b.name, [b.boutique, b]
-
-=content_for :collections do
-  .catalog_header
-    .catalog_name
-      %h1 Коллекция 2011
-    .collections
-      %ul
-        -@collections.each do |c|
-          %li=link_to "Collection "+c.year.to_s, [c.brand.boutique, c.brand, c]
+-if @boutique.brands.count > 1
+  =content_for :brands do
+    .vert_menu
+      .domtab
+        %ul.domtabs
+          %li
+            %a{:href => "#t1"} Категории
+          %li
+            %a{:href => "#t2"} Бренд
+        %div.div
+          %h2
+            %a#t1{:name => "t1"}
+          -Category.all.each do |c|
+            -if Brand.select(:name).map(&:name).include? params[:category]
+              %p.each=link_to c.name, "/2012/winter/#{params[:category]}/#{c.name_eng}"
+            -elsif Brand.select(:name).map(&:name).include? params[:brand]
+              %p.each=link_to c.name, "/2012/winter/#{params[:brand]}/#{c.name_eng}"
+            -else
+              %p.each=link_to c.name, "/2012/winter/#{c.name_eng}"
+        %div.div
+          %h2
+            %a#t2{:name => "t2"}
+          -@boutique.brands.each do |b|
+            %p.each=link_to b.name, "/2012/winter/#{b.name}"
+-else
+  =content_for :brands do
+    .vert_menu
+      .domtab
+        %div.div
+          %h2
+            %a#t1{:name => "t1"}
+          -Category.all.each do |c|
+            %p.each=link_to c.name, c
+=content_for :promo do
+  #promo=Sanitize.clean(@boutique.promo)

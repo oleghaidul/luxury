@@ -7,64 +7,6 @@
 <%= javascript_include_tag :defaults, "jquery-ui", "domtab.js", "jquery.smoothDivScroll-1.1-min", "jquery.smoothDivScroll-1.1" %>
 <%= include_tiny_mce_if_needed %>
 <%= csrf_meta_tag %>
-<style>
-
-#dialog-form {
-text-decoration: none;
-text-shadow: none;
-text-align: center;
-font-weight: bold;
-}
-
-.ui-dialog-titlebar-close {
-  display:none;
-}
-
-button.ui-widget {
-  margin: 0px 0px 20px 1010px;
-  box-shadow:0;
-  padding:0;
-}
-
-.ui-widget {
-  background: white;
-    -webkit-transition: opacity 500ms ease-in;
-  -moz-transition: opacity 500ms ease-in;
-  transition: opacity 500ms ease-in;
-  -webkit-animation: minimise 500ms linear;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  -webkit-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
-  -moz-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
-  box-shadow: 0 3px 20px rgba(0,0,0,0.9);
-  text-shadow: 0 1px 0 #fff;
-}
-
-.ui-widget-overlay {
-  background: black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.6;
-}
-
-#makeMeScrollable {
-width: 70%;
-height: 512px;
-position: relative;
-float: left;
-margin-left: 20px;
-padding:0;
-}
-#makeMeScrollable div.scrollableArea img
-    {
-      position: relative;
-      float: left;
-      margin: 0;
-      padding: 0;
-    }
-</style>
-
 <script type="text/javascript">
   $(window).load(function() {
     $("div#makeMeScrollable").smoothDivScroll({ 
@@ -78,7 +20,6 @@ padding:0;
   });
 </script>
 <script type="text/javascript">
-
 jQuery(function($) {
   var slide = false;
   var height = $('#footer_content').height();
@@ -114,12 +55,12 @@ jQuery(function($) {
         <div id="spinner" class="spinner">
           <img id="img-spinner" src="/images/ajax-loader.gif" alt="Loading"/>
         </div>
-          КОЛЛЕКЦИЯ 2011
+          КОЛЛЕКЦИЯ 2012
           <ul class="submenu">
-            <li><a href="">ЛЕТО</a></li>
-            <li><a href="">ОСЕНЬ</a></li>
-            <li><a href="">ЗИМА</a></li>
-            <li><a href="">ВЕСНА</a></li>
+            <li><%= link_to "ЛЕТО", "/2012/summer" %></li>
+            <li><%= link_to "ОСЕНЬ", "/2012/autumn" %></li>
+            <li><%= link_to "ЗИМА", "/2012/winter" %></li>
+            <li><%= link_to "ВЕСНА", "/2012/spring" %></li>
           </ul>
           </a>
         </li>

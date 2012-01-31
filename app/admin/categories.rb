@@ -2,6 +2,7 @@ ActiveAdmin.register Category do
   
   index do
     column :name
+    column :name_eng
     default_actions
   end
 

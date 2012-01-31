@@ -13,6 +13,7 @@ ActiveAdmin.register Brand do
 
   index do
     column :name
+    column :name_eng
     column :boutique
     default_actions
   end

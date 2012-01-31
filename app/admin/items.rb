@@ -3,6 +3,7 @@ ActiveAdmin.register Item do
 	index do
     column :name
     column :collection
+    column :brand
     column :category
     column :structure
     column :price
@@ -48,7 +49,8 @@ ActiveAdmin.register Item do
 		f.input :admin_user, :as => :select, :collection => AdminUser.all.collect {|p| [ p.email, p.id ] }, :include_blank => "Select your account", :label => "Owner"
 		f.input :name, :label => "Item name"
 		f.input :collection, :collection => Collection.all.collect {|p| [ p.year.to_s+" "+p.season.to_s, p.id ] }, :include_blank => false
-	    f.input :category
+    f.input :brand
+    f.input :category
 		f.input :structure
 		f.input :description, :as => :text
 		f.input :price

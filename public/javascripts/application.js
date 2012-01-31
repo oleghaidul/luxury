@@ -79,13 +79,3 @@ tinyMCE.init({
                 staffid : "991234"
         }
 });
-
-$(document).ready(function() {
-    $('#social-share').dcSocialShare({
-        location: 'bottom',
-        align: 'right',
-        size: 'none',
-        buttons: 'facebook,plusone,twitter'
-    });
-});
-

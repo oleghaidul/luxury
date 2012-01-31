@@ -11,7 +11,6 @@ Luxury::Application.routes.draw do
   end
 
 
-
   resources :categories
   resources :brands
 
@@ -21,8 +20,13 @@ Luxury::Application.routes.draw do
   resources :rates, :pictures
 
   root :to => "home#index"
+  match "/:year(/:season(/:category))" => "collections#show", 
+                                    :constraints => { :year => /2010|2011|2012/,
+                                                      :season => /winter|summer|spring|autumn/ }
+  match "/:year(/:season(/:brand(/:category)))" => "collections#show", 
+                                    :constraints => { :year => /2010|2011|2012/,
+                                                      :season => /winter|summer|spring|autumn/ }
 
-  match "/:year(/:season(/:brand(/:category)))" => "items#index", :as => :filter_path
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
