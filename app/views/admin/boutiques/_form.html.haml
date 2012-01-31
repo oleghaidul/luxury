@@ -4,8 +4,8 @@
     =f.input :ico
     =image_tag @boutique.image.url if !@boutique.image.nil?
     =f.input :promo
-    =f.input :phone
-    =f.input :phone2
+    =f.input :phone, :as => :phone
+    =f.input :phone2, :as => :phone
     =f.input :address
     =f.input :director
     =f.input :url_bout

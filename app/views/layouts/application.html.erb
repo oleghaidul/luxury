@@ -41,9 +41,9 @@ jQuery(function($) {
   });
 });
 </script>
+
 </head>
 <body>
-<div id="fb-root"></div>
 <div id="wrapper">
   <div id="top">
       <a href="/" title="">
@@ -57,10 +57,10 @@ jQuery(function($) {
         </div>
           КОЛЛЕКЦИЯ 2012
           <ul class="submenu">
-            <li><%= link_to "ЛЕТО", "/2012/summer" %></li>
-            <li><%= link_to "ОСЕНЬ", "/2012/autumn" %></li>
-            <li><%= link_to "ЗИМА", "/2012/winter" %></li>
-            <li><%= link_to "ВЕСНА", "/2012/spring" %></li>
+            <li><%= link_to "ЛЕТО", "/2012/summer" if @boutique.collections.map(&:season).include?("summer") %></li>
+            <li><%= link_to "ОСЕНЬ", "/2012/autumn" if @boutique.collections.map(&:season).include?("autumn") %></li>
+            <li><%= link_to "ЗИМА", "/2012/winter" if @boutique.collections.map(&:season).include?("winter") %></li>
+            <li><%= link_to "ВЕСНА", "/2012/spring" if @boutique.collections.map(&:season).include?("spring") %></li>
           </ul>
           </a>
         </li>
@@ -101,7 +101,7 @@ jQuery(function($) {
     </div>
 
     <div id="catalog">
-
+    
       <%= yield %>
 
     </div>

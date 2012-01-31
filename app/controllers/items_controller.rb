@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
 	def show
-		@refferer = request.referer.split("/")
 		@item = Item.find(params[:id])
 		respond_to do |format|
       format.html {render :layout => false}

@@ -3,21 +3,8 @@
   .scrollingHotSpotRight
   .scrollWrapper
     .scrollableArea
-      -for collection in @collections
-        -if params[:category]
-          -if Category.select(:name_eng).map(&:name_eng).include? params[:category]
-            -if Brand.select(:name).map(&:name).include? params[:brand]
-              -for item in collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id, :brand_id => Brand.find_by_name(params[:brand]).id)
-                =link_to image_tag(item.pictures.first.image.url(:extra_large), :height => "500"), item, :class => "load_item"
-            -else
-              -for item in collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id)
-                =link_to image_tag(item.pictures.first.image.url(:extra_large), :height => "500"), item, :class => "load_item"
-          -else
-            -for item in collection.items.where(:brand_id => Brand.find_by_name(params[:category]).id)
-              =link_to image_tag(item.pictures.first.image.url(:extra_large), :height => "500"), item, :class => "load_item"
-        -else
-          -for item in collection.items
-            =link_to image_tag(item.pictures.first.image.url(:extra_large), :height => "500"), item, :class => "load_item"
+      =render @collections
+        
 
 
 -if @boutique.brands.count > 1
@@ -33,12 +20,7 @@
           %h2
             %a#t1{:name => "t1"}
           -Category.all.each do |c|
-            -if Brand.select(:name).map(&:name).include? params[:category]
-              %p.each=link_to c.name, "/2012/#{@season}/#{params[:category]}/#{c.name_eng}"
-            -elsif Brand.select(:name).map(&:name).include? params[:brand]
-              %p.each=link_to c.name, "/2012/#{@season}/#{params[:brand]}/#{c.name_eng}"
-            -else
-              %p.each=link_to c.name, "/2012/#{@season}/#{c.name_eng}"
+            %p.each=link_to c.name, "/2012/#{@season}/#{c.name_eng}"
         %div.div
           %h2
             %a#t2{:name => "t2"}

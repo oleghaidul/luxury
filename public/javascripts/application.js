@@ -44,6 +44,7 @@ $(document).ready(function() {
 
 });
 
+
 tinyMCE.init({
         // General options
         mode : "textareas",

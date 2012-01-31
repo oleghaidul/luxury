@@ -269,21 +269,6 @@ a.button {
   border-radius: 4px;
 }
 
-.twitter-share-button {
-  padding-left:10px; 
-}
-
-
-.fb-like {
-  margin-top:5px;
-}
-
-button.quick_look a{
-  margin:0px;
-  padding:0px;
-  text-decoration: none;
-}
-
 button.ui-button {
   color: #83affc;
   background-color:transparent; 
@@ -406,26 +391,25 @@ padding-top: 50px;
 .box:hover { background-image: url(../images/bg-box-h.png); }
 
 div.social{
-float:right;
-padding-top: 5px;
-padding-bottom: 0px;
-
- }
+  float:right;
+  padding-top: 5px;
+  padding-bottom: 0px;
+}
  
 div.social ul li {
-display: inline;
-float: left;
-margin-right: 5px;
- }
+  display: inline;
+  float: left;
+  margin-right: 5px;
+}
  
 ol, ul {
-list-style-image: none;
-list-style-position: outside;
-list-style-type: none;
- }
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+}
  
 li {
-display: list-item;
+  display: list-item;
  }
  
  
@@ -774,9 +758,9 @@ padding: 0 0 20px;
 }
 
 #content #modal .center .right {
-  float:left;
   width:440px;
   margin-left:25px;
+  margin-left:360px;
 }
 
 #content #modal .bottom{
@@ -789,6 +773,7 @@ padding: 0 0 20px;
 }
 
 
+
 #modal .title {
   font-size: 20pt;
 }
@@ -798,6 +783,7 @@ padding: 0 0 20px;
   min-width:700px;
   text-align: left;
 }
+
 
 #modal .structure p {
   display:inline-block;
@@ -975,9 +961,23 @@ margin-left: 20px;
 padding:0;
 }
 #makeMeScrollable div.scrollableArea img
-    {
-      position: relative;
-      float: left;
-      margin: 0;
-      padding: 0;
-    }
+{
+  position: relative;
+  float: left;
+  padding-left:20px;
+}
+
+#makeMeScrollable div.scrollableArea img.new_collection{
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+
+
+#makeMeScrollable div.scrollableArea img.discount{
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  right: 0;
+}
