@@ -3,8 +3,10 @@ class CollectionsController < ApplicationController
 
 	def show
     if params[:season]
+      @season = params[:season]
       @collections = Collection.where(:year => params[:year], :season => params[:season])
     else
+      @season = "winter"
       @collections = Collection.where(:year => params[:year])
     end
 	end

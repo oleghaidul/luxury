@@ -761,6 +761,7 @@ padding: 0 0 20px;
 
 #content #modal .center {
   float:left;
+  min-width:1000px;
   margin: 12px 25px 15px 25px;
 }
 
@@ -792,9 +793,10 @@ padding: 0 0 20px;
   font-size: 20pt;
 }
 
-#modal .title, #modal .description, #modal .structure {
+#modal .title, #modal .structure, #modal .description, #modal .structure {
   float:left;
-
+  min-width:700px;
+  text-align: left;
 }
 
 #modal .structure p {

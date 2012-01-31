@@ -34,16 +34,16 @@
             %a#t1{:name => "t1"}
           -Category.all.each do |c|
             -if Brand.select(:name).map(&:name).include? params[:category]
-              %p.each=link_to c.name, "/2012/winter/#{params[:category]}/#{c.name_eng}"
+              %p.each=link_to c.name, "/2012/#{@season}/#{params[:category]}/#{c.name_eng}"
             -elsif Brand.select(:name).map(&:name).include? params[:brand]
-              %p.each=link_to c.name, "/2012/winter/#{params[:brand]}/#{c.name_eng}"
+              %p.each=link_to c.name, "/2012/#{@season}/#{params[:brand]}/#{c.name_eng}"
             -else
-              %p.each=link_to c.name, "/2012/winter/#{c.name_eng}"
+              %p.each=link_to c.name, "/2012/#{@season}/#{c.name_eng}"
         %div.div
           %h2
             %a#t2{:name => "t2"}
           -@boutique.brands.each do |b|
-            %p.each=link_to b.name, "/2012/winter/#{b.name}"
+            %p.each=link_to b.name, "/2012/#{@season}/#{b.name}"
 -else
   =content_for :brands do
     .vert_menu

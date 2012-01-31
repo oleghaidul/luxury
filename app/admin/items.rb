@@ -62,7 +62,7 @@ ActiveAdmin.register Item do
   f.inputs do
     f.has_many :pictures do |p|
     	p.inputs :name
-      p.inputs :image, :label_method => :name, :as => :file
+      p.inputs :image
     end
    end
 
