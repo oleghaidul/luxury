@@ -1,6 +1,7 @@
 = semantic_form_for [:admin, @collection] do |f|
   = f.inputs do
     =f.input :name
+    =f.input :boutique
     =f.input :year, :as => :select,  :collection => 2011..Time.now.year
     =f.input :season, :collection => ["winter", "spring", "summer", "autumn"]
     =f.input :new_collection, :as => :boolean

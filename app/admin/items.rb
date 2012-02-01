@@ -1,9 +1,9 @@
 ActiveAdmin.register Item do
 
 	index do
-    column :name
-    column :collection
-    column :brand
+    column :name, :sortable => :name do |item|
+      auto_link(item)
+    end
     column :category
     column :structure
     column :price
@@ -32,14 +32,25 @@ ActiveAdmin.register Item do
 
 	controller.authorize_resource
 	
-	show do
-    h3 item.name
-    div item.description
-    div do
-    	item.pictures.each do |ff|
-    		image_tag ff.image.url
-    	end
+  show :title => :name do
+
+    panel "Item Details" do
+      attributes_table_for item do
+        row("Name") { link_to item.name, admin_item_path(item) }
+        row(:category)
+        row("brand") { link_to item.category.brand.name, admin_brand_path(item.category.brand) }
+        row("collection") { link_to item.category.brand.collection.name, admin_collection_path(item.category.brand.collection) }
+      end
     end
+
+    panel "Pictures" do
+      table_for item.pictures do |p|
+        p.column("Name") { |picture| picture.name }
+        p.column("Image") { |picture| image_tag picture.image.url(:small)}
+      end
+    end
+
+    
   end
 
   form :html => { :enctype => "multipart/form-data" } do |f|
@@ -48,8 +59,8 @@ ActiveAdmin.register Item do
 	f.inputs do
 		f.input :admin_user, :as => :select, :collection => AdminUser.all.collect {|p| [ p.email, p.id ] }, :include_blank => "Select your account", :label => "Owner"
 		f.input :name, :label => "Item name"
-		f.input :collection, :collection => Collection.all.collect {|p| [ p.year.to_s+" "+p.season.to_s, p.id ] }, :include_blank => false
-    f.input :brand
+		# f.input :collection, :collection => Collection.all.collect {|p| [ p.year.to_s+" "+p.season.to_s, p.id ] }, :include_blank => false
+    # f.input :brand
     f.input :category
 		f.input :structure
 		f.input :description, :as => :text
