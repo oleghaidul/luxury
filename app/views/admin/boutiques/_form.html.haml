@@ -14,5 +14,5 @@
     =image_tag @boutique.image.url if @boutique.image
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
     =f.input :description, :as => :text
-    =f.input :collections, :as => :select, :label_method => Proc.new {|col| " ["+col.name+"] -"+" ["+col.year.to_s+"] -"+" ["+col.season+"] "}
+    =f.input :collections, :as => :check_boxes, :label_method => Proc.new {|col| " ["+col.name+"] -"+" ["+col.year.to_s+"] -"+" ["+col.season+"] "}
     =f.buttons
