@@ -62,7 +62,7 @@ ActiveAdmin.register Item do
   f.inputs do
     f.has_many :pictures do |p|
     	p.inputs :name
-      p.inputs :image
+      p.input :asset, :as => :file, :input_html => { :multiple => true }, :label => "Image", :hint => p.object.image.nil? ? p.template.content_tag(:span, "No Image Yet") : p.template.image_tag(p.object.image.url(:small))
     end
    end
 

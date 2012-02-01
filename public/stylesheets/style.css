@@ -764,15 +764,15 @@ padding: 0 0 20px;
 }
 
 #content #modal .bottom{
-  float:left;
+  position:absolute;
+  bottom:-85px;
+  left:0px;
   margin-left:25px;
 }
 
 #content #modal .bottom a {
   padding-left:10px;
 }
-
-
 
 #modal .title {
   font-size: 20pt;
@@ -978,6 +978,6 @@ padding:0;
 #makeMeScrollable div.scrollableArea img.discount{
   position: absolute;
   z-index: 3;
-  bottom: 0;
-  right: 0;
+  bottom: 12px;
+  left: 325px;
 }
