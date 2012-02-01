@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131184501) do
+ActiveRecord::Schema.define(:version => 20120201100145) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20120131184501) do
     t.integer  "ico_file_size"
     t.datetime "ico_updated_at"
     t.string   "subdomain"
+    t.boolean  "multibrand"
   end
 
   create_table "brands", :force => true do |t|

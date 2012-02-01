@@ -2,6 +2,7 @@
   = f.inputs "Basic" do
     =f.input :name
     =f.input :ico
+    =f.input :multibrand, :as => :boolean
     =image_tag @boutique.image.url if !@boutique.image.nil?
     =f.input :promo
     =f.input :phone, :as => :phone
