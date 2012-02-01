@@ -4,7 +4,7 @@
   .scrollWrapper
     .scrollableArea
       =render @boutique.items
--if @boutique.brands.count > 1
+-if @boutique.multibrand
   =content_for :brands do
     .vert_menu
       .domtab
