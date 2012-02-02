@@ -5,6 +5,8 @@ class Item < ActiveRecord::Base
   has_many :pictures
   accepts_nested_attributes_for :pictures
 
+  validates :name, :presence => true
+  validates :category_id, :presence => true
   has_many :rates
 
   def rating
