@@ -1,6 +1,35 @@
-=render @brand.items
+#makeMeScrollable
+  .scrollingHotSpotLeft
+  .scrollingHotSpotRight
+  .scrollWrapper
+    .scrollableArea
+      -if params[:category]
+        -if Category.select(:name_eng).map(&:name_eng).include? params[:category]
+          -if Brand.select(:name_eng).map(&:name_eng).include? params[:brand]
+            -for collection in @collections
+              -for brand in collection.brands.where(:name => params[:brand])
+                -for category in brand.categories.where(:name_eng => params[:category])
+                  =render category.items
+          -else
+            -for collection in @collections
+              -for brand in collection.brands
+                -for category in brand.categories.where(:name_eng => params[:category])
+                  =render category.items
+        -else
+          -for collection in @collections
+            -for brand in collection.brands.where(:name => params[:category])
+              -for category in brand.categories
+                =render category.items
+      -else
+        -for collection in @collections
+          -for brand in collection.brands
+            -for category in brand.categories
+              =render category.items
+        
+          
 
--if @boutique.brands.count > 1
+
+-if @boutique.multibrand
   =content_for :brands do
     .vert_menu
       .domtab
@@ -13,12 +42,13 @@
           %h2
             %a#t1{:name => "t1"}
           -Category.all.each do |c|
-            %p.each=link_to c.name, c
+            %p.each=link_to c.name, "/2012/#{@season}/#{c.name_eng}"
         %div.div
           %h2
             %a#t2{:name => "t2"}
-          -@boutique.brands.each do |b|
-            %p.each=link_to b.name, b
+          -@boutique.collections.each do |c|
+            -c.brands.each do |b|
+              %p.each=link_to b.name, "/2012/#{@season}/#{b.name}"
 -else
   =content_for :brands do
     .vert_menu
@@ -28,3 +58,5 @@
             %a#t1{:name => "t1"}
           -Category.all.each do |c|
             %p.each=link_to c.name, c
+=content_for :promo do
+  #promo=Sanitize.clean(@boutique.promo)

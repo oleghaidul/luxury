@@ -7,8 +7,8 @@
     #footer_content
       -for bout in Boutique.all
         .footbox
-          %strong= bout.name
-          =image_tag bout.ico.url, :size => "16x16"
+          %strong=image_tag bout.ico.url, :size => "16x16"
+          = bout.name
           %br/
           = bout.address
           %br/

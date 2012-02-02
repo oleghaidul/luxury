@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120201111016) do
+ActiveRecord::Schema.define(:version => 20120202181706) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -101,6 +101,15 @@ ActiveRecord::Schema.define(:version => 20120201111016) do
     t.string   "season_eng"
   end
 
+  create_table "home_images", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "items", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -113,6 +122,12 @@ ActiveRecord::Schema.define(:version => 20120201111016) do
     t.string   "gender"
     t.integer  "rate"
     t.integer  "category_id"
+  end
+
+  create_table "luxury_configs", :force => true do |t|
+    t.integer  "home_page_images_timeout", :default => 5
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pictures", :force => true do |t|

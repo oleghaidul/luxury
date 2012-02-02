@@ -3,7 +3,11 @@
   .scrollingHotSpotRight
   .scrollWrapper
     .scrollableArea
-      =render @boutique.items
+      -for collection in @boutique.collections
+        -for brand in collection.brands
+          -for category in brand.categories
+            =render category.items
+              
 -if @boutique.multibrand
   =content_for :brands do
     .vert_menu
@@ -21,8 +25,9 @@
         %div.div
           %h2
             %a#t2{:name => "t2"}
-          -@boutique.brands.each do |b|
-            %p.each=link_to b.name, "/2012/winter/#{b.name}"
+          -@boutique.collections.each do |c|
+            -c.brands.each do |b|
+              %p.each=link_to b.name, "/2012/winter/#{b.name}"
 -else
   =content_for :brands do
     .vert_menu
