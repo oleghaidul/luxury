@@ -18,7 +18,6 @@ ActiveAdmin.register Collection do
     panel "Collection Details" do
       attributes_table_for collection do
         row :name
-        row :boutique
         row(:new_collection) { status_tag (collection.new_collection ? "Yes" : "No"), (collection.new_collection ? :ok : :error) }
         row :year
         row :season
