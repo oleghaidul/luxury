@@ -5,7 +5,6 @@ ActiveAdmin.register Collection do
     column :name, :sortable => :name do |col|
       auto_link(col)
     end
-    column :boutiques
     column :new_collection, :sortable => :new_collection do |m|
       status_tag (m.new_collection ? "Yes" : "No"), (m.new_collection ? :ok : :error)
     end
