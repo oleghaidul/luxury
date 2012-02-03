@@ -28,6 +28,8 @@ ActiveAdmin.register Boutique do
     column :director
     column :address
     column :url_bout
+    column :email
+    column :website
     default_actions
   end
 
@@ -42,6 +44,8 @@ ActiveAdmin.register Boutique do
         row :phone2
         row :address
         row :url_bout
+        row :email
+        row :website
       end
     end
 

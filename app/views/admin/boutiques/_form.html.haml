@@ -10,6 +10,8 @@
     =f.input :address
     =f.input :director
     =f.input :url_bout
+    =f.input :email
+    =f.input :website
     =f.input :image
     =image_tag @boutique.image.url if @boutique.image
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden

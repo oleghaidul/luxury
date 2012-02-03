@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203095915) do
+ActiveRecord::Schema.define(:version => 20120203164950) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -70,13 +70,13 @@ ActiveRecord::Schema.define(:version => 20120203095915) do
     t.datetime "ico_updated_at"
     t.string   "subdomain"
     t.boolean  "multibrand"
+    t.string   "email"
+    t.string   "website"
   end
 
-  create_table "boutiques_collections", :force => true do |t|
-    t.integer  "boutique_id"
-    t.integer  "collection_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "boutiques_collections", :id => false, :force => true do |t|
+    t.integer "boutique_id",   :null => false
+    t.integer "collection_id", :null => false
   end
 
   create_table "brands", :force => true do |t|
@@ -115,6 +115,9 @@ ActiveRecord::Schema.define(:version => 20120203095915) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "timeout"
+    t.string   "alt_name"
   end
 
   create_table "items", :force => true do |t|
