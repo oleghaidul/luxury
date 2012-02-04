@@ -1,4 +1,9 @@
 ActiveAdmin.register Collection do
+
+  scope :mine, :default => true do |collections|
+    collections.where(:admin_user_id => current_admin_user.id)
+  end
+
   form :partial => "form"
 
   index do
@@ -21,14 +26,13 @@ ActiveAdmin.register Collection do
         row :year
         row :season
       end
+
     end
 
     panel "Brands" do
       table_for(collection.brands) do |t|
-        t.column(:name) { |col| link_to col.name, admin_collection_path(col) }
-        t.column :collection
-        t.column() { |col| link_to "Edit", edit_admin_collection_path(col) }
-        t.column() { |col| link_to "Delete", admin_collection_path(col), :method => :delete, :confirm => "Are you sure?" }
+        t.column(:name) { |col| link_to col.name, admin_brand_path(col) }
+        t.column() { |col| link_to "Delete", admin_brand_path(col), :method => :delete, :confirm => "Are you sure?" }
         
       end
     end

@@ -4,4 +4,6 @@
     =f.input :year, :as => :select,  :collection => 2011..Time.now.year
     =f.input :season, :collection => ["winter", "spring", "summer", "autumn"]
     =f.input :new_collection, :as => :boolean
+    =f.input :brands, :collection => Brand.find(:all, :conditions => {:admin_user_id => current_admin_user.id}), :input_html => { :size => 10 }
+    =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
     =f.buttons

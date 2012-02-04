@@ -52,10 +52,9 @@ ActiveAdmin.register Boutique do
     panel "Collections" do
       table_for(boutique.collections) do |t|
         t.column(:name) { |col| link_to col.name, admin_collection_path(col) }
-        t.column() { |col| link_to "Edit", edit_admin_collection_path(col) }
-        t.column() { |col| link_to "Delete", admin_collection_path(col), :method => :delete, :confirm => "Are you sure?" }
         t.column(:year)
         t.column(:season)
+        t.column() { |col| link_to "Delete", admin_collection_path(col), :method => :delete, :confirm => "Are you sure?" }
       end
     end
   end

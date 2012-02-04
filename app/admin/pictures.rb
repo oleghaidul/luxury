@@ -1,6 +1,10 @@
 ActiveAdmin.register Picture do
   controller.authorize_resource
   
+  scope :mine, :default => true do |pictures|
+    pictures.where(:admin_user_id => current_admin_user.id)
+  end
+
   index do
   	column :id
     column :name

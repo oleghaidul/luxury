@@ -1,5 +1,9 @@
 ActiveAdmin.register Category do
   
+  scope :mine, :default => true do |categories|
+    categories.where(:admin_user_id => current_admin_user.id)
+  end
+
   index do
     column :name, :sortable => true do |m|
       auto_link(m)
@@ -18,7 +22,7 @@ ActiveAdmin.register Category do
 
   controller.authorize_resource
 
-  show :title => :name do
+  show :title => :to_label do
     panel "Category Details" do
       attributes_table_for category do
         row :name

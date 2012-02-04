@@ -1,5 +1,9 @@
 ActiveAdmin.register Item do
 
+  scope :mine, :default => true do |items|
+    items.where(:admin_user_id => current_admin_user.id)
+  end
+
 	index do
     column :name, :sortable => :name do |item|
       auto_link(item)
@@ -32,21 +36,18 @@ ActiveAdmin.register Item do
 
 	controller.authorize_resource
 	
-  show :title => :name do
+  show :title => :to_label do
 
     panel "Item Details" do
       attributes_table_for item do
         row("Name") { link_to item.name, admin_item_path(item) }
-        row(:category)
-        row("brand") { link_to item.category.brand.name, admin_brand_path(item.category.brand) }
-        row("collection") { link_to item.category.brand.collection.name, admin_collection_path(item.category.brand.collection) }
       end
     end
 
     panel "Pictures" do
       table_for item.pictures do |p|
         p.column("Name") { |picture| picture.name }
-        p.column("Image") { |picture| image_tag picture.image.url(:small)}
+        p.column("Image") { |picture| link_to image_tag(picture.image.url(:small)), admin_picture_path(picture)}
       end
     end
 
