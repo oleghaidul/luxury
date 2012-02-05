@@ -1,5 +1,5 @@
 Luxury::Application.routes.draw do
-
+  
   devise_for :users
 
   ActiveAdmin.routes(self)
@@ -10,6 +10,8 @@ Luxury::Application.routes.draw do
     match '/' => 'boutiques#show'
   end
 
+
+  
 
   resources :categories
   resources :brands

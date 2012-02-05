@@ -13,11 +13,11 @@ class Item < ActiveRecord::Base
     rates.any? ? rates.average(:count) : 0.to_d
   end
 
-  def to_label
-    cat = Category.find_by_name(category.name)
-    brand = cat.brand
-    col = brand.collection
-    "#{col.year} - #{col.season} - #{brand.name} - #{cat.name} - #{name}"
-  end
+  # def to_label
+  #   cat = Category.find_by_name(category.name)
+  #   brand = cat.brand
+  #   col = brand.collection
+  #   "#{col.year} - #{col.season} - #{brand.name} - #{cat.name} - #{name}"
+  # end
 
 end
