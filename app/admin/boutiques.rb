@@ -54,7 +54,7 @@ ActiveAdmin.register Boutique do
         t.column(:name) { |col| link_to col.name, admin_collection_path(col) }
         t.column(:year)
         t.column(:season)
-        t.column() { |col| link_to "Delete", admin_collection_path(col), :method => :delete, :confirm => "Are you sure?" }
+        t.column() { |col| link_to "Delete", delete_id_admin_collection_path(col), :method => :post, :confirm => "Are you sure?" }
       end
     end
   end

@@ -1,5 +1,12 @@
 ActiveAdmin.register Item do
 
+  member_action :delete_id, :method => :post do
+    item = Item.find(params[:id])
+    item.collection_id = nil
+    item.save!
+    redirect_to :back
+  end
+
   scope :mine, :default => true do |items|
     items.where(:admin_user_id => current_admin_user.id)
   end

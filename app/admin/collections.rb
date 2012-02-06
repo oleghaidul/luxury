@@ -1,4 +1,12 @@
 ActiveAdmin.register Collection do
+
+  member_action :delete_id, :method => :post do
+      collection = Collection.find(params[:id])
+      collection.boutique_id = nil
+      collection.save!
+      redirect_to :back
+    end
+
   scope :mine, :default => true do |collections|
     collections.where(:admin_user_id => current_admin_user.id)
   end
@@ -32,7 +40,7 @@ ActiveAdmin.register Collection do
       table_for(collection.items) do |t|
         t.column(:name) { |i| link_to i.name, admin_item_path(i) }
         t.column("image") { |i| link_to image_tag(i.pictures.first.image.url(:small)), admin_picture_path(i.pictures.first) }
-        t.column() { |i| link_to "Delete", admin_item_path(i), :method => :delete, :confirm => "Are you sure?" }
+        t.column() { |i| link_to "Delete", delete_id_admin_item_path(i), :method => :post, :confirm => "Are you sure?" }
       end
     end
   end
