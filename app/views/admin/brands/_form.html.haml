@@ -2,6 +2,5 @@
   = f.inputs "Basic" do
     =f.input :name
     =f.input :name_eng
-    =f.input :categories, :collection => Category.find(:all, :conditions => {:admin_user_id => current_admin_user.id})
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
     =f.buttons

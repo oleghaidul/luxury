@@ -9,6 +9,8 @@ ActiveAdmin.register Item do
       auto_link(item)
     end
     column :category
+    column :brand
+    column :collection
     column :structure
     column :price
     column :discount
@@ -58,11 +60,14 @@ ActiveAdmin.register Item do
 
 
 	f.inputs do
+    f.buttons
 		f.input :admin_user, :as => :select, :collection => AdminUser.all.collect {|p| [ p.email, p.id ] }, :include_blank => "Select your account", :label => "Owner"
 		f.input :name, :label => "Item name"
 		# f.input :collection, :collection => Collection.all.collect {|p| [ p.year.to_s+" "+p.season.to_s, p.id ] }, :include_blank => false
     # f.input :brand
     f.input :category
+    f.input :collection
+    f.input :brand
 		f.input :structure
 		f.input :description, :as => :text
 		f.input :price

@@ -1,7 +1,7 @@
 class Brand < ActiveRecord::Base
-  has_and_belongs_to_many :collections
   belongs_to :admin_user
-  has_and_belongs_to_many :categories
+  belongs_to :boutique
+  has_many :items
   validates :name, :presence => true
 
   # def to_label

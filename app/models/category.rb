@@ -1,8 +1,7 @@
 class Category < ActiveRecord::Base
-	has_and_belongs_to_many :brands
-	has_many :items
 	belongs_to :admin_user
-
+	belongs_to :boutique
+	has_many :items
 	validates :name, :presence => true
 
 	# def to_label

@@ -1,8 +1,10 @@
 class Collection < ActiveRecord::Base
-	has_and_belongs_to_many :boutiques
 	belongs_to :admin_user
-	has_and_belongs_to_many :brands
-
+	belongs_to :boutique
+	has_many :items
 	validates :name, :presence => true
-
+	scope :nil_collection, :conditions => {:boutique_id => nil}
+	def current_collection
+		where("boutique_id = ?", boutique.id)
+	end
 end

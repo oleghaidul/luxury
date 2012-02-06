@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120204183126) do
+ActiveRecord::Schema.define(:version => 20120206173404) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(:version => 20120204183126) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "boutique_collections", :force => true do |t|
+    t.integer  "boutique_id"
+    t.integer  "collection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "boutiques", :force => true do |t|
     t.string   "name"
     t.string   "url_bout"
@@ -74,11 +81,6 @@ ActiveRecord::Schema.define(:version => 20120204183126) do
     t.string   "website"
   end
 
-  create_table "boutiques_collections", :id => false, :force => true do |t|
-    t.integer "boutique_id",   :null => false
-    t.integer "collection_id", :null => false
-  end
-
   create_table "brands", :force => true do |t|
     t.string   "name"
     t.integer  "collection_id"
@@ -86,20 +88,7 @@ ActiveRecord::Schema.define(:version => 20120204183126) do
     t.datetime "updated_at"
     t.integer  "admin_user_id"
     t.string   "name_eng"
-  end
-
-  create_table "brands_categories", :id => false, :force => true do |t|
-    t.integer  "brand_id",    :null => false
-    t.integer  "category_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "brands_collections", :id => false, :force => true do |t|
-    t.integer  "brand_id",      :null => false
-    t.integer  "collection_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "boutique_id"
   end
 
   create_table "categories", :force => true do |t|
@@ -109,6 +98,16 @@ ActiveRecord::Schema.define(:version => 20120204183126) do
     t.integer  "admin_user_id"
     t.string   "name_eng"
     t.integer  "brand_id"
+    t.integer  "boutique_id"
+  end
+
+  create_table "collection_brands", :force => true do |t|
+    t.integer  "collection_id"
+    t.integer  "brand_id"
+    t.integer  "boutique_collection_id"
+    t.integer  "boutique_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "collections", :force => true do |t|
@@ -147,6 +146,8 @@ ActiveRecord::Schema.define(:version => 20120204183126) do
     t.string   "gender"
     t.integer  "rate"
     t.integer  "category_id"
+    t.integer  "collection_id"
+    t.integer  "brand_id"
   end
 
   create_table "luxury_configs", :force => true do |t|

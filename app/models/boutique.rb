@@ -1,6 +1,8 @@
 class Boutique < ActiveRecord::Base
+  has_many :collections
+  has_many :brands
+  has_many :categories
   belongs_to :admin_user
-  has_and_belongs_to_many :collections
   has_attached_file :ico
   has_attached_file :image
 

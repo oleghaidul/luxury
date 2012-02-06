@@ -27,11 +27,11 @@ ActiveAdmin.register Brand do
       end
     end
 
-    panel "Categories" do
-      table_for(brand.categories) do |t|
-        t.column(:name) { |cat| link_to cat.name, admin_category_path(cat) }
-        t.column :name_eng
-        t.column() { |cat| link_to "Delete", admin_category_path(cat), :method => :delete, :confirm => "Are you sure?" }
+    panel "Items" do
+      table_for(brand.items) do |t|
+        t.column(:name) { |i| link_to i.name, admin_item_path(i) }
+        t.column("image") { |i| link_to image_tag(i.pictures.first.image.url(:small)), admin_picture_path(i.pictures.first) }
+        t.column() { |i| link_to "Delete", admin_item_path(i), :method => :delete, :confirm => "Are you sure?" }
       end
     end
   end
