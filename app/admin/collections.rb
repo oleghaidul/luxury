@@ -4,7 +4,7 @@ ActiveAdmin.register Collection do
       collection = Collection.find(params[:id])
       collection.boutique_id = nil
       collection.save!
-      redirect_to :back
+      redirect_to :back, :notice => "#{collection.name} was deleted from this boutique"
     end
 
   scope :mine, :default => true do |collections|
