@@ -4,12 +4,8 @@ class Category < ActiveRecord::Base
 	has_many :items
 	validates :name, :presence => true
 
-	# def to_label
-	# 	col = Brand.find_by_name(brand.name).collection
-	# 	if brand && col
-	# 		"#{col.year} - #{col.season} - #{brand.name} - #{name}"
-	# 	else
-	# 		"#{name}"
-	# 	end
-	# end
+	def to_label
+		bout = boutique.nil? ? "" : boutique.name
+		"#{bout} - #{name}"
+	end
 end

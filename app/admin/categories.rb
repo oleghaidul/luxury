@@ -21,7 +21,7 @@ ActiveAdmin.register Category do
 
   controller.authorize_resource
 
-  show :title => :name do
+  show :title => :to_label do
     panel "Category Details" do
       attributes_table_for category do
         row :name

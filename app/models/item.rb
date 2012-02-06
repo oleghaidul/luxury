@@ -14,11 +14,23 @@ class Item < ActiveRecord::Base
     rates.any? ? rates.average(:count) : 0.to_d
   end
 
-  # def to_label
-  #   cat = Category.find_by_name(category.name)
-  #   brand = cat.brand
-  #   col = brand.collection
-  #   "#{col.year} - #{col.season} - #{brand.name} - #{cat.name} - #{name}"
-  # end
+  def to_label
+    cat = category.nil? ? "" : category.name
+    br = brand.nil? ? "" : brand.name
+    if collection.nil?
+      bout = ""
+      col_year = ""
+      col_season = ""
+    else
+      if collection.boutique_id == nil
+        bout = ""
+      else
+        bout = Boutique.find(collection.boutique_id).name
+      end
+      col_year = collection.year
+      col_season = collection.season
+    end
+    "#{bout} - #{col_year} - #{col_season} - #{br} #{cat} - #{name}"
+  end
 
 end

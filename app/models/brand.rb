@@ -4,12 +4,9 @@ class Brand < ActiveRecord::Base
   has_many :items
   validates :name, :presence => true
 
-  # def to_label
-  # 	if collection
-  # 		"#{collection.year} - #{collection.season} - #{name}"
-  # 	else
-  # 		"Without collection - #{name}"
-  # 	end
-  # end
+  def to_label
+    bout = boutique.nil? ? "" : boutique.name
+    "#{bout} - #{name}"
+  end
 
 end

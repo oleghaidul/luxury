@@ -20,7 +20,7 @@ ActiveAdmin.register Brand do
     default_actions
   end
 
-  show :title => :name do
+  show :title => :to_label do
     panel "Brand Details" do
       attributes_table_for brand do
         row :name

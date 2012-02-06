@@ -25,7 +25,7 @@ ActiveAdmin.register Collection do
     default_actions
   end
 
-  show :title => :name do
+  show :title => :to_label do
     panel "Collection Details" do
       attributes_table_for collection do
         row :name

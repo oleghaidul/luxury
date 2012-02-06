@@ -45,7 +45,7 @@ ActiveAdmin.register Item do
 
 	controller.authorize_resource
 	
-  show :title => :name do
+  show :title => :to_label do
 
     panel "Item Details" do
       attributes_table_for item do
