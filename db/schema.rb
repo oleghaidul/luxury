@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120206173404) do
+ActiveRecord::Schema.define(:version => 20120208175312) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -81,6 +81,22 @@ ActiveRecord::Schema.define(:version => 20120206173404) do
     t.string   "website"
   end
 
+  create_table "boutiques_collections", :id => false, :force => true do |t|
+    t.integer  "boutique_id",   :null => false
+    t.integer  "collection_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "brand_categories", :force => true do |t|
+    t.integer  "brand_id"
+    t.integer  "category_id"
+    t.integer  "boutique_id"
+    t.integer  "collection_brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "brands", :force => true do |t|
     t.string   "name"
     t.integer  "collection_id"
@@ -99,6 +115,16 @@ ActiveRecord::Schema.define(:version => 20120206173404) do
     t.string   "name_eng"
     t.integer  "brand_id"
     t.integer  "boutique_id"
+  end
+
+  create_table "category_items", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "item_id"
+    t.integer  "brand_id"
+    t.integer  "collection_id"
+    t.integer  "boutique_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "collection_brands", :force => true do |t|

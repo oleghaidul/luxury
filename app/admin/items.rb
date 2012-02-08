@@ -1,10 +1,21 @@
 ActiveAdmin.register Item do
 
   member_action :delete_id, :method => :post do
+    category = URI(request.referer).path.split("/")[3]
+    item = CategoryItem.where(:category_id => category, :item_id => params[:id]).first
+    item.destroy
+    redirect_to :back, :notice => "item was deleted from this boutique"
+  end
+
+  member_action :add_id, :method => :post do
+    category = URI(request.referer).path.split("/")[3]
     item = Item.find(params[:id])
-    item.collection_id = nil
-    item.save!
-    redirect_to :back, :notice => "#{item.name} was deleted from this boutique"
+    current_item = item.category_items.build(:category_id => category)
+    if current_item.save
+      redirect_to :back, :notice => "item was added from this boutique"
+    else  
+      redirect_to :back, :notice => "walidations failed"
+    end
   end
 
   scope :mine, :default => true do |items|
@@ -45,7 +56,7 @@ ActiveAdmin.register Item do
 
 	controller.authorize_resource
 	
-  show :title => :to_label do
+  show :title => :name do
 
     panel "Item Details" do
       attributes_table_for item do
@@ -72,9 +83,6 @@ ActiveAdmin.register Item do
 		f.input :name, :label => "Item name"
 		# f.input :collection, :collection => Collection.all.collect {|p| [ p.year.to_s+" "+p.season.to_s, p.id ] }, :include_blank => false
     # f.input :brand
-    f.input :category
-    f.input :collection
-    f.input :brand
 		f.input :structure
 		f.input :description, :as => :text
 		f.input :price

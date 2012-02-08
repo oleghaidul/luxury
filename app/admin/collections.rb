@@ -1,11 +1,22 @@
 ActiveAdmin.register Collection do
 
   member_action :delete_id, :method => :post do
-      collection = Collection.find(params[:id])
-      collection.boutique_id = nil
-      collection.save!
-      redirect_to :back, :notice => "#{collection.name} was deleted from this boutique"
+    boutique = URI(request.referer).path.split("/")[3]
+    collection = BoutiqueCollection.where(:boutique_id => boutique, :collection_id => params[:id]).first
+    collection.destroy
+    redirect_to :back, :notice => "collection was deleted from this boutique"
+  end
+
+  member_action :add_id, :method => :post do
+    boutique = URI(request.referer).path.split("/")[3]
+    collection = Collection.find(params[:id])
+    current_collection = collection.boutique_collections.build(:boutique_id => boutique)
+    if current_collection.save
+      redirect_to :back, :notice => "collection was added from this boutique"
+    else  
+      redirect_to :back, :notice => "walidations failed"
     end
+  end
 
   scope :mine, :default => true do |collections|
     collections.where(:admin_user_id => current_admin_user.id)
@@ -25,7 +36,7 @@ ActiveAdmin.register Collection do
     default_actions
   end
 
-  show :title => :to_label do
+  show :title => :name do
     panel "Collection Details" do
       attributes_table_for collection do
         row :name
@@ -36,12 +47,20 @@ ActiveAdmin.register Collection do
 
     end
 
-    panel "Items" do
-      table_for(collection.items) do |t|
-        t.column(:name) { |i| link_to i.name, admin_item_path(i) }
-        t.column("image") { |i| link_to image_tag(i.pictures.first.image.url(:small)), admin_picture_path(i.pictures.first) }
-        t.column() { |i| link_to "Delete", delete_id_admin_item_path(i), :method => :post, :confirm => "Are you sure?" }
+    panel "#{collection.name} brands" do
+      table_for(collection.brands) do |t|
+        t.column(:name) { |i| link_to i.name, admin_brand_path(i) }
+        t.column() { |i| link_to "Delete", delete_id_admin_brand_path(i), :method => :post, :confirm => "Are you sure?" }
       end
     end
+
+    
   end
+    sidebar "Add brands to this collection", :only => :show do
+      table_for(Brand.excluding_ids(collection.brand_ids)) do |t|
+        t.column(:name) { |i| link_to i.name, admin_brand_path(i) }
+        t.column() { |i| link_to "Add", add_id_admin_brand_path(i), :method => :post, 
+                    :confirm => "Are you sure add this brand to this collection?" }
+      end
+    end
 end

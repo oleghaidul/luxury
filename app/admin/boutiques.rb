@@ -49,7 +49,7 @@ ActiveAdmin.register Boutique do
       end
     end
 
-    panel "Collections" do
+    panel "#{boutique.name}'s collections" do
       table_for(boutique.collections) do |t|
         t.column(:name) { |col| link_to col.name, admin_collection_path(col) }
         t.column(:year)
@@ -57,6 +57,20 @@ ActiveAdmin.register Boutique do
         t.column() { |col| link_to "Delete", delete_id_admin_collection_path(col), :method => :post, :confirm => "Are you sure?" }
       end
     end
+
+    panel "Add collections to this boutique" do
+      table_for(Collection.excluding_ids(boutique.collection_ids)) do |t|
+        t.column(:name) do |col| 
+          link_to col.name, admin_collection_path(col)
+        end
+        t.column() do |col| 
+          link_to "Add", add_id_admin_collection_path(col), :method => :post, 
+                      :confirm => "Are you sure add this collection to this boutique?" 
+        end
+      end
+    end
+
+    
   end
 
 

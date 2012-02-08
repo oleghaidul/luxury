@@ -2,6 +2,5 @@
   = f.inputs do
     =f.input :name
     =f.input :name_eng
-    =f.input :items, :collection => Item.find(:all, :conditions => {:admin_user_id => current_admin_user.id}), :input_html => { :size => 20 }
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
     =f.buttons

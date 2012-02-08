@@ -3,34 +3,34 @@ class Item < ActiveRecord::Base
   attr_accessible :name, :structure, :price, :description, :discount, :gender, :brand_id, :admin_user_id, :category_id, :collection_id, :pictures_attributes
   has_many :pictures
   accepts_nested_attributes_for :pictures
-  belongs_to :collection
-  belongs_to :category
-  belongs_to :brand
   validates :name, :presence => true
-  validates :category_id, :presence => true
+  validates :admin_user_id, :presence => true
   has_many :rates
+
+  has_many :category_items
+  has_many :categories, :through => :category_items
+
+  scope :excluding_ids, lambda { |ids|
+    where(['id NOT IN (?)', ids]) if ids.any?
+  }
 
   def rating
     rates.any? ? rates.average(:count) : 0.to_d
   end
 
-  def to_label
-    cat = category.nil? ? "" : category.name
-    br = brand.nil? ? "" : brand.name
-    if collection.nil?
-      bout = ""
-      col_year = ""
-      col_season = ""
-    else
-      if collection.boutique_id == nil
-        bout = ""
-      else
-        bout = Boutique.find(collection.boutique_id).name
-      end
-      col_year = collection.year
-      col_season = collection.season
-    end
-    "#{bout} - #{col_year} - #{col_season} - #{br} #{cat} - #{name}"
-  end
+
+
+  # def to_label
+  #   cat = category.nil? ? "" : category.name
+  #   br = brand.nil? ? "" : brand.name
+  #   if collection.nil?
+  #     col_year = ""
+  #     col_season = ""
+  #   else
+  #     col_year = collection.year
+  #     col_season = collection.season
+  #   end
+  #   "#{col_year} - #{col_season} - #{br} #{cat} - #{name}"
+  # end
 
 end
