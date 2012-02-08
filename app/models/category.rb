@@ -1,6 +1,5 @@
 class Category < ActiveRecord::Base
 	belongs_to :admin_user
-	belongs_to :boutique
 
 	has_many :brand_categories
   has_many :brands, :through => :brand_categories

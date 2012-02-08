@@ -1,18 +1,17 @@
 ActiveAdmin.register Collection do
 
   member_action :delete_id, :method => :post do
-    boutique = URI(request.referer).path.split("/")[3]
-    collection = BoutiqueCollection.where(:boutique_id => boutique, :collection_id => params[:id]).first
-    collection.destroy
-    redirect_to :back, :notice => "collection was deleted from this boutique"
+    brand = CollectionBrand.where(:collection_id => params[:id], :brand_id => params[:br_id]).first
+    brand.destroy
+    redirect_to :back, :notice => "was deleted from this boutique"
   end
 
   member_action :add_id, :method => :post do
-    boutique = URI(request.referer).path.split("/")[3]
-    collection = Collection.find(params[:id])
-    current_collection = collection.boutique_collections.build(:boutique_id => boutique)
-    if current_collection.save
-      redirect_to :back, :notice => "collection was added from this boutique"
+    collection_brand = CollectionBrand.new(:collection_id => params[:id], 
+                                            :brand_id => params[:br_id],
+                                            :boutique_id => current_admin_user.boutique.id)
+    if collection_brand.save
+      redirect_to :back, :notice => "was added from this boutique"
     else  
       redirect_to :back, :notice => "walidations failed"
     end
@@ -49,8 +48,8 @@ ActiveAdmin.register Collection do
 
     panel "#{collection.name} brands" do
       table_for(collection.brands) do |t|
-        t.column(:name) { |i| link_to i.name, admin_brand_path(i) }
-        t.column() { |i| link_to "Delete", delete_id_admin_brand_path(i), :method => :post, :confirm => "Are you sure?" }
+        t.column(:name) { |brand| link_to brand.name, admin_brand_path(brand) }
+        t.column() { |brand| link_to "Delete", delete_id_admin_collection_path(collection, :br_id => brand), :method => :post, :confirm => "Are you sure?" }
       end
     end
 
@@ -58,8 +57,8 @@ ActiveAdmin.register Collection do
   end
     sidebar "Add brands to this collection", :only => :show do
       table_for(Brand.excluding_ids(collection.brand_ids)) do |t|
-        t.column(:name) { |i| link_to i.name, admin_brand_path(i) }
-        t.column() { |i| link_to "Add", add_id_admin_brand_path(i), :method => :post, 
+        t.column(:name) { |brand| link_to brand.name, admin_brand_path(brand) }
+        t.column() { |brand| link_to "Add", add_id_admin_collection_path(collection, :br_id => brand), :method => :post, 
                     :confirm => "Are you sure add this brand to this collection?" }
       end
     end

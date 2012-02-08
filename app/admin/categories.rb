@@ -1,18 +1,17 @@
 ActiveAdmin.register Category do
   
   member_action :delete_id, :method => :post do
-    brand = URI(request.referer).path.split("/")[3]
-    category = BrandCategory.where(:brand_id => brand, :category_id => params[:id]).first
-    category.destroy
-    redirect_to :back, :notice => "category was deleted from this boutique"
+    item = CategoryItem.where(:category_id => params[:id], :item_id => params[:it_id]).first
+    item.destroy
+    redirect_to :back, :notice => "Item was deleted from this category"
   end
 
   member_action :add_id, :method => :post do
-    brand = URI(request.referer).path.split("/")[3]
-    category = Category.find(params[:id])
-    current_category = category.brand_categories.build(:brand_id => brand)
-    if current_category.save
-      redirect_to :back, :notice => "category was added from this boutique"
+    category_item = CategoryItem.new(:category_id => params[:id], 
+                                            :item_id => params[:it_id],
+                                            :boutique_id => current_admin_user.boutique.id)
+    if category_item.save
+      redirect_to :back, :notice => "Item was added from this category"
     else  
       redirect_to :back, :notice => "walidations failed"
     end
@@ -48,17 +47,18 @@ ActiveAdmin.register Category do
 
     panel "Items" do
       table_for(category.items) do |t|
-        t.column(:name) { |i| link_to i.name, admin_item_path(i) }
-        t.column("image") { |i| link_to image_tag(i.pictures.first.image.url(:small)), admin_picture_path(i.pictures.first) }
-        t.column() { |i| link_to "Delete", delete_id_admin_item_path(i), :method => :post, :confirm => "Are you sure?" }
+        t.column(:name) { |item| link_to item.name, admin_item_path(item) }
+        t.column("image") { |item| link_to image_tag(item.pictures.first.image.url(:small)), admin_picture_path(item.pictures.first) }
+        t.column() { |item| link_to "Delete", delete_id_admin_category_path(category, :it_id => item), :method => :post, 
+                            :confirm => "Are you sure?" }
       end
     end
 
     panel "Add items to this category" do
       table_for(Item.excluding_ids(category.item_ids)) do |t|
-        t.column(:name) { |i| link_to i.name, admin_item_path(i) }
-        t.column("image") { |i| link_to image_tag(i.pictures.first.image.url(:small)), admin_picture_path(i.pictures.first) }
-        t.column() { |i| link_to "Add", add_id_admin_item_path(i), :method => :post, 
+        t.column(:name) { |item| link_to item.name, admin_item_path(item) }
+        t.column("image") { |item| link_to image_tag(item.pictures.first.image.url(:small)), admin_picture_path(item.pictures.first) }
+        t.column() { |item| link_to "Add", add_id_admin_category_path(category, :it_id => item), :method => :post, 
                     :confirm => "Are you sure add this item to this category?" }
       end
     end

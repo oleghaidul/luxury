@@ -1,5 +1,20 @@
 ActiveAdmin.register Boutique do
 
+  member_action :delete_id, :method => :post do
+    boutique_collection = BoutiqueCollection.where(:boutique_id => params[:id], :collection_id => params[:col_id]).first
+    boutique_collection.destroy
+    redirect_to :back, :notice => "collection was deleted from this boutique"
+  end
+
+  member_action :add_id, :method => :post do
+    boutique_collection = BoutiqueCollection.new(:boutique_id => params[:id], :collection_id => params[:col_id])
+    if boutique_collection.save
+      redirect_to :back, :notice => "collection was added from this boutique"
+    else  
+      redirect_to :back, :notice => "validations failed"
+    end
+  end
+
   scope :mine, :default => true do |boutiques|
     boutiques.where(:admin_user_id => current_admin_user.id)
   end
@@ -54,7 +69,7 @@ ActiveAdmin.register Boutique do
         t.column(:name) { |col| link_to col.name, admin_collection_path(col) }
         t.column(:year)
         t.column(:season)
-        t.column() { |col| link_to "Delete", delete_id_admin_collection_path(col), :method => :post, :confirm => "Are you sure?" }
+        t.column() { |col| link_to "Delete", delete_id_admin_boutique_path(boutique, :col_id => col), :method => :post, :confirm => "Are you sure?" }
       end
     end
 
@@ -64,7 +79,7 @@ ActiveAdmin.register Boutique do
           link_to col.name, admin_collection_path(col)
         end
         t.column() do |col| 
-          link_to "Add", add_id_admin_collection_path(col), :method => :post, 
+          link_to "Add", add_id_admin_boutique_path(boutique, :col_id => col), :method => :post, 
                       :confirm => "Are you sure add this collection to this boutique?" 
         end
       end
