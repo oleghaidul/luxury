@@ -2,6 +2,9 @@ ActiveAdmin.register Category do
   
   member_action :delete_id, :method => :post do
     item = CategoryItem.where(:category_id => params[:id], :item_id => params[:it_id]).first
+    it = Item.find(params[:it_id])
+    it.category_id = nil
+    it.save
     item.destroy
     redirect_to :back, :notice => "Item was deleted from this category"
   end
@@ -10,6 +13,9 @@ ActiveAdmin.register Category do
     category_item = CategoryItem.new(:category_id => params[:id], 
                                             :item_id => params[:it_id],
                                             :boutique_id => current_admin_user.boutique.id)
+    item = Item.find(params[:it_id])
+    item.category_id = params[:id]                                        
+    item.save
     if category_item.save
       redirect_to :back, :notice => "Item was added from this category"
     else  
@@ -55,7 +61,7 @@ ActiveAdmin.register Category do
     end
 
     panel "Add items to this category" do
-      table_for(Item.excluding_ids(category.item_ids)) do |t|
+      table_for(Item.where(:category_id => nil).mine(current_admin_user.id).excluding_ids(category.item_ids)) do |t|
         t.column(:name) { |item| link_to item.name, admin_item_path(item) }
         t.column("image") { |item| link_to image_tag(item.pictures.first.image.url(:small)), admin_picture_path(item.pictures.first) }
         t.column() { |item| link_to "Add", add_id_admin_category_path(category, :it_id => item), :method => :post, 

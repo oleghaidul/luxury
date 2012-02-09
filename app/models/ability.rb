@@ -13,6 +13,7 @@ class Ability
         can :manage, Brand, :admin_user_id => user.id
         can :manage, Category, :admin_user_id => user.id
         can :manage, Collection, :admin_user_id => user.id
+        can :manage, Picture, :admin_user_id => user.id
 
       end
 

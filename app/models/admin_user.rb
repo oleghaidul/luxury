@@ -11,4 +11,5 @@ class AdminUser < ActiveRecord::Base
   has_many :brands
   has_many :categories
   has_many :collections
+  has_many :pictures
 end

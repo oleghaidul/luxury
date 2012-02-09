@@ -1,23 +1,5 @@
 ActiveAdmin.register Item do
 
-  member_action :delete_id, :method => :post do
-    category = URI(request.referer).path.split("/")[3]
-    item = CategoryItem.where(:category_id => category, :item_id => params[:id]).first
-    item.destroy
-    redirect_to :back, :notice => "item was deleted from this boutique"
-  end
-
-  member_action :add_id, :method => :post do
-    category = URI(request.referer).path.split("/")[3]
-    item = Item.find(params[:id])
-    current_item = item.category_items.build(:category_id => category)
-    if current_item.save
-      redirect_to :back, :notice => "item was added from this boutique"
-    else  
-      redirect_to :back, :notice => "walidations failed"
-    end
-  end
-
   scope :mine, :default => true do |items|
     items.where(:admin_user_id => current_admin_user.id)
   end
@@ -26,9 +8,6 @@ ActiveAdmin.register Item do
     column :name, :sortable => :name do |item|
       auto_link(item)
     end
-    column :category
-    column :brand
-    column :collection
     column :structure
     column :price
     column :discount
@@ -43,6 +22,7 @@ ActiveAdmin.register Item do
                             :plugins => %w{ table fullscreen }
                           }
 		before_filter :admin, :except => [:index, :new, :create]
+
 		def admin
 			@item = Item.find(params[:id])
 		end
@@ -79,7 +59,7 @@ ActiveAdmin.register Item do
 
 	f.inputs do
     f.buttons
-		f.input :admin_user, :as => :select, :collection => AdminUser.all.collect {|p| [ p.email, p.id ] }, :include_blank => "Select your account", :label => "Owner"
+		f.input :admin_user_id, :as => :hidden, :value => f.template.current_admin_user.id
 		f.input :name, :label => "Item name"
 		# f.input :collection, :collection => Collection.all.collect {|p| [ p.year.to_s+" "+p.season.to_s, p.id ] }, :include_blank => false
     # f.input :brand
@@ -93,8 +73,10 @@ ActiveAdmin.register Item do
 
   f.inputs do
     f.has_many :pictures do |p|
-    	p.inputs :name
-      p.input :image, :as => :file, :label => "Image", :hint => p.object.image.nil? ? p.template.content_tag(:span, "No Image Yet") : p.template.image_tag(p.object.image.url(:small))
+      p.input :admin_user_id, :as => :hidden, :value => f.template.current_admin_user.id
+    	p.input :name
+      p.input :image, :as => :file, :label => "Image", :hint => p.object.image.nil? ? p.template.content_tag(:span, "No Image Yet") : p.template.link_to(p.template.image_tag(p.object.image.url(:small)), [:admin, p.object])
+      
     end
    end
 

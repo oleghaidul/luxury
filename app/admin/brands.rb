@@ -52,7 +52,7 @@ ActiveAdmin.register Brand do
     end
 
     panel "Add categories to this brand" do
-      table_for(Category.excluding_ids(brand.category_ids)) do |t|
+      table_for(Category.mine(current_admin_user.id).excluding_ids(brand.category_ids)) do |t|
         t.column(:name) { |category| link_to category.name, admin_category_path(category) }
         t.column() { |category| link_to "Add", add_id_admin_brand_path(brand, :cat_id => category), :method => :post, 
                       :confirm => "Are you sure add this category to this brand?" }

@@ -11,6 +11,10 @@ class Collection < ActiveRecord::Base
 	  where(['id NOT IN (?)', ids]) if ids.any?
 	}
 
+	scope :mine, lambda { |id|
+	  where(:admin_user_id => id)
+	}
+
 	def current_collection
 		where("boutique_id = ?", boutique.id)
 	end

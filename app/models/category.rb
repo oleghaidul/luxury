@@ -12,6 +12,9 @@ class Category < ActiveRecord::Base
 	scope :excluding_ids, lambda { |ids|
 	  where(['id NOT IN (?)', ids]) if ids.any?
 	}
+	scope :mine, lambda { |id|
+	  where(:admin_user_id => id)
+	}
 
 	# def to_label
 	# 	" #{name}"

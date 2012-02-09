@@ -16,6 +16,5 @@
     =image_tag @boutique.image.url if @boutique.image
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
     =f.input :description, :as => :text
-    =f.input :collections, :collection => Collection.all
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
     =f.buttons

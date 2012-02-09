@@ -56,7 +56,7 @@ ActiveAdmin.register Collection do
     
   end
     sidebar "Add brands to this collection", :only => :show do
-      table_for(Brand.excluding_ids(collection.brand_ids)) do |t|
+      table_for(Brand.mine(current_admin_user.id).excluding_ids(collection.brand_ids)) do |t|
         t.column(:name) { |brand| link_to brand.name, admin_brand_path(brand) }
         t.column() { |brand| link_to "Add", add_id_admin_collection_path(collection, :br_id => brand), :method => :post, 
                     :confirm => "Are you sure add this brand to this collection?" }
