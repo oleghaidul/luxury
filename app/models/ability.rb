@@ -14,6 +14,7 @@ class Ability
         can :manage, Category, :admin_user_id => user.id
         can :manage, Collection, :admin_user_id => user.id
         can :manage, Picture, :admin_user_id => user.id
+        cannot :manage, AdminUser
 
       end
 
