@@ -2,7 +2,11 @@ ActiveAdmin.register Picture do
   controller.authorize_resource
   
   scope :mine, :default => true do |pictures|
-    pictures.where(:admin_user_id => current_admin_user.id)
+    if can? :manage, @picture
+      pictures
+    else
+      pictures.where(:admin_user_id => current_admin_user.id)
+    end
   end
 
   index do

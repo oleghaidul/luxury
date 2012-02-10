@@ -2,5 +2,6 @@
   = f.inputs do
     =f.input :name
     =f.input :name_eng
-    =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
+    =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden if cannot? :manage, AdminUser
+    =f.input :boutique, :as => :hidden, :value => current_admin_user.boutique.id if cannot? :manage, AdminUser
     =f.buttons

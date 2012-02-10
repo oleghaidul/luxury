@@ -8,6 +8,7 @@ Luxury::Application.routes.draw do
 
   constraints(Subdomain) do
     match '/' => 'boutiques#show'
+    match '/description' => 'boutiques#desc'
   end
 
 

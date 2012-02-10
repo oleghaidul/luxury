@@ -16,7 +16,11 @@ ActiveAdmin.register Boutique do
   end
 
   scope :mine, :default => true do |boutiques|
-    boutiques.where(:admin_user_id => current_admin_user.id)
+    if can? :manage, @boutique
+      boutiques
+    else
+      boutiques.where(:admin_user_id => current_admin_user.id)
+    end
   end
 
 	controller do

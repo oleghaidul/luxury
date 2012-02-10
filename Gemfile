@@ -18,6 +18,7 @@ gem "ajaxful_rating"
 gem "sanitize"
 gem 'inherited_resources'
 gem "simple-navigation"
+gem "ckeditor", "3.6.3"
 
 # Use unicorn as the web server
 # gem 'unicorn'

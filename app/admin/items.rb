@@ -1,7 +1,11 @@
 ActiveAdmin.register Item do
 
-  scope :mine, :default => true do |items|
-    items.where(:admin_user_id => current_admin_user.id)
+  scope :all, :default => true do |items|
+    if can? :manage, @item
+      items
+    else
+      items.where(:admin_user_id => current_admin_user.id)
+    end
   end
 
 	index do
@@ -32,6 +36,7 @@ ActiveAdmin.register Item do
 				@item.pictures.build
 			end
 		end
+
 	end
 
 	controller.authorize_resource
@@ -59,7 +64,7 @@ ActiveAdmin.register Item do
 
 	f.inputs do
     f.buttons
-		f.input :admin_user_id, :as => :hidden, :value => f.template.current_admin_user.id
+		f.input :admin_user_id, :as => :hidden, :value => f.template.current_admin_user.id if f.template.cannot? :manage, AdminUser
 		f.input :name, :label => "Item name"
 		# f.input :collection, :collection => Collection.all.collect {|p| [ p.year.to_s+" "+p.season.to_s, p.id ] }, :include_blank => false
     # f.input :brand
@@ -67,13 +72,14 @@ ActiveAdmin.register Item do
 		f.input :description, :as => :text
 		f.input :price
 		f.input :discount
+    f.input :boutique, :as => :hidden, :value => f.template.current_admin_user.boutique.id if f.template.cannot? :manage, AdminUser
 		f.input :gender, :as => :radio, :collection => [["Male", "male"], ["Female", "female"]]
 		# f.input :pictures, :as => :check_boxes, :label_method => Proc.new { |image| "#{image.name}"}
 	end
 
   f.inputs do
     f.has_many :pictures do |p|
-      p.input :admin_user_id, :as => :hidden, :value => f.template.current_admin_user.id
+      p.input :admin_user_id, :as => :hidden, :value => f.template.current_admin_user.id if f.template.cannot? :manage, AdminUser
     	p.input :name
       p.input :image, :as => :file, :label => "Image", :hint => p.object.image.nil? ? p.template.content_tag(:span, "No Image Yet") : p.template.link_to(p.template.image_tag(p.object.image.url(:small)), [:admin, p.object])
       

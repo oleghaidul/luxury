@@ -8,6 +8,7 @@ class Category < ActiveRecord::Base
   has_many :items, :through => :category_items
 
 	validates :name, :presence => true
+	validates :name_eng, :presence => true
 
 	scope :excluding_ids, lambda { |ids|
 	  where(['id NOT IN (?)', ids]) if ids.any?

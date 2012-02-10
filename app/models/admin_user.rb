@@ -12,4 +12,6 @@ class AdminUser < ActiveRecord::Base
   has_many :categories
   has_many :collections
   has_many :pictures
+
+  scope :without_boutique
 end

@@ -100,12 +100,9 @@ ActiveAdmin.setup do |config|
   #config.register_stylesheet '/javascripts/ckeditor/contents.css'
   #
   # To load a javascript file:
-  config.register_javascript 'tiny_mce/tiny_mce.js'
-  config.register_javascript 'tiny_mce/tiny_mce_popup.js'
-  config.register_javascript 'tiny_mce/tiny_mce_src.js'
-  config.register_javascript 'tiny_mce/jquery.tinymce.js'
-  config.register_javascript 'tiny_mce/use_tinymce_init_jquery.js'
+  config.register_javascript 'ckeditor/ckeditor.js'
   config.register_javascript 'application.js'
+
 
   
 

@@ -3,7 +3,7 @@
   #right_pane
     -for bout in @boutiques
       .box
-        %a= link_to(image_tag(bout.image.url, :alt => bout.name), root_url(:subdomain => bout.url_bout))
+        %a= link_to(image_tag(bout.image.url, :alt => bout.name, :size => "180x95"), root_url(:subdomain => bout.url_bout))
 #slideshow
   -for image in HomeImage.all
     -if image.id == HomeImage.first.id

@@ -23,8 +23,16 @@ ActiveAdmin.register Category do
     end
   end
 
+  after_filter :only => :create do
+    @admin = current_admin_user.id
+  end
+
   scope :mine, :default => true do |categories|
-    categories.where(:admin_user_id => current_admin_user.id)
+    if can? :manage, @category
+      categories
+    else
+      categories.where(:admin_user_id => current_admin_user.id)
+    end
   end
 
   index do
@@ -40,6 +48,7 @@ ActiveAdmin.register Category do
 		def admin
 			@category = Category.find(params[:id])
 		end
+
 	end
 
   controller.authorize_resource

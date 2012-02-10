@@ -18,7 +18,11 @@ ActiveAdmin.register Collection do
   end
 
   scope :mine, :default => true do |collections|
-    collections.where(:admin_user_id => current_admin_user.id)
+    if can? :manage, @collection
+      collections
+    else
+      collections.where(:admin_user_id => current_admin_user.id)
+    end
   end
 
   form :partial => "form"

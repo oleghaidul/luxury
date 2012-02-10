@@ -18,7 +18,11 @@ ActiveAdmin.register Brand do
   end
 
   scope :mine, :default => true do |brands|
-    brands.where(:admin_user_id => current_admin_user.id)
+    if can? :manage, @brand
+      brands
+    else
+      brands.where(:admin_user_id => current_admin_user.id)
+    end
   end
 
   controller do

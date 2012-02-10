@@ -3,10 +3,7 @@
   .scrollingHotSpotRight
   .scrollWrapper
     .scrollableArea
-      -for collection in @boutique.collections
-        -for brand in collection.brands
-          -for category in brand.categories
-            =render category.items
+      =render @boutique.items
               
 -if @boutique.multibrand
   =content_for :brands do
@@ -20,8 +17,10 @@
         %div.div
           %h2
             %a#t1{:name => "t1"}
-          -Category.all.each do |c|
-            %p.each=link_to c.name, "/2012/winter/#{c.name_eng}"
+          -@boutique.collections.each do |c|
+            -c.brands.each do |b|
+              -b.categories.each do |cat|
+                %p.each=link_to cat.name, "/2012/winter/#{cat.name_eng}"
         %div.div
           %h2
             %a#t2{:name => "t2"}
@@ -35,7 +34,9 @@
         %div.div
           %h2
             %a#t1{:name => "t1"}
-          -Category.all.each do |c|
-            %p.each=link_to c.name, c
+          -@boutique.collections.each do |c|
+            -c.brands.each do |b|
+              -b.categories.each do |cat|
+                %p.each=link_to cat.name, "/2012/winter/#{cat.name_eng}"
 =content_for :promo do
   #promo=Sanitize.clean(@boutique.promo)
