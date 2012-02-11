@@ -80,7 +80,7 @@ ActiveAdmin.register Boutique do
     end
 
     panel "Add collections to this boutique" do
-      table_for(Collection.mine(current_admin_user.id).excluding_ids(boutique.collection_ids)) do |t|
+      table_for(Collection.excluding_ids(boutique.collection_ids)) do |t|
         t.column(:name) do |col| 
           link_to col.name, admin_collection_path(col)
         end

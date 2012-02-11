@@ -1,7 +1,5 @@
 class Brand < ActiveRecord::Base
-  belongs_to :admin_user
-  belongs_to :boutique
-  has_many :items
+
   has_many :collection_brands
   has_many :collections, :through => :collection_brands
 

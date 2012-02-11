@@ -6,33 +6,55 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
+AdminUser.create!([
+              {:email => "admin@luxury.by", :role => "admin", :password => "password", :password_confirmation => "password"},
+              {:email => "renommee@luxury.by", :role => "editor", :password => "password", :password_confirmation => "password"},
+              {:email => "zegna@luxury.by", :role => "editor", :password => "password", :password_confirmation => "password"},
+              {:email => "pal_zileri@luxury.by", :role => "editor", :password => "password", :password_confirmation => "password"},
+              {:email => "pret_a_porter@luxury.by", :role => "editor", :password => "password", :password_confirmation => "password"}
+])
+
 Boutique.create!([
                   {:name => 'Renommee', :url_bout => "renommee", :admin_user_id => 2},
-                  {:name => 'Gibraud', :url_bout => 'gibraud', :admin_user_id => 3},
+                  {:name => 'Ermenegildo Zegna', :url_bout => 'Zegna', :admin_user_id => 3},
                   {:name => 'Pal Zileri', :url_bout => 'pal_zileri', :admin_user_id => 4}
                  ])
-3.times do |i|
-  Collection.create!([
-                    {:name => "First collection", :year => 2012, :season => "winter", :admin_user_id => i+2},
-                    {:name => "Second Collection", :year => 2012, :season => "spring", :admin_user_id => i+2},
-                    {:name => "Thirdd collection", :year => 2011, :season => "winter", :admin_user_id => i+2}
-  ])
 
-  Brand.create!([
-                {:name => "Brand1", :name_eng => "brand1", :admin_user_id => i+2},
-                {:name => "Brand2", :name_eng => "brand2", :admin_user_id => i+2}
-  ])
+Collection.create!([
+                  {:name => "Осень-зима 2011-2012", :year => 2011, :season => "winter"},
+                  {:name => "Весна-лето 2012", :year => 2012, :season => "summer"}
+])
 
-  Category.create!([
-                {:name => "1Category", :name_eng => "1category", :admin_user_id => i+2},
-                {:name => "2Category", :name_eng => "2category", :admin_user_id => i+2}
-  ])
-end
-AdminUser.create!([
-              {:email => "admin@admin.ru", :role => "admin", :password => "password", :password_confirmation => "password"},            
-              {:email => "renommee@admin.ru", :role => "editor", :password => "password", :password_confirmation => "password"},
+Brand.create!([
+                {:name => 'Ermenegildo Zegna', :name_eng => "Ermenegildo Zegna"},
+                {:name => 'Pal Zileri', :name_eng => 'Pal Zileri'},
+                {:name => 'Canali', :name_eng => 'Canali'},
+                {:name => 'Corneliani', :name_eng => 'Corneliani'},
+                {:name => 'Emanuel Ungaro', :name_eng => 'Emanuel Ungaro'},
+                {:name => 'Galliano', :name_eng => 'Galliano'},
+                {:name => 'Francesco SMALTO', :name_eng => 'Francesco SMALTO'},
+                {:name => 'Christian Lacroix', :name_eng => 'Christian Lacroix'},
+                {:name => 'Pierre BALMAIN', :name_eng => 'Pierre BALMAIN'},
+                {:name => 'Jean Paul Gaultier', :name_eng => 'Jean Paul Gaultier'},
+                {:name => 'Nina Ricci,', :name_eng => 'Nina Ricci,'},
+                {:name => 'Azzaro', :name_eng => 'Azzaro'},
+                {:name => 'Andrew GN', :name_eng => 'Andrew GN'},
+                {:name => 'IRFE', :name_eng => 'IRFE'},
+                {:name => 'Leonard', :name_eng => 'Leonard'},
+                {:name => 'Matthew Williamson', :name_eng => 'Matthew Williamson'},
+                {:name => 'Tartine et Chocolat', :name_eng => 'Tartine et Chocolat'},
+                {:name => 'Hugo Boss', :name_eng => 'Hugo Boss'},
+                {:name => 'Max Mara', :name_eng => 'MaxMara'},
+                {:name => 'Gianfranco Ferre', :name_eng => 'Gianfranco Ferre'},
+                {:name => 'Ice IceBerg', :name_eng => 'Ice IceBerg'}
+              ])
 
-              {:email => "gibraud@admin.ru", :role => "editor", :password => "password", :password_confirmation => "password"},
-
-              {:email => "pal_zileri@admin.ru", :role => "editor", :password => "password", :password_confirmation => "password"}
+Category.create!([
+              {:name => "Рубашки", :name_eng => "Dress shirts"},
+              {:name => "Костюмы", :name_eng => "Suits"},
+              {:name => "Брюки", :name_eng => "Pants"},
+              {:name => "Свитера", :name_eng => "Sweaters"},
+              {:name => "Джинсы", :name_eng => "Jeans"},
+              {:name => "Футболки", :name_eng => "T-Shirts"},
+              {:name => "Поло", :name_eng => "Polo"}
 ])
