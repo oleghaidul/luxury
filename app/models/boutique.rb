@@ -11,5 +11,5 @@ class Boutique < ActiveRecord::Base
 
   validates :name, :presence => true, :uniqueness => true
   validates :admin_user_id, :presence => true
-  validates :url_bout, :presence => true, :uniqueness => true
+  validates :url_bout, :presence => true, :uniqueness => true, :format => /^\S+[a-zA-Z]+$/
 end

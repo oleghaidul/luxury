@@ -1,5 +1,6 @@
 ActiveAdmin.register Boutique do
-
+  actions :all, :except => [:new]
+  action_item { link_to("New Boutique", new_admin_boutique_path) if current_admin_user.boutique.nil?}
   member_action :delete_id, :method => :post do
     boutique_collection = BoutiqueCollection.where(:boutique_id => params[:id], :collection_id => params[:col_id]).first
     boutique_collection.destroy
@@ -25,8 +26,10 @@ ActiveAdmin.register Boutique do
 
 	controller do
 		before_filter :admin, :except => [:index, :new, :create]
+
 		def admin
 			@boutique = Boutique.find_by_url_bout(params[:id])
+
 		end
 	end
 
