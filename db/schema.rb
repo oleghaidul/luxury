@@ -176,12 +176,6 @@ ActiveRecord::Schema.define(:version => 20120211084414) do
     t.integer  "boutique_id"
   end
 
-  create_table "luxury_configs", :force => true do |t|
-    t.integer  "home_page_images_timeout", :default => 5
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "pictures", :force => true do |t|
     t.string   "name"
     t.integer  "item_id"

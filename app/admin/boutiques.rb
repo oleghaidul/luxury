@@ -1,6 +1,5 @@
 ActiveAdmin.register Boutique do
-  actions :all, :except => [:new]
-  action_item { link_to("New Boutique", new_admin_boutique_path) if current_admin_user.boutique.nil?}
+
   member_action :delete_id, :method => :post do
     boutique_collection = BoutiqueCollection.where(:boutique_id => params[:id], :collection_id => params[:col_id]).first
     boutique_collection.destroy
