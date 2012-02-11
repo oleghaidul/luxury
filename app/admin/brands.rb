@@ -8,8 +8,7 @@ ActiveAdmin.register Brand do
 
   member_action :add_id, :method => :post do
     brand_categories = BrandCategory.new(:brand_id => params[:id], 
-                                            :category_id => params[:cat_id],
-                                            :boutique_id => bout_id)
+                                            :category_id => params[:cat_id])
     if brand_categories.save
       redirect_to :back, :notice => "was added from this boutique"
     else  
@@ -32,7 +31,6 @@ ActiveAdmin.register Brand do
     end
   end
 
-  controller.authorize_resource
 
   index do
     column :name, :sortable => true do |m|

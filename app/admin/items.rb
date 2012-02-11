@@ -39,7 +39,6 @@ ActiveAdmin.register Item do
 
 	end
 
-	controller.authorize_resource
 	
   show :title => :name do
 

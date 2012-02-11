@@ -32,7 +32,6 @@ ActiveAdmin.register Boutique do
 		end
 	end
 
-	controller.authorize_resource
 
   index do
     column :name , :sortable => :name do |m|

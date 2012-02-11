@@ -13,8 +13,7 @@ ActiveAdmin.register Collection do
     br = Brand.find(params[:br_id])
     bout_id = current_admin_user.boutique.id
     collection_brand = CollectionBrand.new(:collection_id => params[:id], 
-                                            :brand_id => params[:br_id],
-                                            :boutique_id => bout_id)
+                                            :brand_id => params[:br_id])
     br.boutique_id = bout_id
     br.save
     if collection_brand.save

@@ -53,7 +53,6 @@ ActiveAdmin.register Category do
 
 	end
 
-  controller.authorize_resource
 
   show :title => :name do
     panel "Category Details" do
