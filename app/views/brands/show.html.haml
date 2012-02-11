@@ -44,13 +44,13 @@
           -@boutique.collections.each do |c|
             -c.brands.each do |b|
               -b.categories.each do |cat|
-                %p.each=link_to cat.name, "/2012/winter/#{cat.name_eng}"
+                %p.each=link_to cat.name, "/#{@year}/#{@season}/#{cat.name_eng}"
         %div.div
           %h2
             %a#t2{:name => "t2"}
           -@boutique.collections.each do |c|
             -c.brands.each do |b|
-              %p.each=link_to b.name, "/2012/winter/#{b.name}"
+              %p.each=link_to b.name, "/#{@year}/#{@season}/#{b.name_eng}"
 -else
   =content_for :brands do
     .vert_menu
@@ -61,6 +61,6 @@
           -@boutique.collections.each do |c|
             -c.brands.each do |b|
               -b.categories.each do |cat|
-                %p.each=link_to cat.name, "/2012/winter/#{cat.name_eng}"
+                %p.each=link_to cat.name, "/#{@year}/#{@season}/#{cat.name_eng}"
 =content_for :promo do
   #promo=Sanitize.clean(@boutique.promo)

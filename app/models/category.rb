@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
 	belongs_to :admin_user
+	belongs_to :boutique
 
 	has_many :brand_categories
   has_many :brands, :through => :brand_categories
@@ -8,7 +9,7 @@ class Category < ActiveRecord::Base
   has_many :items, :through => :category_items
 
 	validates :name, :presence => true
-	validates :name_eng, :presence => true
+	validates :name_eng, :presence => true, :format => /^\S+[a-zA-Z]+$/
 
 	scope :excluding_ids, lambda { |ids|
 	  where(['id NOT IN (?)', ids]) if ids.any?

@@ -1,15 +1,22 @@
 ActiveAdmin.register Brand do
   
   member_action :delete_id, :method => :post do
+    cat = Category.find(params[:cat_id])
     category = BrandCategory.where(:brand_id => params[:id], :category_id => params[:cat_id]).first
+    cat.boutique_id = nil
+    cat.save
     category.destroy
     redirect_to :back, :notice => "was deleted from this boutique"
   end
 
   member_action :add_id, :method => :post do
+    bout_id = current_admin_user.boutique.id
+    cat = Category.find(params[:cat_id])
     brand_categories = BrandCategory.new(:brand_id => params[:id], 
                                             :category_id => params[:cat_id],
-                                            :boutique_id => current_admin_user.boutique.id)
+                                            :boutique_id => bout_id)
+    cat.boutique_id = bout_id           
+    cat.save                             
     if brand_categories.save
       redirect_to :back, :notice => "was added from this boutique"
     else  

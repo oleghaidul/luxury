@@ -3,7 +3,6 @@ ActiveAdmin.register Category do
   member_action :delete_id, :method => :post do
     item = CategoryItem.where(:category_id => params[:id], :item_id => params[:it_id]).first
     it = Item.find(params[:it_id])
-    it.category_id = nil
     it.boutique_id = nil
     it.save
     item.destroy
@@ -17,7 +16,6 @@ ActiveAdmin.register Category do
                                             :item_id => params[:it_id],
                                             :boutique_id => bout_id)
     item = Item.find(params[:it_id])
-    item.category_id = cat_id   
     item.boutique_id = bout_id                                  
     item.save
     if category_item.save

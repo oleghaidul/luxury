@@ -26,7 +26,7 @@
             %a#t2{:name => "t2"}
           -@boutique.collections.each do |c|
             -c.brands.each do |b|
-              %p.each=link_to b.name, "/2012/winter/#{b.name}"
+              %p.each=link_to b.name, "/2012/winter/#{b.name_eng}"
 -else
   =content_for :brands do
     .vert_menu

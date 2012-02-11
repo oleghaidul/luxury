@@ -5,6 +5,7 @@ class Collection < ActiveRecord::Base
 	has_many :collection_brands
 	has_many :brands, :through => :collection_brands
 	validates :name, :presence => true
+	validates_uniqueness_of :season, :scope => :year
 	scope :nil_collection, :conditions => {:boutique_id => nil}
 	
 	scope :excluding_ids, lambda { |ids|

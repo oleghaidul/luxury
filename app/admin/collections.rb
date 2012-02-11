@@ -1,15 +1,22 @@
 ActiveAdmin.register Collection do
 
   member_action :delete_id, :method => :post do
+    br = Brand.find(params[:br_id])
     brand = CollectionBrand.where(:collection_id => params[:id], :brand_id => params[:br_id]).first
+    br.boutique_id = nil
+    br.save
     brand.destroy
     redirect_to :back, :notice => "was deleted from this boutique"
   end
 
   member_action :add_id, :method => :post do
+    br = Brand.find(params[:br_id])
+    bout_id = current_admin_user.boutique.id
     collection_brand = CollectionBrand.new(:collection_id => params[:id], 
                                             :brand_id => params[:br_id],
-                                            :boutique_id => current_admin_user.boutique.id)
+                                            :boutique_id => bout_id)
+    br.boutique_id = bout_id
+    br.save
     if collection_brand.save
       redirect_to :back, :notice => "was added from this boutique"
     else  
