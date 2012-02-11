@@ -1,5 +1,4 @@
 ActiveAdmin.register Picture do
-  controller.authorize_resource
   
   scope :mine, :default => true do |pictures|
     if can? :manage, @picture
