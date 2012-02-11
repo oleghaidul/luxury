@@ -5,5 +5,4 @@
     =f.input :season, :collection => ["winter", "spring", "summer", "autumn"]
     =f.input :new_collection, :as => :boolean
     =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden if cannot? :manage, AdminUser
-    =f.input :boutique, :as => :hidden, :value => current_admin_user.boutique.id if cannot? :manage, AdminUser
     =f.buttons

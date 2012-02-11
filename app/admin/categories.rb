@@ -4,17 +4,21 @@ ActiveAdmin.register Category do
     item = CategoryItem.where(:category_id => params[:id], :item_id => params[:it_id]).first
     it = Item.find(params[:it_id])
     it.category_id = nil
+    it.boutique_id = nil
     it.save
     item.destroy
     redirect_to :back, :notice => "Item was deleted from this category"
   end
 
   member_action :add_id, :method => :post do
-    category_item = CategoryItem.new(:category_id => params[:id], 
+    bout_id = current_admin_user.boutique.id
+    cat_id = params[:id]
+    category_item = CategoryItem.new(:category_id => cat_id, 
                                             :item_id => params[:it_id],
-                                            :boutique_id => current_admin_user.boutique.id)
+                                            :boutique_id => bout_id)
     item = Item.find(params[:it_id])
-    item.category_id = params[:id]                                        
+    item.category_id = cat_id   
+    item.boutique_id = bout_id                                  
     item.save
     if category_item.save
       redirect_to :back, :notice => "Item was added from this category"

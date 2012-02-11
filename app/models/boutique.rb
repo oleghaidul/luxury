@@ -8,6 +8,6 @@ class Boutique < ActiveRecord::Base
   has_attached_file :image
 
   validates :name, :presence => true, :uniqueness => true
-  validates :admin_user, :presence => true, :uniqueness => true
+  validates :admin_user_id, :presence => true
   validates :url_bout, :presence => true, :uniqueness => true
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210190247) do
+ActiveRecord::Schema.define(:version => 20120211084414) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -142,7 +142,6 @@ ActiveRecord::Schema.define(:version => 20120210190247) do
     t.string   "season"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "boutique_id"
     t.boolean  "new_collection"
     t.string   "season_eng"
     t.integer  "admin_user_id"
