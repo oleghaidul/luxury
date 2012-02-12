@@ -41,7 +41,12 @@ ActiveAdmin.register Collection do
     default_actions
   end
 
-  show :title => :name do
+  show :title => Proc.new{ if params[:boutique_id]; 
+                            "#{Boutique.find(params[:boutique_id]).name} - 
+                            "+"#{Collection.find(params[:id]).year} - "+"#{Collection.find(params[:id]).season} "; 
+                          else; 
+                            "#{Collection.find(params[:id]).name}"; 
+                          end } do
     panel "Collection Details" do
       attributes_table_for collection do
         row :name
