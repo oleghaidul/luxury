@@ -40,7 +40,16 @@ ActiveAdmin.register Item do
 	end
 
 	
-  show :title => :name do
+  show :title => Proc.new{ if params[:boutique_id]; 
+                            "#{Boutique.find(params[:boutique_id]).name} - "+
+                            "#{Collection.find(params[:collection_id]).year} - "+
+                            "#{Collection.find(params[:collection_id]).season} - "+
+                            "#{Brand.find(params[:brand_id]).name} - "+
+                            "#{Category.find(params[:category_id]).name} - "+
+                            "#{Item.find(params[:id]).name}"; 
+                          else; 
+                            "#{Item.find(params[:id]).name}"; 
+                          end } do
 
     panel "Item Details" do
       attributes_table_for item do
