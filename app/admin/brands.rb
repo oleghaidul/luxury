@@ -45,7 +45,7 @@ ActiveAdmin.register Brand do
     default_actions
   end
 
-  show :title => Proc.new{ if params[:boutique_id]; 
+  show :title => Proc.new{ if params[:boutique_id] && params[:collection_id]; 
                             "#{Boutique.find(params[:boutique_id]).name} - "+
                             "#{Collection.find(params[:collection_id]).year} - "+
                             "#{Collection.find(params[:collection_id]).season} - "+

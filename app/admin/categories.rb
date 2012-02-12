@@ -65,7 +65,7 @@ ActiveAdmin.register Category do
 	end
 
 
-  show :title => Proc.new{ if params[:boutique_id]; 
+  show :title => Proc.new{ if params[:boutique_id] && params[:collection_id] && params[:brand_id]; 
                             "#{Boutique.find(params[:boutique_id]).name} - "+
                             "#{Collection.find(params[:collection_id]).year} - "+
                             "#{Collection.find(params[:collection_id]).season} - "+
