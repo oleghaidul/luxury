@@ -7,16 +7,16 @@
         -if Category.select(:name_eng).map(&:name_eng).include? params[:category]
           -if Brand.select(:name).map(&:name).include? params[:brand]
             -for collection in @collections
-              =render collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id, :brand_id => Brand.find_by_name_eng(params[:category]).id)
+              =render collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id, :brand_id => Brand.find_by_name_eng(params[:category]).id, :boutique_id => @boutique.id)
           -else
             -for collection in @collections
-              =render collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id)
+              =render collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id, :boutique_id => @boutique.id)
         -else
           -for collection in @collections
-            =render collection.items.where(:brand_id => Brand.find_by_name_eng(params[:category]).id)
+            =render collection.items.where(:brand_id => Brand.find_by_name_eng(params[:category]).id, :boutique_id => @boutique.id)
       -else
         -for collection in @collections
-          =render collection.items
+          =render collection.items.where(:collection_id => collection.id, :boutique_id => @boutique.id)
         
           
 
@@ -33,15 +33,13 @@
         %div.div
           %h2
             %a#t1{:name => "t1"}
-          -Category.all.each do |c|
-            -if c.try(:brand_categories).try(:first).try(:boutique_id) == @boutique.id
-              %p.each=link_to c.name, "/#{@year}/#{@season}/#{c.name_eng}"
+          -@boutique.categories.uniq.each do |c|
+            %p.each=link_to c.name, "/#{@year}/#{@season}/#{c.name_eng}"
         %div.div
           %h2
             %a#t2{:name => "t2"}
-          -Brand.all.each do |b|
-            -if b.try(:collection_brands).try(:first).try(:boutique_id) == @boutique.id
-              %p.each=link_to b.name, "/#{@year}/#{@season}/#{b.name_eng}"
+          -@boutique.brands.uniq.each do |b|
+            %p.each=link_to b.name, "/#{@year}/#{@season}/#{b.name_eng}"
 -else
   =content_for :brands do
     .vert_menu
@@ -49,8 +47,7 @@
         %div.div
           %h2
             %a#t1{:name => "t1"}
-          -Category.all.each do |c|
-            -if c.try(:brand_categories).try(:first).try(:boutique_id) == @boutique.id
-              %p.each=link_to c.name, "/#{@year}/#{@season}/#{c.name_eng}"
+          -@boutique.categories.uniq.each do |c|
+            %p.each=link_to c.name, "/#{@year}/#{@season}/#{c.name_eng}"
 =content_for :promo do
   #promo=Sanitize.clean(@boutique.promo)
