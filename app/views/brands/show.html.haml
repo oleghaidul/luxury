@@ -5,26 +5,18 @@
     .scrollableArea
       -if params[:category]
         -if Category.select(:name_eng).map(&:name_eng).include? params[:category]
-          -if Brand.select(:name_eng).map(&:name_eng).include? params[:brand]
+          -if Brand.select(:name).map(&:name).include? params[:brand]
             -for collection in @collections
-              -for brand in collection.brands.where(:name => params[:brand])
-                -for category in brand.categories.where(:name_eng => params[:category])
-                  =render category.items
+              =render collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id, :brand_id => Brand.find_by_name_eng(params[:category]).id)
           -else
             -for collection in @collections
-              -for brand in collection.brands
-                -for category in brand.categories.where(:name_eng => params[:category])
-                  =render category.items
+              =render collection.items.where(:category_id => Category.find_by_name_eng(params[:category]).id)
         -else
           -for collection in @collections
-            -for brand in collection.brands.where(:name => params[:category])
-              -for category in brand.categories
-                =render category.items
+            =render collection.items.where(:brand_id => Brand.find_by_name_eng(params[:category]).id)
       -else
         -for collection in @collections
-          -for brand in collection.brands
-            -for category in brand.categories
-              =render category.items
+          =render collection.items
         
           
 

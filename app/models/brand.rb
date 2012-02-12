@@ -8,7 +8,10 @@ class Brand < ActiveRecord::Base
     def current_boutique(boutique_id, collection_id)
       where("brand_categories.boutique_id = ? AND brand_categories.collection_id = ?", boutique_id, collection_id)
     end
+
   end
+
+  has_many :items
 
   validates :name, :presence => true
   validates :name_eng, :presence => true

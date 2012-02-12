@@ -4,12 +4,20 @@ class BrandsController < ApplicationController
   def show
     if params[:season]
       @season = params[:season]
-      @year = params[:year]
-      @collections = @boutique.collections.where(:year => params[:year], :season => @season)
+      if params[:year]
+        @year = params[:year]
+      else
+        @year = 2012
+      end
+      @collections = @boutique.collections.where(:year => @year, :season => @season)
     else
       @season = "winter"
-      @year = params[:year]
-      @collections = @boutique.collections.where(:year => @season)
+      if params[:year]
+        @year = params[:year]
+      else
+        @year = 2012
+      end
+      @collections = @boutique.collections.where(:year => @year)
     end
   end
 

@@ -1,6 +1,9 @@
 class Item < ActiveRecord::Base
   belongs_to :admin_user
   belongs_to :boutique
+  belongs_to :collection
+  belongs_to :brand
+
   attr_accessible :name, :boutique_id, :structure, :price, :description, :discount, :gender, :brand_id, :admin_user_id, :category_id, :collection_id, :pictures_attributes
   has_many :pictures
   accepts_nested_attributes_for :pictures

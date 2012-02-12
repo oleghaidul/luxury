@@ -9,6 +9,8 @@ class Collection < ActiveRecord::Base
 		end
 	end
 
+	has_many :items
+
 	validates :name, :presence => true
 	validates_uniqueness_of :season, :scope => :year
 

@@ -1,18 +1,18 @@
--if params[:category]
-  -if Category.select(:name_eng).map(&:name_eng).include? params[:category]
-    -if Brand.select(:name).map(&:name).include? params[:brand]
-      -for brand in collection.brands.where(:name => params[:brand])
-        -for category in brand.categories.where(:name => params[:category])
-          =render category.items
-    -else
-      -for brand in collection.brands
-        -for category in brand.categories.where(:name => params[:category])
-          =render category.items
-  -else
-    -for brand in collection.brands.where(:name => params[:category])
-      -for category in brand.categories
-        =render category.items
--else
-  -for brand in collection.brands
-    -for category in brand.categories
-      =render category.items
+/ -if params[:category]
+/   -if Category.select(:name_eng).map(&:name_eng).include? params[:category]
+/     -if Brand.select(:name).map(&:name).include? params[:brand]
+/       -for brand in collection.brands.where(:name => params[:brand])
+/         -for category in brand.categories.where(:name => params[:category])
+/           =render category.items
+/     -else
+/       -for brand in collection.brands
+/         -for category in brand.categories.where(:name => params[:category])
+/           =render category.items
+/   -else
+/     -for brand in collection.brands.where(:name => params[:category])
+/       -for category in brand.categories
+/         =render category.items
+/ -else
+/   -for brand in collection.brands
+/     -for category in brand.categories
+/       =render category.items
