@@ -7,7 +7,7 @@
       =f.input :admin_user, :collection => AdminUser.excluding_ids(current_admin_user.id).collect{|a| [a.email, a.id]}
     =f.input :ico, :hint => f.template.image_tag(f.object.ico.url) 
     =f.input :multibrand, :as => :boolean
-    =f.input :promo
+    =f.input :promo, :input_html => { :class => "ckeditor" }
     =f.input :phone, :as => :phone
     =f.input :phone2, :as => :phone
     =f.input :address

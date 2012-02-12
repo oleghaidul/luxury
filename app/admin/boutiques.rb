@@ -15,7 +15,7 @@ ActiveAdmin.register Boutique do
     end
   end
 
-  scope :mine, :default => true do |boutiques|
+  scope :all, :default => true do |boutiques|
     if can? :manage, @boutique
       boutiques
     else

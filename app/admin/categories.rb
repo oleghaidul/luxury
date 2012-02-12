@@ -71,27 +71,25 @@ ActiveAdmin.register Category do
       end
     end
 
-    panel "Items" do
-      table_for(category.items.current_boutique(params[:boutique_id], params[:collection_id], params[:brand_id])) do |t|
-        t.column(:name) { |item| link_to item.name, admin_item_path(item,
-                                                    :boutique_id => params[:boutique_id],
-                                                    :collection_id => params[:collection_id],
-                                                    :brand_id => params[:brand_id],
-                                                    :category_id => params[:id]) }
-        t.column("image") do |item| 
-          if item.pictures.any?
-            link_to image_tag(item.pictures.first.image.url(:small)), admin_picture_path(item.pictures.first)
+    if params[:boutique_id] && params[:collection_id] && params[:brand_id]
+      panel "Items" do
+        table_for(category.items.current_boutique(params[:boutique_id], params[:collection_id], params[:brand_id])) do |t|
+          t.column(:name) { |item| link_to item.name, admin_item_path(item,
+                                                      :boutique_id => params[:boutique_id],
+                                                      :collection_id => params[:collection_id],
+                                                      :brand_id => params[:brand_id],
+                                                      :category_id => params[:id]) }
+          t.column("image") do |item| 
+            if item.pictures.any?
+              link_to image_tag(item.pictures.first.image.url(:small)), admin_picture_path(item.pictures.first)
+            end
           end
-        end
-        if params[:boutique_id] && params[:collection_id] && params[:brand_id]
-          t.column() { |item| link_to "Delete", delete_id_admin_category_path(category, :it_id => item), :method => :post, 
-                            :confirm => "Are you sure?" }
+            t.column() { |item| link_to "Delete", delete_id_admin_category_path(category, :it_id => item), :method => :post, 
+                              :confirm => "Are you sure?" }
         end
       end
-    end
 
-    panel "Add items to this category" do
-      if params[:boutique_id] && params[:collection_id] && params[:brand_id]
+      panel "Add items to this category" do
         table_for(Item.where(:category_id => nil).mine(current_admin_user.id).excluding_ids(category.item_ids)) do |t|
           t.column(:name) { |item| link_to item.name, admin_item_path(item) }
           t.column("image") do |item| 
