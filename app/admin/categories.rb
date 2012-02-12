@@ -99,7 +99,12 @@ ActiveAdmin.register Category do
       end
 
       panel "Add items to this category" do
-        table_for(Item.where(:category_id => nil).mine(current_admin_user.id)) do |t|
+        if current_admin_user.role == "editor"
+          a = Item.where(:category_id => nil).mine(current_admin_user.id)
+        else
+          a = Item.all
+        end
+        table_for(a) do |t|
           t.column(:name) { |item| link_to item.name, admin_item_path(item) }
           t.column("image") do |item| 
             if item.pictures.any?
