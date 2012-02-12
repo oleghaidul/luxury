@@ -8,6 +8,7 @@ ActiveAdmin.register Category do
     it.collection_id = nil                                
     it.brand_id = nil
     it.category_id = nil
+    it.save
     redirect_to :back, :notice => "Item was deleted from this category"
   end
 
