@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
+# coding: utf-8
 
 AdminUser.create!([
               {:email => "admin@luxury.by", :role => "admin", :password => "password", :password_confirmation => "password"},
@@ -26,31 +20,31 @@ Collection.create!([
 ])
 
 Brand.create!([
-                {:name => 'Ermenegildo Zegna', :name_eng => "Ermenegildo Zegna"},
-                {:name => 'Pal Zileri', :name_eng => 'Pal Zileri'},
+                {:name => 'Ermenegildo Zegna', :name_eng => "Ermenegildo_Zegna"},
+                {:name => 'Pal Zileri', :name_eng => 'Pal_Zileri'},
                 {:name => 'Canali', :name_eng => 'Canali'},
                 {:name => 'Corneliani', :name_eng => 'Corneliani'},
-                {:name => 'Emanuel Ungaro', :name_eng => 'Emanuel Ungaro'},
+                {:name => 'Emanuel Ungaro', :name_eng => 'Emanuel_Ungaro'},
                 {:name => 'Galliano', :name_eng => 'Galliano'},
-                {:name => 'Francesco SMALTO', :name_eng => 'Francesco SMALTO'},
-                {:name => 'Christian Lacroix', :name_eng => 'Christian Lacroix'},
-                {:name => 'Pierre BALMAIN', :name_eng => 'Pierre BALMAIN'},
-                {:name => 'Jean Paul Gaultier', :name_eng => 'Jean Paul Gaultier'},
-                {:name => 'Nina Ricci,', :name_eng => 'Nina Ricci,'},
+                {:name => 'Francesco SMALTO', :name_eng => 'Francesco_SMALTO'},
+                {:name => 'Christian Lacroix', :name_eng => 'Christian_Lacroix'},
+                {:name => 'Pierre BALMAIN', :name_eng => 'Pierre_BALMAIN'},
+                {:name => 'Jean Paul Gaultier', :name_eng => 'Jean_Paul_Gaultier'},
+                {:name => 'Nina Ricci,', :name_eng => 'Nina_Ricci,'},
                 {:name => 'Azzaro', :name_eng => 'Azzaro'},
-                {:name => 'Andrew GN', :name_eng => 'Andrew GN'},
+                {:name => 'Andrew GN', :name_eng => 'Andrew_GN'},
                 {:name => 'IRFE', :name_eng => 'IRFE'},
                 {:name => 'Leonard', :name_eng => 'Leonard'},
-                {:name => 'Matthew Williamson', :name_eng => 'Matthew Williamson'},
-                {:name => 'Tartine et Chocolat', :name_eng => 'Tartine et Chocolat'},
-                {:name => 'Hugo Boss', :name_eng => 'Hugo Boss'},
+                {:name => 'Matthew Williamson', :name_eng => 'Matthew_Williamson'},
+                {:name => 'Tartine et Chocolat', :name_eng => 'Tartine_et_Chocolat'},
+                {:name => 'Hugo Boss', :name_eng => 'Hugo_Boss'},
                 {:name => 'Max Mara', :name_eng => 'MaxMara'},
-                {:name => 'Gianfranco Ferre', :name_eng => 'Gianfranco Ferre'},
-                {:name => 'Ice IceBerg', :name_eng => 'Ice IceBerg'}
+                {:name => 'Gianfranco Ferre', :name_eng => 'Gianfranco_Ferre'},
+                {:name => 'Ice IceBerg', :name_eng => 'Ice_IceBerg'}
               ])
 
 Category.create!([
-              {:name => "Рубашки", :name_eng => "Dress shirts"},
+              {:name => "Рубашки", :name_eng => "Dress_shirts"},
               {:name => "Костюмы", :name_eng => "Suits"},
               {:name => "Брюки", :name_eng => "Pants"},
               {:name => "Свитера", :name_eng => "Sweaters"},

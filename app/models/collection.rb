@@ -3,7 +3,11 @@ class Collection < ActiveRecord::Base
 	has_many :boutiques, :through => :boutique_collections
 
 	has_many :collection_brands
-	has_many :brands, :through => :collection_brands
+	has_many :brands, :through => :collection_brands do
+		def current_boutique(id)
+			where("collection_brands.boutique_id = ?",id)
+		end
+	end
 
 	validates :name, :presence => true
 	validates_uniqueness_of :season, :scope => :year

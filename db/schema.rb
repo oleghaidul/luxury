@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120211084414) do
+ActiveRecord::Schema.define(:version => 20120212140635) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -95,26 +95,21 @@ ActiveRecord::Schema.define(:version => 20120211084414) do
     t.integer  "collection_brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "collection_id"
   end
 
   create_table "brands", :force => true do |t|
     t.string   "name"
-    t.integer  "collection_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "admin_user_id"
     t.string   "name_eng"
-    t.integer  "boutique_id"
   end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "admin_user_id"
     t.string   "name_eng"
-    t.integer  "brand_id"
-    t.integer  "boutique_id"
   end
 
   create_table "category_items", :force => true do |t|
@@ -125,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20120211084414) do
     t.integer  "boutique_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "brand_category_id"
   end
 
   create_table "collection_brands", :force => true do |t|
@@ -144,7 +140,6 @@ ActiveRecord::Schema.define(:version => 20120211084414) do
     t.datetime "updated_at"
     t.boolean  "new_collection"
     t.string   "season_eng"
-    t.integer  "admin_user_id"
   end
 
   create_table "home_images", :force => true do |t|

@@ -1,21 +1,17 @@
 ActiveAdmin.register Collection do
 
   member_action :delete_id, :method => :post do
-    br = Brand.find(params[:br_id])
     brand = CollectionBrand.where(:collection_id => params[:id], :brand_id => params[:br_id]).first
-    br.boutique_id = nil
-    br.save
     brand.destroy
     redirect_to :back, :notice => "was deleted from this boutique"
   end
 
   member_action :add_id, :method => :post do
-    br = Brand.find(params[:br_id])
-    bout_id = current_admin_user.boutique.id
+    boutique_collection = BoutiqueCollection.where(:boutique_id => params[:boutique_id], :collection_id => params[:id]).first
     collection_brand = CollectionBrand.new(:collection_id => params[:id], 
-                                            :brand_id => params[:br_id])
-    br.boutique_id = bout_id
-    br.save
+                                            :brand_id => params[:br_id],
+                                            :boutique_id => params[:boutique_id],
+                                            :boutique_collection_id => boutique_collection.id)
     if collection_brand.save
       redirect_to :back, :notice => "was added from this boutique"
     else  
@@ -55,21 +51,30 @@ ActiveAdmin.register Collection do
       end
 
     end
-
-    panel "#{collection.name} brands" do
-      table_for(collection.brands) do |t|
-        t.column(:name) { |brand| link_to brand.name, admin_brand_path(brand) }
-        t.column() { |brand| link_to "Delete", delete_id_admin_collection_path(collection, :br_id => brand), :method => :post, :confirm => "Are you sure?" }
+    if params[:boutique_id]
+      panel "#{collection.name} brands" do
+        table_for(collection.brands.current_boutique(params[:boutique_id])) do |t|
+          t.column(:name) { |brand| link_to brand.name, admin_brand_path(brand, 
+                                                        :boutique_id => params[:boutique_id],
+                                                        :collection_id => params[:id] ) }
+                                                                
+          t.column() { |brand| link_to "Delete", delete_id_admin_collection_path(collection, 
+                                            :br_id => brand), 
+                                            :method => :post, 
+                                            :confirm => "Are you sure?" }
+        end
       end
-    end
-
     
-  end
-    sidebar "Add brands to this collection", :only => :show do
-      table_for(Brand.excluding_ids(collection.brand_ids)) do |t|
-        t.column(:name) { |brand| link_to brand.name, admin_brand_path(brand) }
-        t.column() { |brand| link_to "Add", add_id_admin_collection_path(collection, :br_id => brand), :method => :post, 
-                    :confirm => "Are you sure add this brand to this collection?" }
+      panel "Add brands to this collection", :only => :show do
+        table_for(Brand.excluding_ids(collection.brands.current_boutique(params[:boutique_id]))) do |t|
+          t.column(:name) { |brand| link_to brand.name, admin_brand_path(brand) }
+          t.column() { |brand| link_to "Add", add_id_admin_collection_path(collection, 
+                                            :br_id => brand, 
+                                            :boutique_id => params[:boutique_id]), 
+                                            :method => :post, 
+                       :confirm => "Are you sure add this brand to this collection?" }
+        end
       end
     end
+  end
 end

@@ -17,15 +17,15 @@
         %div.div
           %h2
             %a#t1{:name => "t1"}
-          -@boutique.collections.each do |c|
-            -c.brands.each do |b|
-              -b.categories.each do |cat|
-                %p.each=link_to cat.name, "/2012/winter/#{cat.name_eng}"
+          -Category.all.each do |c|
+            -if c.try(:brand_categories).try(:first).try(:boutique_id) == @boutique.id
+              %p.each=link_to c.name, "/2012/winter/#{c.name_eng}"
+
         %div.div
           %h2
             %a#t2{:name => "t2"}
-          -@boutique.collections.each do |c|
-            -c.brands.each do |b|
+          -Brand.all.each do |b|
+            -if b.try(:collection_brands).try(:first).try(:boutique_id) == @boutique.id
               %p.each=link_to b.name, "/2012/winter/#{b.name_eng}"
 -else
   =content_for :brands do
@@ -34,9 +34,8 @@
         %div.div
           %h2
             %a#t1{:name => "t1"}
-          -@boutique.collections.each do |c|
-            -c.brands.each do |b|
-              -b.categories.each do |cat|
-                %p.each=link_to cat.name, "/2012/winter/#{cat.name_eng}"
+          -Category.all.each do |c|
+            -if c.try(:brand_categories).try(:first).try(:boutique_id) == @boutique.id
+              %p.each=link_to c.name, "/2012/winter/#{c.name_eng}"
 =content_for :promo do
   #promo=Sanitize.clean(@boutique.promo)

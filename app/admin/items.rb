@@ -71,7 +71,6 @@ ActiveAdmin.register Item do
 		f.input :description, :as => :text
 		f.input :price
 		f.input :discount
-    f.input :boutique, :as => :hidden, :value => f.template.current_admin_user.boutique.id if f.template.cannot? :manage, AdminUser
 		f.input :gender, :as => :radio, :collection => [["Male", "male"], ["Female", "female"]]
 		# f.input :pictures, :as => :check_boxes, :label_method => Proc.new { |image| "#{image.name}"}
 	end

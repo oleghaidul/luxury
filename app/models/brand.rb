@@ -4,7 +4,11 @@ class Brand < ActiveRecord::Base
   has_many :collections, :through => :collection_brands
 
   has_many :brand_categories
-  has_many :categories, :through => :brand_categories
+  has_many :categories, :through => :brand_categories do
+    def current_boutique(boutique_id, collection_id)
+      where("brand_categories.boutique_id = ? AND brand_categories.collection_id = ?", boutique_id, collection_id)
+    end
+  end
 
   validates :name, :presence => true
   validates :name_eng, :presence => true

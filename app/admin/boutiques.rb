@@ -28,8 +28,14 @@ ActiveAdmin.register Boutique do
 
 		def admin
 			@boutique = Boutique.find_by_url_bout(params[:id])
-
 		end
+
+    def show
+      super do
+        @boutique_colelction = BoutiqueCollection.last
+      end
+    end
+
 	end
 
 
@@ -71,7 +77,7 @@ ActiveAdmin.register Boutique do
 
     panel "#{boutique.name}'s collections" do
       table_for(boutique.collections) do |t|
-        t.column(:name) { |col| link_to col.name, admin_collection_path(col) }
+        t.column(:name) { |col| link_to col.name, admin_collection_path(col, :boutique_id => params[:id]) }
         t.column(:year)
         t.column(:season)
         t.column() { |col| link_to "Delete", delete_id_admin_boutique_path(boutique, :col_id => col), :method => :post, :confirm => "Are you sure?" }

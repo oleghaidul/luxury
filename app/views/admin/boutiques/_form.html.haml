@@ -1,6 +1,10 @@
 = semantic_form_for [:admin, @boutique], :html => {:multipart => true} do |f|
   = f.inputs "Basic" do
     =f.input :name
+    -if current_admin_user.role == "editor"
+      =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden
+    -else
+      =f.input :admin_user, :collection => AdminUser.excluding_ids(current_admin_user.id).collect{|a| [a.email, a.id]}
     =f.input :ico, :hint => f.template.image_tag(f.object.ico.url) 
     =f.input :multibrand, :as => :boolean
     =f.input :promo
@@ -12,6 +16,5 @@
     =f.input :email
     =f.input :website
     =f.input :image, :hint => f.template.image_tag(f.object.image.url)
-    =f.input :admin_user_id, :value => current_admin_user.id, :as => :hidden if cannot? :manage, AdminUser
     =f.input :description, :as => :text, :input_html => { :class => "ckeditor" }
     =f.buttons

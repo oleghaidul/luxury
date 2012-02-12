@@ -6,12 +6,16 @@ class AdminUser < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role
-  has_one :boutique
+  has_many :boutiques
   has_many :items
   has_many :brands
   has_many :categories
   has_many :collections
   has_many :pictures
+ 
+ 
+  scope :excluding_ids, lambda { |ids|
+    where(['id NOT IN (?)', ids])
+  }
 
-  scope :without_boutique
 end

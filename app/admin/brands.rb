@@ -7,8 +7,14 @@ ActiveAdmin.register Brand do
   end
 
   member_action :add_id, :method => :post do
+    collection_brand = CollectionBrand.where(:collection_id => params[:collection_id], 
+                                              :brand_id => params[:id],
+                                              :boutique_id => params[:boutique_id]).first
     brand_categories = BrandCategory.new(:brand_id => params[:id], 
-                                            :category_id => params[:cat_id])
+                                          :category_id => params[:cat_id],
+                                          :collection_brand_id => collection_brand.id,
+                                          :boutique_id => params[:boutique_id],
+                                          :collection_id => params[:collection_id])
     if brand_categories.save
       redirect_to :back, :notice => "was added from this boutique"
     else  
@@ -46,18 +52,31 @@ ActiveAdmin.register Brand do
       end
     end
 
-    panel "Categories" do
-      table_for(brand.categories) do |t|
-        t.column(:name) { |category| link_to category.name, admin_category_path(category) }
-        t.column() { |category| link_to "Delete", delete_id_admin_brand_path(brand, :cat_id => category), :method => :post, :confirm => "Are you sure?" }
+    if params[:boutique_id] && params[:collection_id]
+      panel "Categories" do
+        table_for(brand.categories.current_boutique(params[:boutique_id], params[:collection_id])) do |t|
+          t.column(:name) { |category| link_to category.name, admin_category_path(category,
+                                                              :boutique_id => params[:boutique_id],
+                                                              :collection_id => params[:collection_id],
+                                                              :brand_id => params[:id]) }
+                                                                    
+          t.column() { |category| link_to "Delete", delete_id_admin_brand_path(brand, :cat_id => category), :method => :post, :confirm => "Are you sure?" }
+        end
       end
     end
-
-    panel "Add categories to this brand" do
-      table_for(Category.excluding_ids(brand.category_ids)) do |t|
-        t.column(:name) { |category| link_to category.name, admin_category_path(category) }
-        t.column() { |category| link_to "Add", add_id_admin_brand_path(brand, :cat_id => category), :method => :post, 
-                      :confirm => "Are you sure add this category to this brand?" }
+    if params[:boutique_id] && params[:collection_id]
+      panel "Add categories to this brand" do
+        table_for(Category.excluding_ids(brand.categories.current_boutique(params[:boutique_id], params[:collection_id]))) do |t|
+          t.column(:name) { |category| link_to category.name, admin_category_path(category) }
+          t.column() { |category| link_to "Add", add_id_admin_brand_path(brand, 
+                                                :cat_id => category, 
+                                                :boutique_id => params[:boutique_id],
+                                                :collection_id => params[:collection_id],
+                                                :brand_id => params[:id]),
+                                                :method => :post, 
+                        :confirm => "Are you sure add this category to this brand?" 
+                        }
+        end
       end
     end
 
