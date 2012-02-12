@@ -99,7 +99,7 @@ ActiveAdmin.register Category do
       end
 
       panel "Add items to this category" do
-        table_for(Item.where(:category_id => nil).mine(current_admin_user.id).excluding_ids(category.item_ids)) do |t|
+        table_for(Item.where(:category_id => nil).mine(current_admin_user.id)) do |t|
           t.column(:name) { |item| link_to item.name, admin_item_path(item) }
           t.column("image") do |item| 
             if item.pictures.any?
