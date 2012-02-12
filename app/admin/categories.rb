@@ -82,7 +82,8 @@ ActiveAdmin.register Category do
 
     if params[:boutique_id] && params[:collection_id] && params[:brand_id]
       panel "Items" do
-        table_for(category.items.current_boutique(params[:boutique_id], params[:collection_id], params[:brand_id])) do |t|
+      asd = category.items.current_boutique(params[:boutique_id], params[:collection_id], params[:brand_id])
+        table_for(asd) do |t|
           t.column(:name) { |item| link_to item.name, admin_item_path(item,
                                                       :boutique_id => params[:boutique_id],
                                                       :collection_id => params[:collection_id],
@@ -100,9 +101,9 @@ ActiveAdmin.register Category do
 
       panel "Add items to this category" do
         if current_admin_user.role == "editor"
-          a = Item.where(:category_id => nil).mine(current_admin_user.id)
+          a = Item.where(:category_id => nil).mine(current_admin_user.id).excluding_ids(category.items.current_boutique(params[:boutique_id], params[:collection_id], params[:brand_id]).map(&:id))
         else
-          a = Item.all
+          a = Item.excluding_ids(category.items.current_boutique(params[:boutique_id], params[:collection_id], params[:brand_id]).map(&:id))
         end
         table_for(a) do |t|
           t.column(:name) { |item| link_to item.name, admin_item_path(item) }
